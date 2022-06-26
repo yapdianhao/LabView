@@ -1,0 +1,29 @@
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.logoArea {
+    display: flex;
+    justify-content: center;
+    max-height: 90%;
+    height: auto;
+    width: 100%;
+}
+
+@media (min-width: 980px) and (max-width: 1335.9px) {
+    .logoArea {
+        display: flex;
+        justify-content: center;
+        height: 7rem;
+        margin: 3.5rem 0;
+    }
+}
+
+/* .logo {
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center;
+} */
