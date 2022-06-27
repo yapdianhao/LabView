@@ -8,3 +8,29 @@
     padding: 1.75rem;
     flex: 1;
 }
+
+.formArea {
+    text-align: left;
+    width: 30%;
+    margin: 2rem;
+    font-size: 1.875rem;
+}
+
+.loginInputLabel {
+    display: flex;
+    padding: 0.5rem;
+}
+
+.loginInputField {
+    font-size: 1.875rem;
+    width: 93.75%;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    margin-bottom: 1.25rem;
+}
+
+.loginButton {
+    width: 100%;
+    padding: 1rem;
+}
