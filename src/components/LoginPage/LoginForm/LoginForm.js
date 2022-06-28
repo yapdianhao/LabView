@@ -13,6 +13,12 @@ const LoginForm = () => {
                     Password:
                 </div>
                 <input className={styles.loginInputField} type="text" />
+                <div className={styles.loginRadioButton}>
+                    <input type="checkbox" id="remember-login"/>
+                    <label for="remember-login">
+                        Remember me on this device
+                    </label>
+                </div>
                 <button className={styles.loginButton}>Submit</button>
             </form>
         </div>

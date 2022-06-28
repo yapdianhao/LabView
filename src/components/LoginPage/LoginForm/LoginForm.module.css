@@ -1,8 +1,7 @@
 .loginForm {
     background-image: linear-gradient(45deg, #0c709c 0, #3eb3ae 100%);
     color: #ffffff;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 1.75rem * 2);
     display: flex;
     justify-content: center;
     padding: 1.75rem;
@@ -13,7 +12,7 @@
     text-align: left;
     width: 30%;
     margin: 2rem;
-    font-size: 1.875rem;
+    font-size: 1.25rem;
 }
 
 .loginInputLabel {
@@ -27,10 +26,23 @@
     padding: 1rem;
     outline: none;
     border: none;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.loginRadioButton {
+    margin-bottom: 1.5rem;
+}
+
+.loginRadioButton:hover {
+    text-shadow: 0 0 0.313rem #ffffff;
 }
 
 .loginButton {
     width: 100%;
     padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #3FCDFF;
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
 }
