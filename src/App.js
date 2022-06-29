@@ -1,11 +1,14 @@
 import NavBar from './components/NavBar/NavBar';
 import LoginPage from './components/LoginPage/LoginPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-        <LoginPage />
-    </div>
+    <Router>
+        <Routes>
+            <Route path='/login' element={<LoginPage />} />
+        </Routes>
+    </Router>
   );
 }
 
