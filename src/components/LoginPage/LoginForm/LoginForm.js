@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './LoginForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { login, reset } from '../../../features/auth/authSlice';
 
 const LoginForm = () => {
@@ -20,7 +20,7 @@ const LoginForm = () => {
     
     React.useEffect(() => {
         if (isError) {
-            toast.error(message);
+            console.error(message);
         }
         if (isSuccess || user) {
             navigate('/');
@@ -58,7 +58,7 @@ const LoginForm = () => {
                 <input className={styles.loginInputField} type="password" name="password" onChange={onChange} />
                 <div className={styles.loginRadioButton}>
                     <input type="checkbox" id="remember-login"/>
-                    <label for="remember-login">
+                    <label htmlFor="remember-login">
                         Remember me on this device
                     </label>
                 </div>

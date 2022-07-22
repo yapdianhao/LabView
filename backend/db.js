@@ -7,6 +7,20 @@ const db = mysql.createConnection({
     database: 'labvue',
 });
 
+db.connect((err) => {
+    if (err) throw err;
+    db.query('USE labvue;');
+    db.query('SHOW TABLES;', (err, result, fields) => {
+        console.log(result);
+    });
+    // db.query('UPDATE users SET password = \'$2a$10$bVR3yAZc64T2A0xpCHe2fuVhBmqZe8PspEpvXVoz9xihcDViM9TAC\' WHERE id = 1');
+    // db.query('INSERT INTO users VALUES(0, \'test_user\', \'test@test.com\', \'password\', \'ADMIN\');');
+    // db.query('SELECT * FROM users;', (err, result, fields) => {
+    //     console.log(result);
+    // })
+});
+
+
 module.exports = db;
 
 

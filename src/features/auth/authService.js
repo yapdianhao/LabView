@@ -1,9 +1,17 @@
 import axios from 'axios';
 
-const API_URL = '/api/users/';
+const API_URL = 'http://localhost:5000/api/users';
 
 const login = async (userData) => {
-    const response = await axios.post(API_URL + 'login');
+    console.log("here");
+    console.log(userData);
+    // const response = await fetch(API_URL + new URLSearchParams({
+    //     email: userData.email
+    // }));
+    // const response = await fetch(API_URL + '?' + new URLSearchParams({
+    //     email: userData.email,
+    // }));
+    const response = await axios.post(API_URL, userData);
     console.log(response);  
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
