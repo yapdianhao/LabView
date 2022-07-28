@@ -1,0 +1,30 @@
+.mainMenu {
+    flex: 1;
+    background-color: #3FCDFF;
+    display: flex;
+}
+
+.mainMenuBox {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 80px 200px;
+}
+
+.mainMenuItemPaper {
+    width: 125px;
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    align-items: center;
+    padding: 20px;
+    background: #2c07a7;
+}
+
+#mainMenuItemPaper {
+    background: #2c07a7;
+    color: white;
+}

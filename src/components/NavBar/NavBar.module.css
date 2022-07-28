@@ -1,5 +1,10 @@
 .navbar {
-    margin: 0px 40px;
-    background-color: blue;
-    overflow-x: hidden;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navMenu {
+    display: flex;
+    padding: 0 5px;
 }

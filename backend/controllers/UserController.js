@@ -37,8 +37,6 @@ const loginUser = async (req, res) => {
     } else {
         res.status(400);
     }
-    // check for user email
-    // if user exists, password compare same
 };
 
 const generateToken = (id) => {

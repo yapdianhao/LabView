@@ -26,9 +26,16 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => {
     db.query('SHOW TABLES', (err, result) => {
         if (err) console.log(err);
-        res.send(result);
+        else res.send(result);
     });
 });
+
+app.get('/api/user-list', (req, res) => {
+    db.query('SELECT * FROM users', (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    })
+})
 
 app.use('/api/users', require('./routes/userRoutes'));
 

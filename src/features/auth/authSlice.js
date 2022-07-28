@@ -22,7 +22,7 @@ export const login  = createAsyncThunk('auth/login', async (user, thunkAPI) => {
 });
 
 export const logout = createAsyncThunk('auth/logout', async () => {
-    // await service logout
+    authService.logout();
 });
 
 export const authSlice = createSlice({
@@ -54,5 +54,6 @@ export const authSlice = createSlice({
     },
 });
 
+// line 32
 export const { reset } = authSlice.actions;
 export default authSlice.reducer;

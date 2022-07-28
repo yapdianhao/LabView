@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
+import MainMenu from '../MainMenu/MainMenu';
+import NavBar from '../NavBar/NavBar';
+import styles from './HomePage.module.css';
 
 const HomePage = () => {
 
@@ -16,7 +18,12 @@ const HomePage = () => {
     }, [user, navigate, dispatch]);
 
 
-    return <div>HomePage</div>
+    return (
+        <div className={styles.homePage}>
+            <NavBar />
+            <MainMenu />
+        </div>
+    );
 }
 
 export default HomePage;

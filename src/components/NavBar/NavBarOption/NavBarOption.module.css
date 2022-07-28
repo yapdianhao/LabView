@@ -1,0 +1,8 @@
+.navBarOption {
+    display: flex;
+    margin: 0 10px;
+}
+
+.navBarIcon {
+    padding-right: 5px;
+}
