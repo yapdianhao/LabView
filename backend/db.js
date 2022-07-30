@@ -13,6 +13,9 @@ db.connect((err) => {
     db.query('SHOW TABLES;', (err, result, fields) => {
         console.log(result);
     });
+    // db.query('SHOW FIELDS FROM users', (err, result, fields) => {
+    //     console.log(result);
+    // });
     // db.query('UPDATE users SET password = \'$2a$10$bVR3yAZc64T2A0xpCHe2fuVhBmqZe8PspEpvXVoz9xihcDViM9TAC\' WHERE id = 1');
     // db.query('INSERT INTO users VALUES(0, \'test_user\', \'test@test.com\', \'password\', \'ADMIN\');');
     // db.query('SELECT * FROM users;', (err, result, fields) => {
