@@ -1,4 +1,3 @@
-import NavBar from './components/NavBar/NavBar';
 import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
@@ -12,9 +11,18 @@ function App() {
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/login' element={<LoginPage />} />
+                <Route path='/assets' element={<HomePage />} />
+                <Route path='/utilizations' element={<HomePage />} />
+                <Route path='/repairs' element={<HomePage />} />
+                <Route path='/pmcals' element={<HomePage />} />
+                <Route path='/operators' element={<HomePage />} />
+                <Route path='/consumables' element={<HomePage />} />
+                <Route path='/schedule' element={<HomePage />} />
+                <Route path='/reporting' element={<HomePage />} />
+                <Route path='/vendors' element={<HomePage />} />
+                <Route path='/audit' element={<HomePage />} />
             </Routes>
         </Router>
-        <ToastContainer />
       </>
   );
 }
