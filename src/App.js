@@ -1,5 +1,6 @@
 import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
+import UserManagementPage from './components/UserManagementPage/UserManagementPage';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -15,7 +16,7 @@ function App() {
                 <Route path='/utilizations' element={<HomePage />} />
                 <Route path='/repairs' element={<HomePage />} />
                 <Route path='/pmcals' element={<HomePage />} />
-                <Route path='/operators' element={<HomePage />} />
+                <Route path='/operators' element={<UserManagementPage />} />
                 <Route path='/consumables' element={<HomePage />} />
                 <Route path='/schedule' element={<HomePage />} />
                 <Route path='/reporting' element={<HomePage />} />

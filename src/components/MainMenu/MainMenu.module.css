@@ -27,4 +27,5 @@
 #mainMenuItemPaper {
     background: #2c07a7;
     color: white;
+    cursor: pointer;
 }

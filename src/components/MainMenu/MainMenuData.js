@@ -1,5 +1,6 @@
 export const MainMenuData = [{
         itemName: 'Assets',
+        path: '/assets',
     }, {
         itemName: 'Utilization',
     }, {
@@ -16,6 +17,7 @@ export const MainMenuData = [{
         itemName: 'Vendors',
     }, {
         itemName: 'Users',
+        path: '/operators',
     }, {
         itemName: 'Audit Trail'
     },
