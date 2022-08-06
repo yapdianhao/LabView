@@ -3,7 +3,7 @@ import HomePage from './components/HomePage/HomePage';
 import UserManagementPage from './components/UserManagementPage/UserManagementPage';
 import AssetsPage from './components/AssetsPage/AssetsPage';
 import UtilizationsPage from './components/UtilizationsPage/UtilizationsPage';
-import RepairsPage from './components/RepairsPage';
+import RepairsPage from './components/RepairsPage/RepairsPage';
 import PMCalsPage from './components/PMCalsPage/PMCalsPage';
 import ConsumablesPage from './components/ConsumablesPage/ConsumablesPage';
 import SchedulePage from './components/SchedulePage/SchedulePage';
