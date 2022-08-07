@@ -1,10 +1,17 @@
 const mysql = require('mysql');
+require('dotenv').config();
+
+console.log(process.env.DB_HOST);
+console.log(process.env.DB_USER);
+console.log(process.env.DB_DATABASE);
+console.log(process.env.DB_PASSWORD);
+
 
 const db = mysql.createConnection({
-    host: 'labvue-userdb.ch1fivipcvha.ap-southeast-1.rds.amazonaws.com',
-    user: 'admin',
-    password: 'labvue-admin',
-    database: 'labvue',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
 });
 
 db.connect((err) => {
