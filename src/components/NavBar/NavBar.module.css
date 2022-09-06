@@ -1,10 +1,17 @@
 .navbar {
-    padding: 20px;
+    padding: 10px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
     background-color: #ffffff;
+    /* background-color: #ffffff; */ 
+}
+
+.navLogo {
+    height: 50px;
+    width: 144px;
 }
 
 .navMenu {

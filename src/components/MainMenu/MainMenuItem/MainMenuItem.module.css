@@ -1,0 +1,27 @@
+.mainMenuItemContainer {
+    height: 100px;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 40px;
+    background-color: #67d1f7;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.mainMenuItemContainer:hover {
+    background-color: #343434;
+    color: #ffffff;
+}
+
+
+.content {
+    display: flex;
+}
+
+.iconWrapper {
+    margin-right: 20px;
+}

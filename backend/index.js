@@ -30,14 +30,14 @@ app.get('/', (req, res) => {
     });
 });
 
+app.use('/api/users', require('./routes/userRoutes'));
+
 app.get('/api/user-list', (req, res) => {
     db.query('SELECT * FROM users', (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     })
 })
-
-app.use('/api/users', require('./routes/userRoutes'));
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

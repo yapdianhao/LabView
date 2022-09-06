@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MainMenuData } from './MainMenuData';
+import MainMenuItem from './MainMenuItem/MainMenuItem';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import styles from './MainMenu.module.css';
@@ -11,7 +12,10 @@ const MainMenu = () => {
 
     return (
         <div className={styles.mainMenu}>
-            <Box className={styles.mainMenuBox}>
+            {MainMenuData.map((item) => 
+                <MainMenuItem item={item} onClick={() => navigate(item.path)} />
+            )}
+            {/* <Box className={styles.mainMenuBox}>
                 {MainMenuData.map((item) => 
                     <Paper 
                         key={item.itemName} 
@@ -23,7 +27,7 @@ const MainMenu = () => {
                         {item.itemName}
                     </Paper>
                 )}
-            </Box>
+            </Box> */}
         </div>
     )
 }

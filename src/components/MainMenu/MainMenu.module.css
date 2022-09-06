@@ -1,7 +1,13 @@
 .mainMenu {
     flex: 1;
-    background-color: #3FCDFF;
+    /* background-image: url('../../assets/lab.jpg'); */
+    /* background-size: 100% auto; */
+    /* background-color: #3FCDFF; */
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
 }
 
 .mainMenuBox {
