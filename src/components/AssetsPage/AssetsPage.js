@@ -1,7 +1,17 @@
 import * as React from 'react';
+import { Table } from '@douyinfe/semi-ui';
+import NavBar from '../NavBar/NavBar';
+import { ASSETS } from '../../mock/assets';
+
+import styles from './AssetsPage.module.css';
 
 const AssetsPage = () => {
-   return <div>AssetsPage</div> 
+    console.log(ASSETS);
+    return (
+        <div className={styles.pageContainer}>
+            <NavBar />
+        </div>
+    )
 }
 
 
