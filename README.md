@@ -5,4 +5,4 @@
 - Redux
 - Express
 - NodeJS
-- MySQL (AWS RDS)
+- MySQL (~~AWS RDS~~ GCP)
