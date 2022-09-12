@@ -10,6 +10,7 @@
 }
 
 .navLogo {
+    cursor: pointer;
     height: 50px;
     width: 144px;
 }

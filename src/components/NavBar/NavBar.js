@@ -21,7 +21,7 @@ const NavBar = () => {
     }
     return (
         <div className={styles.navbar}>
-            <div className={styles.navLogo}>
+            <div className={styles.navLogo} onClick={() => navigate('/')}>
                 <LabViewSvg />
             </div>
             <div className={styles.navMenu}>

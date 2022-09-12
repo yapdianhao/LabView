@@ -1,0 +1,12 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.utilsTable {
+    padding: 20px;
+    white-space: nowrap;
+    overflow-x: scroll,
+}
