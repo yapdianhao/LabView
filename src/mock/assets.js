@@ -12,7 +12,7 @@ export function createRandomAsset() {
         id: faker.datatype.uuid(),
         brand: faker.commerce.productName(),
         model: faker.commerce.productName(),
-        serial: faker.datatype.number,
+        serial: faker.datatype.number(),
         age: faker.datatype.number({ min: 0, max: 10}),
         activationDate: faker.datatype.datetime(),
         level: levelArr[Math.floor(Math.random() * levelArr.length)],

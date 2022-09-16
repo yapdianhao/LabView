@@ -89,8 +89,6 @@ const AssetsPage = () => {
         })
     }), []);
 
-    console.log(ASSETS);
-
     return (
         <div className={styles.pageContainer}>
             <NavBar />
@@ -107,6 +105,5 @@ const AssetsPage = () => {
         </div>
     )
 }
-
 
 export default AssetsPage;

@@ -1,0 +1,19 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.repairsTable {
+    padding: 20px;
+    white-space: nowrap;
+    display: flex;
+    overflow-x: scroll;
+    width: 100vw;
+}
+
+.repairsTablePagination {
+    position: absolute;
+    left: 0;
+}
