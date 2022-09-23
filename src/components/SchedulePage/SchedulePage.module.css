@@ -3,3 +3,10 @@
     flex-direction: column;
     overflow: auto;
 }
+
+.calendarModeSelection {
+    width: calc(100% - 120px);
+    padding: 0 60px;
+    display: flex;
+    justify-content: flex-end;
+}

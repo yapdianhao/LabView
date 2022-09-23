@@ -1,6 +1,6 @@
 import { FaMicroscope, FaCalculator, FaPills, FaRegCalendarAlt, FaUsers } from 'react-icons/fa';
 import { GiAutoRepair } from 'react-icons/gi';
-import { MdDataUsage, MdManageAccounts } from 'react-icons/md';
+import { MdDataUsage, MdManageAccounts, MdMobileFriendly } from 'react-icons/md';
 import { HiDocumentReport } from 'react-icons/hi';
 import { AiOutlineAudit } from 'react-icons/ai';
 
@@ -46,5 +46,9 @@ export const MainMenuData = [{
         itemName: 'Audit Trail',
         path: '/audit',
         icon: <AiOutlineAudit />,
-    },
+    }, {
+        itemName: 'Booking',
+        path: '/booking',
+        icon: <MdMobileFriendly />,
+    }
 ];

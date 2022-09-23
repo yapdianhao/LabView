@@ -10,9 +10,9 @@ import SchedulePage from './components/SchedulePage/SchedulePage';
 import ReportingPage from './components/ReportingPage/ReportingPage';
 import VendorsPage from './components/VendorsPage/VendorsPage';
 import AuditPage from './components/AuditPage/AuditPage';
+import BookingPage from './components/BookingPage/BookingPage';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -31,6 +31,7 @@ function App() {
                 <Route path='/reporting' element={<ReportingPage />} />
                 <Route path='/vendors' element={<VendorsPage />} />
                 <Route path='/audit' element={<AuditPage />} />
+                <Route path='/booking' element={<BookingPage />} />
             </Routes>
         </Router>
       </>
