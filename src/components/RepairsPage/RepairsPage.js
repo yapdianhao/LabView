@@ -1,5 +1,6 @@
 import * as React from 'react';
 import NavBar from '../NavBar/NavBar';
+import RepairPopup from '../Popup/RepairPopup/RepairPopup';
 import { Table } from '@douyinfe/semi-ui';
 import { REPAIRS } from '../../mock/repairs';
 
@@ -7,12 +8,17 @@ import styles from './RepairsPage.module.css';
 
 const RepairsPage = () => {
 
-    console.log(REPAIRS);
+    const [shouldShowPopup, setShouldShowPopup] = React.useStatae()
+
     
     const columns = [{
         title: 'Asset ID',
         dataIndex: 'id',
-        render: (text) => text,
+        render: (text) => (
+            <div>
+                {text}
+            </div>
+        ),
     }, {
         title: 'Brand',
         dataIndex: 'brand',
