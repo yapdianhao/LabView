@@ -16,6 +16,16 @@ db.connect((err) => {
     db.query('USE labvue;', (err, res) => {
         console.log(res);
     });
+    // db.query('CREATE TABLE IF NOT EXISTS companies(id INT NOT NULL AUTO_INCREMENT, name VARCHAR(100), PRIMARY KEY(id));', (err, res) => {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log(res);
+    //     }
+    // }) 
+    db.query('SELECT * FROM companies', (err, res) => {
+        console.log(res);
+    })
     // db.query('CREATE TABLE IF NOT EXISTS users(id INT NOT NULL AUTO_INCREMENT, name VARCHAR(100), \
     // email VARCHAR(100) UNIQUE NOT NULL, password VARCHAR(100) NOT NULL, role VARCHAR(100), \
     // PRIMARY KEY(id));', (err, res, fields) => {
