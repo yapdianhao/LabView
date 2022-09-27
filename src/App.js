@@ -13,6 +13,7 @@ import AuditPage from './components/AuditPage/AuditPage';
 import BookingPage from './components/BookingPage/BookingPage';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import "./global.css";
 
 function App() {
   return (

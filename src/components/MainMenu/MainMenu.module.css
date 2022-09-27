@@ -8,6 +8,14 @@
     justify-content: center;
     align-items: center;
     overflow-y: scroll;
+    margin-left: 100px;
+    margin-top: 100px;
+    width: 50%;
+    scrollbar-width: none;
+}
+
+.mainMenu::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 .mainMenuBox {

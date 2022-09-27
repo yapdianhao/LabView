@@ -1,20 +1,21 @@
 .mainMenuItemContainer {
-    height: 100px;
-    width: 30%;
+    height: 144px;
+    width: 216px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    margin: 40px;
-    background-color: #67d1f7;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: var(--theme-color-1);
     font-size: 20px;
     border-radius: 8px;
     cursor: pointer;
+    color: var(--text-color-1);
 }
 
 .mainMenuItemContainer:hover {
-    background-color: #343434;
-    color: #ffffff;
+    background-color: var(--theme-color-2);
 }
 
 
