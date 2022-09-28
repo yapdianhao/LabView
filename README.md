@@ -35,10 +35,10 @@
 | email_1: VARCHAR(100) |
 | email_2: VARCHAR(100) |
 
-| Frequency | 
+| Frequencies | 
 | --------- |
 | id: INT |
-| description: VARCHAR(30) |
+| description: VARCHAR(50) |
 
 | Assets |
 | ------ |
@@ -76,8 +76,8 @@
 | ------------ |
 | id: INT |
 | asset_id: VARCHAR(100) |
-| from: TIMESTAMP |
-| to: TIMESTAMP |
+| used_from: TIMESTAMP |
+| used_to: TIMESTAMP |
 | total_hours: INT |
 
 | Repairs |
@@ -87,7 +87,7 @@
 | problem: VARCHAR(250) |
 | solution: VARCHAR(250) |
 | reported_on: TIMESTAMP |
-| recovered on: TIMESTAMP |
+| recovered_on: TIMESTAMP |
 | down_time: INT |
 | repair_vendor_id: INT |
 | first_visit_complete: BOOLEAN |
@@ -103,13 +103,13 @@
 | part_number: VARCHAR(100) |
 | consumed_on: TIMESTAMP |
 
-| PM_Cal |
+| Pm_Cal_Oq |
 | ------ |
 | id: INT |
 | type: ENUM('PM', 'CAL', 'OQ') |
 | is_routine: BOOLEAN |
 | remarks: VARCHAR(250) |
-| scheduled: TIMESTAMP |
-| completed: TIMESTAMP |
+| scheduled_time: TIMESTAMP |
+| completed_time: TIMESTAMP |
 | vendor_id: INT |
 

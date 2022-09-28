@@ -123,10 +123,79 @@ db.connect((err) => {
     //             else console.log(res);
     //           })
 
-    db.query('SELECT * FROM assets', (err, res) => {
-        if (err) console.log(err);
-        else console.log(res);
-    })
+    // db.query('CREATE TABLE IF NOT EXISTS pm_cal_oq( \
+    //           id INT NOT NULL AUTO_INCREMENT, \
+    //           type ENUM(\'PM\', \'CAL\', \'OQ\'), \
+    //           is_routine BOOLEAN, \
+    //           remarks VARCHAR(250), \
+    //           scheduled_time TIMESTAMP, \
+    //           completed_time TIMESTAMP, \
+    //           vendor_id INT, \
+    //           PRIMARY KEY (id), \
+    //           FOREIGN KEY (vendor_id) REFERENCES vendors(id))', (err, res) => {
+    //             if (err) throw err;
+    //             else console.log(res);
+    //           });
+
+    // db.query('CREATE TABLE IF NOT EXISTS consumables( \
+    //           id INT NOT NULL AUTO_INCREMENT, \
+    //           asset_id VARCHAR(100), \
+    //           description VARCHAR(100), \
+    //           cost DOUBLE, \
+    //           part_number VARCHAR(100), \
+    //           consumed_on TIMESTAMP, \
+    //           PRIMARY KEY (id), \
+    //           FOREIGN KEY (asset_id) REFERENCES assets(id))', (err, res) => {
+    //             if (err) throw err;
+    //             else console.log(res);
+    //           })
+
+    // db.query('CREATE TABLE IF NOT EXISTS utilizations(\
+    //           id INT NOT NULL AUTO_INCREMENT, \
+    //           asset_id VARCHAR(100), \
+    //           used_from TIMESTAMP, \
+    //           used_to TIMESTAMP, \
+    //           total_hours INT DEFAULT 0, \
+    //           PRIMARY KEY (id), \
+    //           FOREIGN KEY (asset_id) REFERENCES assets(id))', (err, res) => {
+    //             if (err) throw err;
+    //             else console.log(res);
+    //           })
+
+    // db.query('CREATE TABLE IF NOT EXISTS repairs( \
+    //           id INTEGER NOT NULL AUTO_INCREMENT, \
+    //           asset_id VARCHAR(100), \
+    //           problem VARCHAR(250), \
+    //           solution VARCHAR(250), \
+    //           reported_on TIMESTAMP, \
+    //           recovered_on TIMESTAMP, \
+    //           down_time INT DEFAULT 0, \
+    //           repair_vendor_id INT, \
+    //           first_visit_complete BOOLEAN, \
+    //           part_cost DOUBLE, \
+    //           labor_cost DOUBLE, \
+    //         PRIMARY KEY (id), \
+    //         FOREIGN KEY (asset_id) REFERENCES assets(id), \
+    //         FOREIGN KEY (repair_vendor_id) REFERENCES vendors(id))', (err, res) => {
+    //             if (err) throw err;
+    //             else console.log(res);
+    //         })
+
+    // db.query('CREATE TABLE IF NOT EXISTS frequencies ( \
+    //           id INT NOT NULL AUTO_INCREMENT, \
+    //           description VARCHAR(100), \
+    //           PRIMARY KEY (id))', (err, res) => console.log(res));
+
+    // db.query('ALTER TABLE assets ADD FOREIGN KEY (oq_freq) REFERENCES frequencies(id)', (err, res) => {
+    //     if (err) throw err;
+    //     else console.log(res);
+    // })
+
+    // db.query('ALTER TABLE assets RENAME COLUMN calc_freq TO cal_freq', (err, res) => {
+    //     console.log(res);
+    // })
+
+    db.query('SHOW TABLES', (err, res) => console.log(res));
 });
 
 
