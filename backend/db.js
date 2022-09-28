@@ -48,12 +48,85 @@ db.connect((err) => {
     //     else console.log(res);
     // });
 
-    db.query('CREATE TABLE IF NOT EXISTS vendors(id INT NOT NULL AUTO_INCREMENT, \
-     name VARCHAR(100), phone_1 VARCHAR(100), phone_2 VARCHAR(100), email_1 VARCHAR(100), email_2 VARCHAR(100), \
-     PRIMARY KEY(id))', (err, res, fields) => {
+    // db.query('CREATE TABLE IF NOT EXISTS vendors(id INT NOT NULL AUTO_INCREMENT, \
+    //  name VARCHAR(100), phone_1 VARCHAR(100), phone_2 VARCHAR(100), email_1 VARCHAR(100), email_2 VARCHAR(100), \
+    //  PRIMARY KEY(id))', (err, res, fields) => {
+    //     if (err) console.log(err);
+    //     else console.log(res);
+    //  })
+
+    // db.query('CREATE TABLE IF NOT EXISTS assets( \
+    //         id VARCHAR(100) NOT NULL, \
+    //         brand VARCHAR(100), \
+    //         model VARCHAR(100), \
+    //         serial VARCHAR(100), \
+    //         age INT, \
+    //         activation_date TIMESTAMP, \
+    //         installation_date TIMESTAMP, \
+    //         usp1058 ENUM(\'A\', \'B\', \'C\'), \
+    //         pm_vendor INT, \
+    //         calc_vendor INT, \
+    //         instrument_description VARCHAR(500), \
+    //         instrument_cost DOUBLE, \
+    //         location VARCHAR(100), \
+    //         asset_level ENUM(\'standard\', \'critical\', \'high-critical\'), \
+    //         in_use BOOLEAN, \
+    //         PRIMARY KEY (id))', (err, res) => {
+    //     if (err) console.log(err);
+    //     else console.log(res);
+    // });
+
+    // db.query('INSERT INTO assets(\
+    //           id, \
+    //           activation_date, \
+    //           location, \
+    //           brand, \
+    //           model, \
+    //           serial, \
+    //           instrument_description, \
+    //           installation_date, \
+    //           age, \
+    //           instrument_cost, \
+    //           asset_level, \
+    //           usp1058) VALUES (\
+    //           \'CL10001\', \
+    //           STR_TO_DATE(\'25-09-2022\',\'%d-%m-%Y\'), \
+    //           \'Chemistry Lab\', \
+    //           \'Agilent\', \
+    //           \'1260 Infinity II HPLC\', \
+    //           \'AG00002955\', \
+    //           \'Liquid Chromotography\', \
+    //           STR_TO_DATE(\'13-08-2018\',\'%d-%m-%Y\'), \
+    //           2, \
+    //           63000.00, \
+    //           \'critical\', \
+    //           \'C\')', (err, res) => {
+    //             if (err) console.log(err);
+    //             else console.log(res);
+    //           });
+
+    // db.query('ALTER TABLE assets \
+    //           ADD COLUMN pm_freq INT, \
+    //           ADD COLUMN calc_freq INT, \
+    //           ADD COLUMN oq_freq INT, \
+    //           ADD COLUMN contract_start_date TIMESTAMP, \
+    //           ADD COLUMN contract_end_date TIMESTAMP, \
+    //           ADD COLUMN iso17025 BOOLEAN, \
+    //           ADD COLUMN labour_entitlement BOOLEAN, \
+    //           ADD COLUMN parts_entitlement BOOLEAN, \
+    //           ADD COLUMN oq_detail VARCHAR(500), \
+    //           ADD COLUMN calc_detail VARCHAR(500), \
+    //           ADD COLUMN pm_detail VARCHAR(500), \
+    //           ADD COLUMN repair_detail VARCHAR(500), \
+    //           ADD COLUMN maintenance_cost DOUBLE', (err, res) => {
+    //             if (err) console.err(err);
+    //             else console.log(res);
+    //           })
+
+    db.query('SELECT * FROM assets', (err, res) => {
         if (err) console.log(err);
         else console.log(res);
-     })
+    })
 });
 
 

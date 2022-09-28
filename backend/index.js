@@ -39,6 +39,13 @@ app.get('/api/user-list', (req, res) => {
     })
 })
 
+app.get('/api/assets', (req, res) => {
+    db.query('SELECT * FROM assets', (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    })
+})
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

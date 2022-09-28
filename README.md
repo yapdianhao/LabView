@@ -46,8 +46,9 @@
 | brand: VARCHAR(100) |
 | model: VARCHAR(100) |
 | serial: VARCHAR(100) |
-| age: INT | # need to adjust if asset age < 1 year, maybe divide by 12 months
+| age: INT |
 | activation_date: TIMESTAMP |
+| installation_date: TIMESTAMP |
 | pm_vendor: INT | # id of vendor
 | calc_vendor: INT | # id of vendor
 | instrument_description: VARCHAR(500) |
@@ -56,5 +57,59 @@
 | instrument_cost: DOUBLE |
 | location: VARCHAR(100) |
 | in_use: BOOLEAN |
+| pm_freq: INT |
+| cal_freq: INT |
+| oq_freq: INT |
+| contract_start_date: TIMESTAMP |
+| contract_end_date: TIMESTAMP |
+| iso17025: BOOLEAN |
+| labour_entitlement: BOOLEAN |
+| parts_entitlement: BOOLEAN |
+| oq_detail: VARCHAR(500) |
+| pm_detail: VARCHAR(500) |
+| cal_detail: VARCHAR(500) |
+| repair_detail: VARCHAR(500) |
+| maintenance_cost: DOUBLE |
 
+
+| Utilizations |
+| ------------ |
+| id: INT |
+| asset_id: VARCHAR(100) |
+| from: TIMESTAMP |
+| to: TIMESTAMP |
+| total_hours: INT |
+
+| Repairs |
+| ------- |
+| id: INT |
+| asset_id: VARCHAR(100) |
+| problem: VARCHAR(250) |
+| solution: VARCHAR(250) |
+| reported_on: TIMESTAMP |
+| recovered on: TIMESTAMP |
+| down_time: INT |
+| repair_vendor_id: INT |
+| first_visit_complete: BOOLEAN |
+| part_cost: DOUBLE |
+| labor_cost: DOUBLE |
+
+| Consumables |
+| ----------- |
+| id: INT |
+| asset_id: VARCHAR(100) |
+| description: VARCHAR(100) |
+| cost: DOUBLE |
+| part_number: VARCHAR(100) |
+| consumed_on: TIMESTAMP |
+
+| PM_Cal |
+| ------ |
+| id: INT |
+| type: ENUM('PM', 'CAL', 'OQ') |
+| is_routine: BOOLEAN |
+| remarks: VARCHAR(250) |
+| scheduled: TIMESTAMP |
+| completed: TIMESTAMP |
+| vendor_id: INT |
 
