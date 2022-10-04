@@ -1,0 +1,1 @@
+export const GET_ALL_ASSETS = 'http://localhost:5000/api/assets';

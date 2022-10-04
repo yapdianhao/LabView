@@ -11,6 +11,7 @@ import ReportingPage from './components/ReportingPage/ReportingPage';
 import VendorsPage from './components/VendorsPage/VendorsPage';
 import AuditPage from './components/AuditPage/AuditPage';
 import BookingPage from './components/BookingPage/BookingPage';
+import EditAssetsPage from './components/EditAssetsPage/EditAssetsPage';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./global.css";
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/vendors' element={<VendorsPage />} />
                 <Route path='/audit' element={<AuditPage />} />
                 <Route path='/booking' element={<BookingPage />} />
+                <Route path='/edit-asset/:id' element={<EditAssetsPage />} />
             </Routes>
         </Router>
       </>

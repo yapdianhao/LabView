@@ -1,107 +1,84 @@
 import * as React from 'react';
-import { Table } from '@douyinfe/semi-ui';
+import axios from 'axios';
+import { Input, Switch, Select, Table } from '@douyinfe/semi-ui';
+import { IconSearch } from '@douyinfe/semi-icons';
 import NavBar from '../NavBar/NavBar';
-import { ASSETS } from '../../mock/assets';
+import { assetSchema } from '../../constants';
+import { GET_ALL_ASSETS } from '../../api';
 
 import styles from './AssetsPage.module.css';
 
 const AssetsPage = () => {
 
-    const columns = [{
-            title: 'Asset ID',
-            dataIndex: 'id',
-            render: (text) => text
-        }, {
-            title: 'Brand',
-            dataIndex: 'brand',
-            render: (text) => text
-        }, {
-            title: 'Model',
-            dataIndex: 'model',
-            render: (text) => text
-        }, {
-            title: 'Serial',
-            dataIndex: 'serial',
-            render: (text) => text,
-        }, {
-            title: 'Age',
-            dataIndex: 'age',
-            render: (text) => text,
-        }, {
-            title: 'Activation Date',
-            dataIndex: 'activationDate', 
-            render: (date) => date.toLocaleDateString(),
-        }, 
-        {
-            title: 'Level',
-            dataIndex: 'level',
-            render: (text) => text,
-        }, {
-            title: 'PM/Cal Vendor',
-            dataIndex: 'pmCalVendor',
-            render: (text) => text,
-        }, {
-            title: 'Repair Vendor',
-            dataIndex: 'repairVendor',
-            render: (text) => text,
-        }, {
-            title: 'Instrument Description',
-            dataIndex: 'description',
-            render: (text) => text,
-        }, {
-            title: 'USP1058',
-            dataIndex: 'usp1058',
-            render: (text) => text,
-        }, {
-            title: 'PM',
-            dataIndex: 'pm',
-            render: (text) => text,
-        }, {
-            title: 'Cal',
-            dataIndex: 'cal',
-            render: (text) => text,
-        }, {
-            title: 'ISO17025',
-            dataIndex: 'iso17025',
-            render: (text) => text,
-        }, {
-            title: 'Labour Entitled',
-            dataIndex: 'labourEntitled',
-            render: (text) => text,
-        }, {
-            title: 'Parts Entitled',
-            dataIndex: 'partsEntitled',
-            render: (text) => text,
-        }, {
-            title: 'Maintenance Cost ($)',
-            dataIndex: 'maintenanceCost',
-            render: (text) => text,
-        }, {
-            title: 'Contract End Date',
-            dataIndex: 'contractEndDate',
-            render: (date) => date.toLocaleDateString(),
-        }
+    const tableSizeList = [
+        { value: 6, label: 6},
+        { value: 12, label: 12 },
+        { value: 24, label: 24 },
+        { value: 48, label: 48 },
+        { value: 96, label: 96 }
     ];
 
-    const rowSelection = React.useMemo(() => ({
-        getCheckboxProps: (record) => ({
-            id: record.id,
-        })
-    }), []);
+    const [assets, setAssets] = React.useState([]);
+    const [showDisabled, setShowDisabled] = React.useState(false);
+    const [tableSize, setTableSize] = React.useState(6);
+
+    const getPost = async () => {
+        const assetsFromAPI = await axios.get(GET_ALL_ASSETS);
+        if (assetsFromAPI.status === 200) {
+            setAssets(assetsFromAPI.data);
+        }
+    }
+
+    const handleToggleSwitch = () => {
+        setShowDisabled(!showDisabled);
+    }
+
+    const handleChangeTableSize=(value) => {
+        setTableSize(value);
+    }
+
+    React.useEffect(() => {
+        getPost();
+    }, []);
+
+    console.log(assets);
 
     return (
         <div className={styles.pageContainer}>
             <NavBar />
             <div>
-                <Table 
-                    className={styles.assetsTable}
-                    columns={columns}
-                    dataSource={ASSETS}
-                    rowSelection={rowSelection}
-                    rowKey={(record) => record.id}
-                    pagination={{ formatPageText: false, className: styles.assetsTablePagination }}
-                />
+                <div className={styles.header}>
+                    <Input className={styles.searchBar} suffix={<IconSearch />} showClear>
+
+                    </Input>
+                    <div className={styles.switchWrapper}>
+                        <Switch 
+                            checked={showDisabled} 
+                            onChange={handleToggleSwitch} 
+                            className={styles.switch}
+                        />
+                        Show disabled
+                    </div>
+                    <div className={styles.rowCountSelectorWrapper}>
+                        Rows: 
+                        <Select
+                            optionList={tableSizeList}
+                            defaultValue={tableSize}
+                            value={tableSize}
+                            onChange={handleChangeTableSize}
+                            className={styles.rowCountSelector}
+                        >
+                        </Select>
+                    </div>
+                </div>
             </div>
+            <Table 
+                columns={assetSchema}
+                dataSource={assets}
+                className={styles.assetsTable}
+                rowKey="id"
+                pagination={{ formatPageText: false, className: styles.assetsTablePagination }}
+            />
         </div>
     )
 }
