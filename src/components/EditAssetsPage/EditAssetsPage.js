@@ -20,11 +20,14 @@ const EditAssetsPage = () => {
     const [asset, setAsset] = React.useState({});
 
     const getAsset = async () => {
-        const assetsFromAPI = await axios.get(GET_AN_ASSET, {
+        const assetFromAPI = await axios.get(GET_AN_ASSET, {
             params: {
                 id: id
             }
         });
+        if (assetFromAPI.status === 200) {
+            setAsset(assetFromAPI.data?.[0]);
+        }
     }
 
     const tabNames = [
@@ -56,12 +59,19 @@ const EditAssetsPage = () => {
         }
     };
 
+    const handleInputChange = (event) => {
+        setAsset({ ...asset, [event.target.name]: event.target.value });
+        console.log(asset);
+    }
+
     React.useEffect(() => {
         getAsset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <div className={styles.pageContainer}>
+            {/* LEFT PANEL */}
             <div className={styles.leftSection}>
                 <div className={styles.header}>
                     <div className={styles.tabBar}>
@@ -76,9 +86,31 @@ const EditAssetsPage = () => {
                         ))}
                     </div>
                 </div>
-                <div>
+                <div className={styles.mainTitle}>
+                    Asset Information
+                    <div className={styles.inUseIcon} />
+                    <div className={styles.inUseText}>Not in use</div>
                 </div>
+                <form className={styles.assetForm}>
+                    <label>
+                        Asset ID
+                        <input name="id" value={asset.id} onChange={handleInputChange} />
+                    </label>
+                    <label>
+                        Brand
+                        <input name="brand" value={asset.brand} onChange={handleInputChange} />
+                    </label>
+                    <label>
+                        Model
+                        <input name="model" value={asset.model} onChange={handleInputChange} />
+                    </label>
+                    <label>
+                        Serial
+                        <input name="serial" value={asset.serial} />
+                    </label>
+                </form>
             </div>
+            {/* RIGHT PANEL */}
             <div className={styles.rightSection}>
                 <div className={styles.rightHeader}>
                     <IconClose className={styles.closeIcon} />

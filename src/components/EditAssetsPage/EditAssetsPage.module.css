@@ -75,5 +75,53 @@
 }
 
 .mainTitle {
-    font-size: 40px;
+    font-size: 20px;
+    margin: 20px 0;
+    color: var(--text-color-2);
+    display: flex;
+    align-items: center;
+}
+
+.inUseIcon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--theme-color-4);
+    margin-left: 100px;
+    margin-right: 20px;
+}
+
+.inUseText {
+    font-size: 12px;
+}
+
+.firstRow {
+    display: flex;
+}
+
+.assetForm {
+    display: flex;
+}
+
+.assetForm label{
+    display: block;
+    width: 25%;
+    color: var(--text-color-2);
+}
+
+.assetForm input {
+    display: block;
+    margin: 8px 0;
+    border: none;
+    height: 44px;
+    line-height: 44px;
+    width: 140px;
+    padding: 0;
+    font-size: 16px;
+    overflow-x: scroll;
+    border-bottom: 1px solid var(--text-color-2);
+}
+
+.assetForm input:focus, :hover {
+    outline: none;
 }

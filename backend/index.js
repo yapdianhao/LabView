@@ -50,7 +50,7 @@ app.get('/api/get-asset', (req, res) => {
     const { query } = req;
     db.query('SELECT * FROM assets WHERE id = ?', [query.id], (err, result) => {
         if (err) console.log(err);
-        else console.log(result);
+        else res.send(result);
     })
 })
 
