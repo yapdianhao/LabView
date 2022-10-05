@@ -1,5 +1,18 @@
 .pageContainer {
+    display: flex;
+}
+
+.leftSection {
     padding: 20px;
+    width: 50%;
+    height: 100vh;
+}
+
+.rightSection {
+    padding: 20px;
+    width: 50%;
+    height: 100vh;
+    background-color: var(--theme-color-2);
 }
 
 .header {
@@ -9,10 +22,58 @@
 
 
 .closeIcon {
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 44px;
     height: 44px;
 }
 
+.closeIconWrapper {
+    right: 0;
+}
+
+.rightHeader {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .closeIcon:hover {
     filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.tabBar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color-1);
+}
+
+.tabItem {
+    line-height: 44px;
+    height: 44px;
+    padding: 0 16px;
+    color: var(--theme-color-4);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tabItem:hover {
+    color: var(--theme-color-1);
+}
+
+.tabItemSelected {
+    line-height: 44px;
+    height: 44px;
+    padding: 0 16px;
+    color: var(--theme-color-1);
+    transition: 0.2s;
+    border-bottom: 1px solid var(--theme-color-1);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.mainTitle {
+    font-size: 40px;
 }
