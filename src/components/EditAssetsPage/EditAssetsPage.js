@@ -92,26 +92,95 @@ const EditAssetsPage = () => {
                     <div className={styles.inUseText}>Not in use</div>
                 </div>
                 <form className={styles.assetForm}>
-                    <label>
-                        Asset ID
-                        <input name="id" value={asset.id} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                        Brand
-                        <input name="brand" value={asset.brand} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                        Model
-                        <input name="model" value={asset.model} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                        Serial
-                        <input name="serial" value={asset.serial} />
-                    </label>
+                    <div className={styles.firstRow}>
+                        <label>
+                            Asset ID
+                            <input name="id" value={asset.id} onChange={handleInputChange} />
+                        </label>
+                        <label>
+                            Brand
+                            <input name="brand" value={asset.brand} onChange={handleInputChange} />
+                        </label>
+                        <label>
+                            Model
+                            <input name="model" value={asset.model} onChange={handleInputChange} />
+                        </label>
+                        <label>
+                            Serial
+                            <input name="serial" value={asset.serial} />
+                        </label>
+                    </div>
+                    <div className={styles.firstRow}>
+                        <label>
+                            Install Date
+                            <input type="date" />
+                        </label>
+                        <label>
+                            location
+                            <input />
+                        </label>
+                        <label>
+                            Instrument Cost ($)
+                            <input />
+                        </label>
+                        <label>
+                            Activation Date
+                            <input type="date" />
+                        </label>
+                    </div>
+                    <div className={styles.firstRow}>
+                        <label>
+                            Asset Level
+                            <select>
+                                <option selected disabled hidden>-- Not Set --</option>
+                                <option>Standard</option>
+                                <option>Critical</option>
+                                <option>High Critical</option>
+                            </select>
+                        </label>
+                        <label>
+                            USP 1058 Category
+                            <select>
+                                <option selected disabled hidden>-- Not Set --</option>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                            </select>
+                        </label>
+                        <div className={styles.longField}>
+                            <label>
+                                Instrument description
+                                <input className={styles.longField}/>
+                            </label>
+                        </div>
+                    </div>
+                    <div className={styles.firstRow}>
+                        <div className={styles.longField}>
+                            <label>
+                                PM/Cal/OQ Vendor
+                                <select>
+                                    <option>Vendor 1</option>
+                                    <option>Vendor 2</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div className={styles.firstRow}>
+                        <div className={styles.longField}>
+                            <label>
+                                Repair Vendor
+                                <select>
+                                    <option>Vendor 1</option>
+                                    <option>Vendor 2</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
                 </form>
             </div>
             {/* RIGHT PANEL */}
             <div className={styles.rightSection}>
+
                 <div className={styles.rightHeader}>
                     <IconClose className={styles.closeIcon} />
                 </div>

@@ -28,10 +28,7 @@
     align-items: center;
     width: 44px;
     height: 44px;
-}
-
-.closeIconWrapper {
-    right: 0;
+    cursor: pointer;
 }
 
 .rightHeader {
@@ -101,12 +98,17 @@
 
 .assetForm {
     display: flex;
+    flex-direction: column;
 }
 
 .assetForm label{
     display: block;
     width: 25%;
     color: var(--text-color-2);
+}
+
+.firstRow {
+    display: flex;
 }
 
 .assetForm input {
@@ -124,4 +126,35 @@
 
 .assetForm input:focus, :hover {
     outline: none;
+}
+
+.assetForm select {
+    display: block;
+    margin: 8px 0;
+    border: none;
+    height: 44px;
+    font-size: 16px;
+    line-height: 44px;
+    width: 140px;
+    border-bottom: 1px solid var(--text-color-2);
+}
+
+.assetForm select:focus, :hover {
+    outline: none;
+}
+
+.longField {
+    flex: 1;
+}
+
+.longField label {
+    width: 100%;
+}
+
+.longField input {
+    width: 280px;
+}
+
+.longField select {
+    width: 280px;
 }
