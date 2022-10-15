@@ -5,7 +5,7 @@ import PmCalOq from './PmCalOq/PmCalOq';
 import Utilization from './Utilization/Utilization';
 import Repair from './Repair/Repair';
 import Consumables from './Consumables/Consumables';
-import { GET_AN_ASSET } from '../../api';
+import { GET_AN_ASSET, GET_ALL_VENDORS, GET_ALL_FREQUENCIES, EDIT_ASSSET } from '../../api';
 import { useHistory, useParams } from 'react-router-dom';
 import { IconClose } from '@douyinfe/semi-icons';
 
@@ -18,6 +18,8 @@ const EditAssetsPage = () => {
 
     const [selectedTabIndex, setSelectedTabIndex] = React.useState(0);
     const [asset, setAsset] = React.useState({});
+    const [vendors, setVendors] = React.useState([]);
+    const [frequencies, setFrequencies] = React.useState([]);
 
     const getAsset = async () => {
         const assetFromAPI = await axios.get(GET_AN_ASSET, {
@@ -28,6 +30,28 @@ const EditAssetsPage = () => {
         if (assetFromAPI.status === 200) {
             setAsset(assetFromAPI.data?.[0]);
         }
+    }
+
+    const getVendors = async() => {
+        const vendorsFromAPI = await axios.get(GET_ALL_VENDORS);
+        if (vendorsFromAPI.status === 200) {
+            setVendors(vendorsFromAPI.data);
+        }
+    }
+
+    const getFrequencies = async() => {
+        const frequenciesFromAPI = await axios.get(GET_ALL_FREQUENCIES);
+        if (frequenciesFromAPI.status === 200) {
+            setFrequencies(frequenciesFromAPI.data);
+        }
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const assetFromAPI = await axios.post(EDIT_ASSSET, {
+            asset: asset
+        });
+        console.log(assetFromAPI);
     }
 
     const tabNames = [
@@ -66,8 +90,14 @@ const EditAssetsPage = () => {
 
     React.useEffect(() => {
         getAsset();
+        getFrequencies();
+        getVendors();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    console.log(asset);
+    console.log(vendors);
+    console.log(frequencies);
 
     return (
         <div className={styles.pageContainer}>
@@ -91,7 +121,7 @@ const EditAssetsPage = () => {
                     <div className={styles.inUseIcon} />
                     <div className={styles.inUseText}>Not in use</div>
                 </div>
-                <form className={styles.assetForm}>
+                <form className={styles.assetForm} onSubmit={handleSubmit}>
                     <div className={styles.firstRow}>
                         <label>
                             Asset ID
@@ -113,34 +143,34 @@ const EditAssetsPage = () => {
                     <div className={styles.firstRow}>
                         <label>
                             Install Date
-                            <input type="date" />
+                            <input type="date" name='installation_date' onChange={handleInputChange} />
                         </label>
                         <label>
                             location
-                            <input />
+                            <input name='location' onChange={handleInputChange} />
                         </label>
                         <label>
                             Instrument Cost ($)
-                            <input />
+                            <input name='instrument_cost' onChange={handleInputChange} />
                         </label>
                         <label>
                             Activation Date
-                            <input type="date" />
+                            <input type="date" name='activation_date' onChange={handleInputChange} />
                         </label>
                     </div>
                     <div className={styles.firstRow}>
                         <label>
                             Asset Level
-                            <select>
-                                <option selected disabled hidden>-- Not Set --</option>
-                                <option>Standard</option>
-                                <option>Critical</option>
-                                <option>High Critical</option>
+                            <select defaultValue={'DEFAULT'} name='asset_level' onChange={handleInputChange}>
+                                <option value="DEFAULT" disabled hidden>-- Not Set --</option>
+                                <option value='standard'>Standard</option>
+                                <option value='critical'>Critical</option>
+                                <option value='high-critical'>High Critical</option>
                             </select>
                         </label>
                         <label>
                             USP 1058 Category
-                            <select>
+                            <select name='usp1058' onChange={handleInputChange}>
                                 <option selected disabled hidden>-- Not Set --</option>
                                 <option>A</option>
                                 <option>B</option>
@@ -150,7 +180,7 @@ const EditAssetsPage = () => {
                         <div className={styles.longField}>
                             <label>
                                 Instrument description
-                                <input className={styles.longField}/>
+                                <input className={styles.longField} name='instrument_description' onChange={handleInputChange} />
                             </label>
                         </div>
                     </div>
@@ -158,9 +188,11 @@ const EditAssetsPage = () => {
                         <div className={styles.longField}>
                             <label>
                                 PM/Cal/OQ Vendor
-                                <select>
-                                    <option>Vendor 1</option>
-                                    <option>Vendor 2</option>
+                                <select name='pm_cal_oq_vendor' onChange={handleInputChange}>
+                                    <option value='DEFAULT' disabled hidden>--Not Set --</option>
+                                    {vendors.map(vendor => (
+                                        <option value={vendor.id} selected={vendor.id === asset.pm_cal_oq_vendor ? "selected": ""}>{vendor.name}</option>
+                                    ))}
                                 </select>
                             </label>
                         </div>
@@ -169,9 +201,11 @@ const EditAssetsPage = () => {
                         <div className={styles.longField}>
                             <label>
                                 Repair Vendor
-                                <select>
-                                    <option>Vendor 1</option>
-                                    <option>Vendor 2</option>
+                                <select name='repair_vendor' onChange={handleInputChange}>
+                                    <option value='DEFAULT' disabled hidden>-- Not Set --</option>
+                                    {vendors.map(vendor => (
+                                        <option value={vendor.id} selected={vendor.id === asset.repair_vendor ? "selected": ""}>{vendor.name}</option>
+                                    ))}
                                 </select>
                             </label>
                         </div>
@@ -180,11 +214,117 @@ const EditAssetsPage = () => {
             </div>
             {/* RIGHT PANEL */}
             <div className={styles.rightSection}>
-
                 <div className={styles.rightHeader}>
                     <IconClose className={styles.closeIcon} />
                 </div>
+                <div className={styles.mainTitle}>
+                    Service Entitlement
+                </div>
+                <form className={styles.assetForm} onSubmit={handleSubmit}>
+                    <div className={styles.firstRow}>
+                        <label>
+                            PM Frequency
+                            <select>
+                                <option value='DEFAULT' disabled hidden>-- Not Set --</option>
+                                {frequencies.map(frequency => (
+                                    <option value={frequency.id} selected={frequency.id === asset.pm_freq ? "selected" : ""}>{frequency.description}</option>
+                                ))}
+                            </select>
+                        </label>
+                        <label>
+                            Cal Frequency
+                            <select>
+                                <option value='DEFAULT' disabled hidden>-- Not Set --</option>
+                                {frequencies.map(frequency => (
+                                    <option value={frequency.id} selected={frequency.id === asset.cal_freq ? "selected" : ""}>{frequency.description}</option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div className={styles.firstRow}>
+                        <div className={`${styles.longField} ${styles.hugeInput}`}>
+                            <label>
+                                PM Details
+                                <textarea name="pm_detail"></textarea>
+                            </label>
+                        </div>
+                        <div className={`${styles.longField} ${styles.hugeInput}`}>
+                            <label>
+                                PM Details
+                                <textarea name="cal_detail"></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    <div className={styles.firstRow}>
+                        <div className={styles.halfWidth}>
+                            <label>
+                                OQ Frequency
+                                <select>
+                                    {frequencies.map(frequency => (
+                                        <option value={frequency.id} selected={frequency.id === asset.oq_freq ? "selected" : ''}>{frequency.description}</option>
+                                    ))}
+                                </select>
+                            </label>
+                        </div>
+                        <div className={styles.halfWidth}>
+                            <label>
+                                Contact Start Date
+                                <input />
+                            </label>
+                            <label>
+                                Contract End Date
+                                <input />
+                            </label>
+                        </div>
+                    </div>
+                    <div className={styles.firstRow}>
+                        <div className={`${styles.longField} ${styles.hugeInput}`}>
+                            <label>
+                                PM Details
+                                <textarea name="pm_detail"></textarea>
+                            </label>
+                        </div>
+                        <div className={`${styles.longField} ${styles.hugeInput}`}>
+                            <label>
+                                PM Details
+                                <textarea name="cal_detail"></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    <div className={styles.firstRow}>
+                        <div className={styles.halfWidth}>
+                            <label>
+                                Labour Entitlement
+                                <select>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </label>
+                            <label>
+                                Parts Entitlement
+                                <select>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div className={styles.halfWidth}>
+                            <label>
+                                Maintenance cost
+                                <input />
+                            </label>
+                            <label>
+                                ISO 17025
+                                <select>
+                                    <option>Yes</option>
+                                    <option>No</option>N
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </form>
             </div>
+            
         </div>
     );
 };

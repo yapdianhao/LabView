@@ -195,7 +195,39 @@ db.connect((err) => {
     //     console.log(res);
     // })
 
-    db.query('SHOW TABLES', (err, res) => console.log(res));
+    // db.query('INSERT INTO frequencies (description) VALUES (\'60-monthly\')', (err, res) => {
+    //     if (err) console.log(err);
+    //     else console.log(res);
+    // });
+
+    // db.query('INSERT INTO companies (name) VALUES (')
+
+    // db.query('INSERT INTO vendors (name, phone_1, phone_2, email_1, email_2) VALUES ( \
+    //         \'Metrohm Singapore Pte Ltd\', \
+    //         \'69723556\', \
+    //         \'69723556\', \
+    //         \'fabien.lee@metrohm.com.sg\', \
+    //         NULL)', (err, res) => {
+    //             if (err) console.log(err);
+    //             else console.log(res);
+    //         });
+
+    // db.query('SELECT * FROM frequencies', (err, res) => console.log(res));
+
+    // db.query('ALTER TABLE assets DROP COLUMN pm_vendor', (err, res) => {
+    //     if (err) console.log(err);
+    //     else console.log(res);
+    // })
+
+    db.query('SHOW COLUMNS FROM assets', (err, res) => {
+        if (err) console.log(err);
+        else {
+            for (let row of res) {
+                console.log('asset.' + row.Field + ',');
+            }
+        };
+    })
+
 });
 
 
