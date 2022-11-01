@@ -54,6 +54,14 @@ app.get('/api/get-asset', (req, res) => {
     })
 })
 
+app.get('/api/get-vendor', (req, res) => {
+    const { query } = req;
+    db.query('SELECT * FROM vendors WHERE id = ?', [query.id], (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    })
+})
+
 app.get('/api/frequencies', (req, res) => {
     db.query('SELECT * FROM frequencies', (err, result) => {
         if (err) console.log(err);

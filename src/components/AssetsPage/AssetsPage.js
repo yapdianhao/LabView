@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 import { Input, Switch, Select, Table } from '@douyinfe/semi-ui';
 import { IconSearch } from '@douyinfe/semi-icons';
+import { useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import { assetSchema } from '../../constants';
 import { GET_ALL_ASSETS } from '../../api';
@@ -9,6 +10,8 @@ import { GET_ALL_ASSETS } from '../../api';
 import styles from './AssetsPage.module.css';
 
 const AssetsPage = () => {
+
+    const navigate = useNavigate();
 
     const tableSizeList = [
         { value: 6, label: 6},
@@ -78,6 +81,13 @@ const AssetsPage = () => {
                 className={styles.assetsTable}
                 rowKey="id"
                 pagination={{ formatPageText: false, className: styles.assetsTablePagination }}
+                onRow={(asset, index) => {
+                    return {
+                        onClick: (event) => {
+                            if (event.detail === 2) navigate(`/edit-asset?id=${asset.id}`)
+                        }
+                    }
+                }}
             />
         </div>
     )

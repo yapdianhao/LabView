@@ -1,0 +1,100 @@
+.mainTitle {
+    font-size: 20px;
+    margin: 20px 0;
+    color: var(--text-color-2);
+    display: flex;
+    align-items: center;
+}
+
+.inUseIcon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--theme-color-4);
+    margin-left: 100px;
+    margin-right: 20px;
+}
+
+.inUseText {
+    font-size: 12px;
+}
+
+.firstRow {
+    display: flex;
+}
+
+.assetForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.assetForm label{
+    display: block;
+    width: 25%;
+    color: var(--text-color-2);
+}
+
+.assetForm input {
+    display: block;
+    margin: 8px 0;
+    border: none;
+    height: 44px;
+    line-height: 44px;
+    width: 140px;
+    padding-left: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--text-color-2);
+    margin-bottom: 20px;
+}
+
+.assetForm input:focus, :hover {
+    outline: none;
+}
+
+.assetForm textarea {
+    display: block;
+    margin: 8px 0;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    resize: none;
+    border-bottom: 1px solid var(--text-color-2);
+    margin-bottom: 20px;
+}
+
+.assetForm textarea:focus, :hover {
+    outline: none;
+}
+
+.assetForm select {
+    display: block;
+    margin: 8px 0;
+    border: none;
+    height: 44px;
+    font-size: 16px;
+    line-height: 44px;
+    width: 140px;
+    border-bottom: 1px solid var(--text-color-2);
+    margin-bottom: 20px;
+}
+
+.assetForm select:focus, :hover {
+    outline: none;
+}
+
+.longField {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.longField label {
+    width: 100%;
+}
+
+.longField input {
+    width: 100%;
+}
+
+.longField select {
+    width: 280px;
+}

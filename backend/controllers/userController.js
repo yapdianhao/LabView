@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('../db')
-const asyncHandler = require('express-async-handler');
 
 const getUserByEmail = (email) => {
     return new Promise((resolve, reject) => {

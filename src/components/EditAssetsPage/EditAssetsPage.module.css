@@ -114,10 +114,10 @@
     height: 44px;
     line-height: 44px;
     width: 140px;
-    padding: 0;
+    padding-left: 5px;
     font-size: 16px;
-    overflow-x: scroll;
     border-bottom: 1px solid var(--text-color-2);
+    margin-bottom: 20px;
 }
 
 .assetForm input:focus, :hover {
@@ -132,6 +132,7 @@
     font-size: 16px;
     resize: none;
     border-bottom: 1px solid var(--text-color-2);
+    margin-bottom: 20px;
 }
 
 .assetForm textarea:focus, :hover {
@@ -147,6 +148,7 @@
     line-height: 44px;
     width: 140px;
     border-bottom: 1px solid var(--text-color-2);
+    margin-bottom: 20px;
 }
 
 .assetForm select:focus, :hover {
@@ -190,4 +192,45 @@
 
 .halfWidth input {
     width: calc(100% - 20px);
+}
+
+.formControlContainer {
+    display: flex;
+    width: 100%;
+}
+
+.disable {
+    color: var(--error-color-1);
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    gap: 8px;
+    width: 25%;
+}
+
+.download {
+    color: var(--theme-color-1);
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    gap: 8px;
+    width: 25%;
+}
+
+.submitBtnContainer {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.submitBtn {
+    width: 50%;
+    height: 48px;
+    outline: none;
+    border: none;
+    color: var(--text-color-1);
+    font-size: 16px;
+    background: var(--theme-color-1);
+    cursor: pointer;
 }

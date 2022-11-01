@@ -5,11 +5,16 @@ import PmCalOq from './PmCalOq/PmCalOq';
 import Utilization from './Utilization/Utilization';
 import Repair from './Repair/Repair';
 import Consumables from './Consumables/Consumables';
+import AssetInformation from './AssetInformation/AssetInformation';
 import { GET_AN_ASSET, GET_ALL_VENDORS, GET_ALL_FREQUENCIES, EDIT_ASSSET } from '../../api';
-import { useHistory, useParams } from 'react-router-dom';
+import { IoCloseSharp } from 'react-icons/io5';
+import { BsDownload } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 import { IconClose } from '@douyinfe/semi-icons';
+import { transformAsset } from '../../utils';
 
 import styles from './EditAssetsPage.module.css';
+import CommonSummary from './CommonSummary/CommonSummary';
 
 const EditAssetsPage = () => {
 
@@ -20,6 +25,7 @@ const EditAssetsPage = () => {
     const [asset, setAsset] = React.useState({});
     const [vendors, setVendors] = React.useState([]);
     const [frequencies, setFrequencies] = React.useState([]);
+    const navigate = useNavigate();
 
     const getAsset = async () => {
         const assetFromAPI = await axios.get(GET_AN_ASSET, {
@@ -27,8 +33,9 @@ const EditAssetsPage = () => {
                 id: id
             }
         });
+
         if (assetFromAPI.status === 200) {
-            setAsset(assetFromAPI.data?.[0]);
+            setAsset(transformAsset(assetFromAPI.data?.[0]));
         }
     }
 
@@ -66,26 +73,30 @@ const EditAssetsPage = () => {
         setSelectedTabIndex(index);
     }
 
-    const renderPageBody = () => {
-        switch (selectedTabIndex) {
-            case 0:
-                return <div>0</div>;
-            case 1:
-                return <div>1</div>;
-            case 2:
-                return <div>3</div>;
-            case 3:
-                return <div>4</div>;
-            case 4:
-                return <div>5</div>;
-            default:
-                return <div>0</div>
-        }
+    const goBack = () => {
+        navigate('/assets');
     };
 
     const handleInputChange = (event) => {
         setAsset({ ...asset, [event.target.name]: event.target.value });
         console.log(asset);
+    }
+
+    const renderLeftSection = () => {
+        switch (selectedTabIndex) {
+            case 0:
+                return (
+                    <AssetInformation 
+                        asset={asset} 
+                        vendors={vendors}
+                        handleInputChange={handleInputChange}
+                    />
+                );
+            default:
+                return (
+                    <CommonSummary asset={asset} />
+                )
+        }
     }
 
     React.useEffect(() => {
@@ -116,7 +127,7 @@ const EditAssetsPage = () => {
                         ))}
                     </div>
                 </div>
-                <div className={styles.mainTitle}>
+                {/* <div className={styles.mainTitle}>
                     Asset Information
                     <div className={styles.inUseIcon} />
                     <div className={styles.inUseText}>Not in use</div>
@@ -210,12 +221,13 @@ const EditAssetsPage = () => {
                             </label>
                         </div>
                     </div>
-                </form>
+                </form> */}
+                {renderLeftSection()}
             </div>
             {/* RIGHT PANEL */}
             <div className={styles.rightSection}>
                 <div className={styles.rightHeader}>
-                    <IconClose className={styles.closeIcon} />
+                    <IconClose className={styles.closeIcon} onClick={goBack}/>
                 </div>
                 <div className={styles.mainTitle}>
                     Service Entitlement
@@ -269,11 +281,11 @@ const EditAssetsPage = () => {
                         <div className={styles.halfWidth}>
                             <label>
                                 Contact Start Date
-                                <input />
+                                <input type="date"/>
                             </label>
                             <label>
                                 Contract End Date
-                                <input />
+                                <input type="date"/>
                             </label>
                         </div>
                     </div>
@@ -320,6 +332,19 @@ const EditAssetsPage = () => {
                                     <option>No</option>N
                                 </select>
                             </label>
+                        </div>
+                    </div>
+                    <div className={styles.formControlContainer}>
+                        <div className={styles.disable}>
+                            <IoCloseSharp />
+                            <p>Disable</p>
+                        </div>
+                        <div className={styles.download}>
+                            <BsDownload />
+                            <p>Download Data</p>
+                        </div>
+                        <div className={styles.submitBtnContainer}>
+                            <button className={styles.submitBtn} type="submit">Save</button>
                         </div>
                     </div>
                 </form>
