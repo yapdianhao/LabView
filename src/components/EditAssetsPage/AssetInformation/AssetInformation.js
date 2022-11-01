@@ -22,7 +22,7 @@ const AssetInformation = (props) => {
         <div className={styles.inUseText}>Not in use</div>
       </div>
       <form className={styles.assetForm}>
-        <div className={styles.firstRow}>
+        <div className={styles.row}>
           <label>
             Asset ID
             <input name="id" value={asset.id} onChange={handleInputChange} />
@@ -48,7 +48,7 @@ const AssetInformation = (props) => {
             <input name="serial" value={asset.serial} />
           </label>
         </div>
-        <div className={styles.firstRow}>
+        <div className={styles.row}>
           <label>
             Install Date
             <input
@@ -76,7 +76,7 @@ const AssetInformation = (props) => {
             />
           </label>
         </div>
-        <div className={styles.firstRow}>
+        <div className={styles.row}>
           <label>
             Asset Level
             <select
@@ -115,7 +115,7 @@ const AssetInformation = (props) => {
             </label>
           </div>
         </div>
-        <div className={styles.firstRow}>
+        <div className={styles.row}>
           <div className={styles.longField}>
             <label>
               PM/Cal/OQ Vendor
@@ -137,7 +137,7 @@ const AssetInformation = (props) => {
             </label>
           </div>
         </div>
-        <div className={styles.firstRow}>
+        <div className={styles.row}>
           <div className={styles.longField}>
             <label>
               Repair Vendor
