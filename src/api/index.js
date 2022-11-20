@@ -1,7 +1,5 @@
 const domain = process.env.NODE_ENV === 'production' ? 'https://backend-equ57uepxq-as.a.run.app/' : 'http://localhost:5000/';
 
-console.log('domain', domain);
-
 export const POST_USER_DETAIL = `${domain}api/users`;
 
 export const GET_ALL_ASSETS = `${domain}api/assets`;
