@@ -1,15 +1,26 @@
 const mysql = require('mysql');
 require('dotenv').config();
 
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
+let config = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-});
+};
+
+if (process.env.NODE_ENV === 'production') {
+    console.log('Running from prod');
+    config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+} else {
+    config.host = process.env.DB_HOST;
+}
+
+const db = mysql.createConnection(config);
 
 db.connect((err) => {
-    if (err) throw err;
+    if (err) {
+        console.error(err.stack);
+        return;
+    }
     // db.query('SHOW DATABASES;', (err, res) => {
     //     console.log(res);
     // })

@@ -1,0 +1,6 @@
+gcloud run services update backend \
+--add-cloudsql-instances=soy-blueprint-363602:asia-southeast1:labvue-instance \
+--update-env-vars=INSTANCE_CONNECTION_NAME=soy-blueprint-363602:asia-southeast1:labvue-instance \
+--update-secrets=DB_USER=DB_USER:latest \
+--update-secrets=DB_PASSWORD=DB_PASSWORD:latest \
+--update-secrets=DB_DATABASE=DB_DATABASE:latest

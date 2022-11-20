@@ -8,7 +8,7 @@ import styles from './RepairsPage.module.css';
 
 const RepairsPage = () => {
 
-    const [shouldShowPopup, setShouldShowPopup] = React.useStatae()
+    const [shouldShowPopup, setShouldShowPopup] = React.useState()
 
     
     const columns = [{
