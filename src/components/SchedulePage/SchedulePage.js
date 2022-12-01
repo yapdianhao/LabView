@@ -1,5 +1,6 @@
 import * as React from 'react';
 import NavBar from '../NavBar/NavBar';
+import SecondaryNavBar from '../SecondaryNavBar/SecondaryNavBar';
 import CommonCalendar from '../Calendar/Calender';
 import { Select } from '@douyinfe/semi-ui';
 
@@ -17,6 +18,7 @@ const SchedulePage = () => {
     return (
         <div className={styles.pageContainer}>
             <NavBar />
+            <SecondaryNavBar />
             <div className={styles.calendarModeSelection}>
                 <Select defaultValue={calendarMode} optionList={modes} onChange={setCalendarMode}>
                 </Select>

@@ -9,7 +9,8 @@ export const pageIndexSlice = createSlice({
     initialState,
     reducers: {
         setPageIndex: (state, action) => {
-            state.pageIndex = {...action.payload};
+            console.log('action', action);
+            state.pageIndex = action.payload.pageIndex;
         },
     },
 });

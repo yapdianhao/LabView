@@ -1,0 +1,6 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    width: 100%;
+}

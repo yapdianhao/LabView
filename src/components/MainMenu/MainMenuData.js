@@ -9,27 +9,33 @@ export const MainMenuData = [{
         itemName: 'Assets',
         path: '/assets',
         icon: <FaMicroscope />,
+        pageIndex: 0
     }, 
     {
         itemName: 'Utilization',
         path: '/utilizations',
         icon: <MdDataUsage />,
+        pageIndex: 1
     }, {
         itemName: 'Repairs',
         path: '/repairs',
-        icon: <GiAutoRepair />
+        icon: <GiAutoRepair />,
+        pageIndex: 2,
     }, {
         itemName: 'PM/Cal/OQ',
         path: '/pmcals',
         icon: <FaCalculator />,
+        pageIndex: 3,
     }, {
         itemName: 'Consumables',
         path: '/consumables',
-        icon: <FaPills />
+        icon: <FaPills />,
+        pageIndex: 4
     }, {
         itemName: 'Schedule',
         path: '/schedule',
         icon: <FaRegCalendarAlt />,
+        pageIndex: 5
     }, {
         itemName: 'Reporting',
         path: '/reporting',

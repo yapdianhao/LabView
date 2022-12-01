@@ -1,3 +1,12 @@
+export const navContents = [
+    'Overview',
+    'Utilization',
+    'Repair',
+    'PM/Cal/OQ',
+    'Consumables',
+    'Schedule',
+];
+
 export const assetSchema = [{
     title: 'Asset ID',
     dataIndex: 'id',
@@ -98,7 +107,7 @@ export const repairSchema = [{
     render: (text) => text,
 }];
 
-export const utilScehma = [{
+export const utilSchema = [{
     title: 'Asset ID',
     dataIndex: '',
     render: (text) => text,

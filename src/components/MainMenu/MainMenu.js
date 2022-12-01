@@ -14,7 +14,10 @@ const MainMenu = () => {
 
     const handleClickMainMenuItem = (item, index) => {
         navigate(item.path);
-        dispatch(setPageIndex({ pageIndex: index }));
+        console.log(item);
+        if (item.pageIndex !== undefined) {
+            dispatch(setPageIndex({ pageIndex: item.pageIndex }));
+        }
     }
 
     return (

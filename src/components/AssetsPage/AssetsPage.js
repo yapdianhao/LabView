@@ -3,9 +3,10 @@ import axios from 'axios';
 import { Input, Switch, Select, Table } from '@douyinfe/semi-ui';
 import { IconSearch } from '@douyinfe/semi-icons';
 import { useNavigate } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
 import { assetSchema } from '../../constants';
 import { GET_ALL_ASSETS } from '../../api';
+import NavBar from '../NavBar/NavBar';
+import SecondaryNavBar from '../SecondaryNavBar/SecondaryNavBar';
 
 import styles from './AssetsPage.module.css';
 
@@ -49,6 +50,7 @@ const AssetsPage = () => {
     return (
         <div className={styles.pageContainer}>
             <NavBar />
+            <SecondaryNavBar />
             <div>
                 <div className={styles.header}>
                     <Input className={styles.searchBar} suffix={<IconSearch />} showClear>

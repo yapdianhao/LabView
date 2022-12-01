@@ -5,7 +5,9 @@
 - Redux
 - Express
 - NodeJS
-- MySQL (~~AWS RDS~~ GCP)
+- MySQL (AWS RDS -> GCP Cloud SQL)
+- Deployment (backend): GCP Cloud Run
+- Deployment (frontend): GCP App Engine
 
 ## Schemas
 | Companies |
