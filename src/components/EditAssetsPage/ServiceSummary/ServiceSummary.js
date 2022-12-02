@@ -132,6 +132,9 @@ const ServiceSummary = (props) => {
                 </form>
                 {shouldShowConfirmationModal && (
                     <div className={styles.confirmationModal}>
+                        <div className={styles.confirmationModalCloseBtn} onClick={() => setShouldShowConfirmationModal(false)}>
+                            <IoCloseSharp />
+                        </div>
                     </div>
                 )}
         </>
