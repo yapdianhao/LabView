@@ -17,7 +17,6 @@ const SecondaryNavBar = () => {
         dispatch(setPageIndex({ pageIndex: index }));
         const selectedItem = MainMenuData[MainMenuData.findIndex(mainMenuItem => mainMenuItem.pageIndex === index)];
         navigate(selectedItem.path);
-        console.log(selectedItem);
     };
 
     return (

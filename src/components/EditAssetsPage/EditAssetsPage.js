@@ -109,6 +109,7 @@ const EditAssetsPage = () => {
                         frequencies={frequencies}
                         handleSubmit={handleSubmit}
                         handleInputChange={handleInputChange}
+                        setAsset={setAsset}
                     />
                 )
             default:

@@ -5,7 +5,10 @@ import { BsDownload } from 'react-icons/bs';
 import styles from './ServiceSummary.module.css';
 
 const ServiceSummary = (props) => {
-    const { asset, frequencies, handleInputChange, handleSubmit } = props;
+    const { asset, frequencies, handleInputChange, handleSubmit, setAsset } = props;
+
+    const [shouldShowConfirmationModal, setShouldShowConfirmationModal] = React.useState(false);
+
     return (
         <>
             <div className={styles.mainTitle}>
@@ -114,7 +117,7 @@ const ServiceSummary = (props) => {
                         </div>
                     </div>
                     <div className={styles.formControlContainer}>
-                        <div className={styles.disable}>
+                        <div className={styles.disable} onClick={() => setShouldShowConfirmationModal(true)}>
                             <IoCloseSharp />
                             <p>Disable</p>
                         </div>
@@ -127,6 +130,10 @@ const ServiceSummary = (props) => {
                         </div>
                     </div>
                 </form>
+                {shouldShowConfirmationModal && (
+                    <div className={styles.confirmationModal}>
+                    </div>
+                )}
         </>
     );
 }
