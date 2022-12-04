@@ -1,3 +1,7 @@
+.summaryContainer {
+    height: 100%;
+}
+
 .mainTitle {
     font-size: 20px;
     margin: 20px 0;
@@ -129,7 +133,10 @@
     font-size: 20px;
     align-items: center;
     gap: 8px;
-    width: 25%;
+}
+
+.buttonText {
+    white-space: nowrap;
 }
 
 .submitBtnContainer {
@@ -151,18 +158,22 @@
 }
 
 .confirmationModal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     margin: 0;
     padding: 0;
     z-index: 100;
     width: 100vw;
-    height: calc(100vh + 40px);
+    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: var(--bg-color-3);
-    overflow: auto;
+    overflow: hidden;
     scrollbar-width: 0;
 }
 
@@ -177,4 +188,58 @@
     position: absolute;
     color: var(--text-color-1);
     cursor: pointer;
+}
+
+.confirmationPopup {
+    background-color: var(--bg-color-2);
+    width: 720px;
+    padding: 62px 128px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.confirmationTitle {
+    font-size: 36px;
+    /* text-align: center; */
+}
+
+.confirmationSubtitle {
+    font-size: 24px;
+    /* text-align: center; */
+}
+
+.confirmationTextBold {
+    font-weight: 600;
+}
+
+.confirmationText {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.confirmBtnYes {
+    width: calc(50% - 8px);
+    height: 48px;
+    outline: none;
+    border: none;
+    color: var(--text-color-1);
+    font-size: 16px;
+    background: var(--theme-color-1);
+    cursor: pointer;
+    margin: 0 4px;
+}
+
+.confirmBtnNo {
+    width: calc(50% - 8px);
+    height: 48px;
+    outline: none;
+    border: none;
+    color: var(--theme-color-1);
+    font-size: 16px;
+    background: var(--bg-color-2);
+    cursor: pointer;
+    margin: 0 4px;
 }

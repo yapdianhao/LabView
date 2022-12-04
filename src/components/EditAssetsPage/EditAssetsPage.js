@@ -152,7 +152,6 @@ const EditAssetsPage = () => {
                 </div>
                 {renderRightSection()}
             </div>
-            
         </div>
     );
 };

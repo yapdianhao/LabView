@@ -10,7 +10,7 @@ const ServiceSummary = (props) => {
     const [shouldShowConfirmationModal, setShouldShowConfirmationModal] = React.useState(false);
 
     return (
-        <>
+        <div className={styles.summaryContainer}>
             <div className={styles.mainTitle}>
                     Service Entitlement
                 </div>
@@ -119,11 +119,11 @@ const ServiceSummary = (props) => {
                     <div className={styles.formControlContainer}>
                         <div className={styles.disable} onClick={() => setShouldShowConfirmationModal(true)}>
                             <IoCloseSharp />
-                            <p>Disable</p>
+                            <p className={styles.buttonText}>Disable</p>
                         </div>
                         <div className={styles.download}>
                             <BsDownload />
-                            <p>Download Data</p>
+                            <p className={styles.buttonText}>Download Data</p>
                         </div>
                         <div className={styles.submitBtnContainer}>
                             <button className={styles.submitBtn} type="submit">Save</button>
@@ -135,9 +135,28 @@ const ServiceSummary = (props) => {
                         <div className={styles.confirmationModalCloseBtn} onClick={() => setShouldShowConfirmationModal(false)}>
                             <IoCloseSharp />
                         </div>
+                        <div className={styles.confirmationPopup}>
+                            <p className={styles.confirmationTitle}>
+                                Confirm Disable?
+                            </p>
+                            <p className={styles.confirmationSubtitle}>
+                                <span>{asset.id} </span>
+                                <span>{asset.brand} </span>
+                                <span>{asset.model}</span>
+                            </p>
+                            <p className={styles.confirmationText}>The asset will be <span className={styles.confirmationTextBold}>disabled</span>. Are you sure?</p>
+                            <div>
+                                <button className={styles.confirmBtnNo} onClick={() => setShouldShowConfirmationModal(false)}>
+                                    No
+                                </button>
+                                <button className={styles.confirmBtnYes}>
+                                    Yes
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 )}
-        </>
+        </div>
     );
 }
 
