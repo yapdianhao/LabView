@@ -1,0 +1,15 @@
+.pageContainer {
+    padding-top: 40px;
+}
+
+.utilStartBtn {
+    width: 180px;
+    height: 48px;
+    line-height: 48px;
+    outline: none;
+    border: none;
+    color: var(--text-color-1);
+    font-size: 16px;
+    background: var(--theme-color-1);
+    cursor: pointer;
+}

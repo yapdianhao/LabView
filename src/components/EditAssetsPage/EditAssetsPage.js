@@ -111,6 +111,22 @@ const EditAssetsPage = () => {
                         handleInputChange={handleInputChange}
                         setAsset={setAsset}
                     />
+                );
+            case 1:
+                return (
+                    <Utilization />
+                );
+            case 2:
+                return (
+                    <Repair />
+                );
+            case 3:
+                return (
+                    <PmCalOq />
+                );
+            case 4:
+                return (
+                    <Consumables />
                 )
             default:
                 return (
