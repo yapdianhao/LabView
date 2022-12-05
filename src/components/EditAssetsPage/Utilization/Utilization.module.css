@@ -1,5 +1,5 @@
 .pageContainer {
-    padding-top: 40px;
+    padding: 40px 20px;
 }
 
 .utilStartBtn {
@@ -12,4 +12,15 @@
     font-size: 16px;
     background: var(--theme-color-1);
     cursor: pointer;
+}
+
+.utilTitle {
+    color: var(--text-color-2);
+    font-size: 20px;
+}
+
+.timeText {
+    font-size: 36px;
+    line-height: 72px;
+    margin-top: 16px;
 }

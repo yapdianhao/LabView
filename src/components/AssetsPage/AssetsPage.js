@@ -82,7 +82,7 @@ const AssetsPage = () => {
                 dataSource={assets}
                 className={styles.assetsTable}
                 rowKey="id"
-                pagination={{ formatPageText: false, className: styles.assetsTablePagination }}
+                pagination={{ formatPageText: false, className: styles.assetsTablePagination, pageSize: tableSize }}
                 onRow={(asset, index) => {
                     return {
                         onClick: (event) => {

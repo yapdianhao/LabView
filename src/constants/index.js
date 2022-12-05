@@ -1,3 +1,11 @@
+export const TABLE_SIZE_LIST = [
+    { value: 6, label: 6},
+    { value: 12, label: 12 },
+    { value: 24, label: 24 },
+    { value: 48, label: 48 },
+    { value: 96, label: 96 }
+]
+
 export const navContents = [
     'Overview',
     'Utilization',
