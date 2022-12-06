@@ -1,6 +1,5 @@
 /* eslint-disable no-multi-str */
 const mysql = require('mysql');
-const XLSX = require('xlsx');
 require('dotenv').config();
 
 let config = {
@@ -15,11 +14,6 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     config.host = process.env.DB_HOST;
 }
-
-// const nb = XLSX.readFile('../../../downloads/all-assets.xlsx');
-// const sheetNames = nb.SheetNames;
-// const nbData = XLSX.utils.sheet_to_json(nb.Sheets[sheetNames[0]]);
-// console.log(nbData);
 
 const db = mysql.createConnection(config);
 
