@@ -1,4 +1,6 @@
+/* eslint-disable no-multi-str */
 const mysql = require('mysql');
+const XLSX = require('xlsx');
 require('dotenv').config();
 
 let config = {
@@ -13,6 +15,11 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     config.host = process.env.DB_HOST;
 }
+
+// const nb = XLSX.readFile('../../../downloads/all-assets.xlsx');
+// const sheetNames = nb.SheetNames;
+// const nbData = XLSX.utils.sheet_to_json(nb.Sheets[sheetNames[0]]);
+// console.log(nbData);
 
 const db = mysql.createConnection(config);
 
@@ -99,19 +106,44 @@ db.connect((err) => {
     //           age, \
     //           instrument_cost, \
     //           asset_level, \
-    //           usp1058) VALUES (\
-    //           \'CL10001\', \
-    //           STR_TO_DATE(\'25-09-2022\',\'%d-%m-%Y\'), \
+    //           usp1058, \
+    //           in_use, \
+    //           iso17025, \
+    //           repair_vendor, \
+    //           pm_cal_oq_vendor, \
+    //           pm_freq, \
+    //           cal_freq, \
+    //           oq_freq, \
+    //           labour_entitlement, \
+    //           parts_entitlement, \
+    //           maintenance_cost, \
+    //           contract_start_date, \
+    //           contract_end_date \
+    //           ) VALUES ( \
+    //           \'CL10005\', \
+    //           STR_TO_DATE(\'25-09-2021\',\'%d-%m-%Y\'), \
     //           \'Chemistry Lab\', \
     //           \'Agilent\', \
-    //           \'1260 Infinity II HPLC\', \
-    //           \'AG00002955\', \
+    //           \'1100 HPLC\', \
+    //           \'DE11600064\', \
     //           \'Liquid Chromotography\', \
-    //           STR_TO_DATE(\'13-08-2018\',\'%d-%m-%Y\'), \
-    //           2, \
-    //           63000.00, \
+    //           STR_TO_DATE(\'03-02-2008\',\'%d-%m-%Y\'), \
+    //           14, \
+    //           74000.00, \
     //           \'critical\', \
-    //           \'C\')', (err, res) => {
+    //           \'C\', \
+    //           TRUE, \
+    //           FALSE, \
+    //           1, \
+    //           1, \
+    //           1, \
+    //           1, \
+    //           1, \
+    //           TRUE, \
+    //           TRUE, \
+    //           13600.00, \
+    //           STR_TO_DATE(\'01-01-2021\',\'%d-%m-%Y\'), \
+    //           STR_TO_DATE(\'31-12-2021\',\'%d-%m-%Y\'))', (err, res) => {
     //             if (err) console.log(err);
     //             else console.log(res);
     //           });
@@ -211,8 +243,6 @@ db.connect((err) => {
     //     else console.log(res);
     // });
 
-    // db.query('INSERT INTO companies (name) VALUES (')
-
     // db.query('INSERT INTO vendors (name, phone_1, phone_2, email_1, email_2) VALUES ( \
     //         \'Metrohm Singapore Pte Ltd\', \
     //         \'69723556\', \
@@ -230,14 +260,43 @@ db.connect((err) => {
     //     else console.log(res);
     // })
 
-    db.query('SHOW COLUMNS FROM assets', (err, res) => {
-        if (err) console.log(err);
-        else {
-            for (let row of res) {
-                console.log('asset.' + row.Field + ',');
-            }
-        };
-    })
+    // db.query('SHOW COLUMNS FROM assets', (err, res) => {
+    //     if (err) console.log(err);
+    //     else {
+    //         for (let row of res) {
+    //             console.log('asset.' + row.Field + ',');
+    //         }
+    //     };
+    // })
+
+    // db.query('SHOW COLUMNS FROM utilizations', (err, res) => {
+    //     if (err) console.log(err);
+    //     else {
+    //         for (let row of res) {
+    //             console.log('asset.' + row.Field + ',');
+    //         }
+    //     };
+    // })
+
+    // db.query('INSERT INTO utilizations (asset_id, used_from, used_to) VALUES \
+    //         (\'CL10004\', STR_TO_DATE(\'02-03-2021/23:12:00\',\'%d-%m-%Y/%H:%i:%s\'), STR_TO_DATE(\'03-03-2021/05:12:00\',\'%d-%m-%Y/%H:%i:%s\'))', (err, res) => {
+    //             if (err) console.log(err);
+    //             else console.log(res);
+    //         });
+
+    // db.query('SELECT * FROM utilizations', (err, res) => {
+    //     if (err) console.log(err);
+    //     else {
+    //         console.log(res);
+    //     }
+    // });
+
+    // db.query('SELECT * FROM vendors', (err, res) => {
+    //     if (err) console.log(err);
+    //     else {
+    //         console.log(res);
+    //     }
+    // });
 
 });
 
