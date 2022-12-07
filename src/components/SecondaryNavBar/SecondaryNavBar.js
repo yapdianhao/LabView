@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { navContents } from '../../constants';
-import { pageIndexSlice } from '../../features/pageIndex/pageIndexSlice';
+import { pageIndexSlice } from '../../slices/pageIndex/pageIndexSlice';
 import { MainMenuData } from '../MainMenu/MainMenuData';
 import styles from './SecondaryNavBar.module.css';
 

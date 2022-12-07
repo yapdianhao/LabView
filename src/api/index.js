@@ -13,3 +13,5 @@ export const GET_ALL_FREQUENCIES = `${domain}api/frequencies`;
 export const EDIT_ASSSET = `${domain}api/edit-asset`;
 
 export const GET_A_VENDOR = `${domain}api/get-vendor`;
+
+export const GET_UTILS_BY_ASSET = `${domain}api/get-utils`;

@@ -76,10 +76,17 @@ app.get('/api/vendors', (req, res) => {
     })
 });
 
+app.get('/api/get-utils', (req, res) => {
+    const { query } = req;
+    db.query('SELECT * FROM utilizations WHERE asset_id = ?', [query.asset_id], (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    })
+})
+
 app.post('/api/edit-asset', (req, res) => {
     const { body } = req;
     const { asset } = body;
-    console.log(asset);
     db.query('UPDATE assets SET \
               brand = ?, \
               model = ?, \

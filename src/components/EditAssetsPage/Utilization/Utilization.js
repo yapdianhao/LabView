@@ -1,12 +1,30 @@
 import * as React from 'react';
 import { Table } from '@douyinfe/semi-ui';
 import { TABLE_SIZE_LIST } from '../../../constants';
-import QRCode from 'react-qr-code'
+import { GET_UTILS_BY_ASSET } from '../../../api';
+import QRCode from 'react-qr-code';
+import axios from 'axios';
+
 import styles from './Utilization.module.css';
 
 const Utilization = (props) => {
 
     const { asset } = props;
+
+    const [utilData, setUtilData] = React.useState([]);
+
+    const getData = async () => {
+        const utilsFromAPI = await axios.get(GET_UTILS_BY_ASSET, { 
+            params: {
+                asset_id: asset.id
+            }
+        });
+        console.log('ehh', utilsFromAPI);
+    };
+
+    React.useEffect(() => {
+        getData();
+    }, []);
 
     return (
         <div className={styles.pageContainer}>

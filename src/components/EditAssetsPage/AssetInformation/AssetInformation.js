@@ -9,8 +9,7 @@ const AssetInformation = (props) => {
     if (dateTime === null || dateTime === undefined) return '';
     const year = '' + dateTime.getFullYear();
     const month = dateTime.getMonth() < 10 ? '0' + dateTime.getMonth() : '' + dateTime.getMonth();
-    const day = dateTime.getDate();
-    console.log(year, month, day);
+    const day = dateTime.getDate() < 10 ? '0' + dateTime.getDate() : '' + dateTime.getDate();
     return `${year}-${month}-${day}`;
   }
 

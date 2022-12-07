@@ -278,12 +278,12 @@ db.connect((err) => {
     //             else console.log(res);
     //         });
 
-    // db.query('SELECT * FROM utilizations', (err, res) => {
-    //     if (err) console.log(err);
-    //     else {
-    //         console.log(res);
-    //     }
-    // });
+    db.query('SELECT * FROM utilizations', (err, res) => {
+        if (err) console.log(err);
+        else {
+            console.log(res);
+        }
+    });
 
     // db.query('SELECT * FROM vendors', (err, res) => {
     //     if (err) console.log(err);

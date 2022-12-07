@@ -114,7 +114,7 @@ const EditAssetsPage = () => {
                 );
             case 1:
                 return (
-                    <Utilization />
+                    <Utilization asset={asset}/>
                 );
             case 2:
                 return (

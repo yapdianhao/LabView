@@ -10,7 +10,6 @@ const CommonSummary = (props) => {
     const { asset } = props;
     const [repairVendor, setRepairVendor] = React.useState({});
     const [pmCalOqVendor, setPmCalOqVendor] = React.useState({});
-    console.log('common summary', asset);
 
     const getRepairVendor = async () => {
         const vendorFromAPI = await axios.get(GET_A_VENDOR, {

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaUserAlt } from "react-icons/fa";
 import { IoSettings, IoLogOut } from "react-icons/io5";
-import { logout, reset } from '../../features/auth/authSlice';
+import { logout, reset } from '../../slices/auth/authSlice';
 import { ReactComponent as LabViewSvg } from '../../assets/labview-logo.svg';
 import NavBarOption from './NavBarOption/NavBarOption';
 import styles from "./NavBar.module.css";

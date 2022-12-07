@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MainMenuData } from './MainMenuData';
 import { useDispatch } from 'react-redux';
-import { pageIndexSlice } from '../../features/pageIndex/pageIndexSlice';
+import { pageIndexSlice } from '../../slices/pageIndex/pageIndexSlice';
 import MainMenuItem from './MainMenuItem/MainMenuItem';
 import styles from './MainMenu.module.css';
 

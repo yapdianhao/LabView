@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from './features/auth/authSlice';
-import pageIndexReducer from './features/pageIndex/pageIndexSlice';
+import authReducer from './slices/auth/authSlice';
+import pageIndexReducer from './slices/pageIndex/pageIndexSlice';
 
 export const store = configureStore({
     reducer: {
