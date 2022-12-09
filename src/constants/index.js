@@ -1,3 +1,20 @@
+import { transformDateToStringDDMMYYHHMM } from "../utils";
+
+export const MONTHS = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'April',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'September',
+    'October',
+    'Nov',
+    'Dec'
+];
+
 export const TABLE_SIZE_LIST = [
     { value: 6, label: 6},
     { value: 12, label: 12 },
@@ -289,4 +306,18 @@ export const assetConsumableSchema = [{
     title: 'Consumed on',
     dataIndex: '',
     render: (text) => text
+}];
+
+export const EDIT_UTIL_SCHEMA = [{
+    title: 'From',
+    dataIndex: 'used_from',
+    render: (date) => transformDateToStringDDMMYYHHMM(date),
+}, {
+    title: 'To',
+    dataIndex: 'used_to',
+    render: (date) => transformDateToStringDDMMYYHHMM(date),
+}, {
+    title: 'Duration',
+    dataIndex: 'diff',
+    render: (text) => text,
 }];

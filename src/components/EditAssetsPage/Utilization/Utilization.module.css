@@ -24,3 +24,8 @@
     line-height: 72px;
     margin-top: 16px;
 }
+
+.utilTable {
+    white-space: nowrap;
+    overflow-x: scroll;
+}

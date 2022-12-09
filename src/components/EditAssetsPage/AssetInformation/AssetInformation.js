@@ -1,17 +1,10 @@
 import * as React from "react";
+import { transformDateToStringYYMMDD } from "../../../utils";
 
 import styles from './AssetInformation.module.css';
 
 const AssetInformation = (props) => {
   const { asset, vendors, handleInputChange } = props;
-
-  const transformDateToString = (dateTime) => {
-    if (dateTime === null || dateTime === undefined) return '';
-    const year = '' + dateTime.getFullYear();
-    const month = dateTime.getMonth() < 10 ? '0' + dateTime.getMonth() : '' + dateTime.getMonth();
-    const day = dateTime.getDate() < 10 ? '0' + dateTime.getDate() : '' + dateTime.getDate();
-    return `${year}-${month}-${day}`;
-  }
 
   return (
     <>
@@ -53,7 +46,7 @@ const AssetInformation = (props) => {
             <input
               type="date"
               name="installation_date"
-              value={transformDateToString(asset.installation_date)}
+              value={transformDateToStringYYMMDD(asset.installation_date)}
               onChange={handleInputChange}
             />
           </label>
@@ -70,7 +63,7 @@ const AssetInformation = (props) => {
             <input
               type="date"
               name="activation_date"
-              value={transformDateToString(asset.activation_date)}
+              value={transformDateToStringYYMMDD(asset.activation_date)}
               onChange={handleInputChange}
             />
           </label>

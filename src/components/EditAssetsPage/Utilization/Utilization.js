@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import { Table } from '@douyinfe/semi-ui';
-import { TABLE_SIZE_LIST } from '../../../constants';
+import { TABLE_SIZE_LIST, EDIT_UTIL_SCHEMA } from '../../../constants';
+import { transformUtil } from '../../../utils';
 import { GET_UTILS_BY_ASSET } from '../../../api';
 import QRCode from 'react-qr-code';
 import axios from 'axios';
@@ -19,12 +21,16 @@ const Utilization = (props) => {
                 asset_id: asset.id
             }
         });
-        console.log('ehh', utilsFromAPI);
+        if (utilsFromAPI.status === 200) {
+            setUtilData(utilsFromAPI.data.map((util) => transformUtil(util)));
+        }
     };
 
     React.useEffect(() => {
         getData();
     }, []);
+
+    console.log(utilData);
 
     return (
         <div className={styles.pageContainer}>
@@ -40,6 +46,11 @@ const Utilization = (props) => {
             <QRCode 
                 size={132}
                 value={'https://www.youtube.com/'}
+            />
+            <Table
+                className={styles.utilTable}
+                columns={EDIT_UTIL_SCHEMA}
+                dataSource={utilData}
             />
         </div>
     )
