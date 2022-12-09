@@ -78,7 +78,7 @@ app.get('/api/vendors', (req, res) => {
 
 app.get('/api/get-utils', (req, res) => {
     const { query } = req;
-    db.query('SELECT * FROM utilizations WHERE asset_id = ?', [query.asset_id], (err, result) => {
+    db.query('SELECT used_from, used_to, (SELECT TIMESTAMPDIFF(HOUR, used_from, used_to)) AS diff FROM utilizations WHERE asset_id = ?', [query.asset_id], (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     })
