@@ -30,7 +30,6 @@ export const transformDateToStringYYMMDD = (date) => {
 
 export const transformDateToStringDDMMYYHHMM = (date) => {
     if (!date) return undefined;
-    console.log(date);
     const day = date.getDate();
     const month = date.getMonth();
     const year = date.getFullYear();
