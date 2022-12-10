@@ -249,10 +249,10 @@ db.connect((err) => {
 
     // db.query('SELECT * FROM frequencies', (err, res) => console.log(res));
 
-    // db.query('ALTER TABLE assets DROP COLUMN pm_vendor', (err, res) => {
-    //     if (err) console.log(err);
-    //     else console.log(res);
-    // })
+    db.query('ALTER TABLE repairs DROP COLUMN down_time', (err, res) => {
+        if (err) console.log(err);
+        else console.log(res);
+    })
 
     // db.query('SHOW COLUMNS FROM assets', (err, res) => {
     //     if (err) console.log(err);
@@ -263,14 +263,39 @@ db.connect((err) => {
     //     };
     // })
 
-    // db.query('SHOW COLUMNS FROM utilizations', (err, res) => {
-    //     if (err) console.log(err);
-    //     else {
-    //         for (let row of res) {
-    //             console.log('asset.' + row.Field + ',');
-    //         }
-    //     };
-    // })
+    db.query('SHOW COLUMNS FROM repairs', (err, res) => {
+        if (err) console.log(err);
+        else {
+            for (let row of res) {
+                console.log(row.Field + ',');
+            }
+        };
+    })
+
+    // db.query('INSERT INTO repairs (\
+    //     asset_id, \
+    //     problem, \
+    //     solution, \
+    //     reported_on, \
+    //     recovered_on, \
+    //     repair_vendor_id, \
+    //     first_visit_complete, \
+    //     part_cost, \
+    //     labor_cost) \
+    //     VALUES (\
+    //         \'CL10004\', \
+    //         \'Unable to power up\', \
+    //         \'Change the lamp\', \
+    //         STR_TO_DATE(\'24-03-2021/09:00\', \'%d-%m-%Y/%H:%i\'), \
+    //         STR_TO_DATE(\'24-03-2021/15:00\', \'%d-%m-%Y/%H:%i\'), \
+    //         1, \
+    //         FALSE, \
+    //         700, \
+    //         100\
+    //     )', (err, res) => {
+    //         if (err) console.log(err);
+    //         else console.log(res);
+    //     });
 
     // db.query('INSERT INTO utilizations (asset_id, used_from, used_to) VALUES \
     //         (\'CL10004\', STR_TO_DATE(\'02-03-2021/23:12:00\',\'%d-%m-%Y/%H:%i:%s\'), STR_TO_DATE(\'03-03-2021/05:12:00\',\'%d-%m-%Y/%H:%i:%s\'))', (err, res) => {
@@ -278,12 +303,12 @@ db.connect((err) => {
     //             else console.log(res);
     //         });
 
-    db.query('SELECT * FROM utilizations', (err, res) => {
-        if (err) console.log(err);
-        else {
-            console.log(res);
-        }
-    });
+    // db.query('SELECT * FROM utilizations', (err, res) => {
+    //     if (err) console.log(err);
+    //     else {
+    //         console.log(res);
+    //     }
+    // });
 
     // db.query('SELECT * FROM vendors', (err, res) => {
     //     if (err) console.log(err);
