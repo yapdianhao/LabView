@@ -27,5 +27,28 @@
 
 .utilTable {
     white-space: nowrap;
+    scrollbar-width: none;
     overflow-x: scroll;
+}
+
+.utilTable::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.utilTable::-webkit-scrolbar:horizontal {
+    height: 0 !important; 
+    width: 0 !important;
+    display: none !important;
+}
+
+.utilTablePagination {
+    position: absolute;
+    left: 0;
+}
+
+.rowCountSelectorWrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
 }

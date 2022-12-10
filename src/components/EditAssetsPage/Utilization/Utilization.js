@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import { Table } from '@douyinfe/semi-ui';
+import { Table, Select } from '@douyinfe/semi-ui';
 import { TABLE_SIZE_LIST, EDIT_UTIL_SCHEMA } from '../../../constants';
 import { transformUtil } from '../../../utils';
 import { GET_UTILS_BY_ASSET } from '../../../api';
@@ -14,6 +14,7 @@ const Utilization = (props) => {
     const { asset } = props;
 
     const [utilData, setUtilData] = React.useState([]);
+    const [tableSize, setTableSize] = React.useState(6);
 
     const getData = async () => {
         const utilsFromAPI = await axios.get(GET_UTILS_BY_ASSET, { 
@@ -26,11 +27,13 @@ const Utilization = (props) => {
         }
     };
 
+    const handleChangeTableSize = (value) => {
+        setTableSize(value);
+    }
+
     React.useEffect(() => {
         getData();
     }, []);
-
-    console.log(utilData);
 
     return (
         <div className={styles.pageContainer}>
@@ -47,10 +50,25 @@ const Utilization = (props) => {
                 size={132}
                 value={'https://www.youtube.com/'}
             />
+            <div className={styles.rowCountSelectorWrapper}>
+                <Select 
+                    optionList={TABLE_SIZE_LIST}
+                    defaultValue={tableSize}
+                    value={tableSize}
+                    onChange={handleChangeTableSize}
+                >
+                </Select>
+            </div>
             <Table
                 className={styles.utilTable}
                 columns={EDIT_UTIL_SCHEMA}
                 dataSource={utilData}
+                pagination={{
+                    formatPageText: false,
+                    className: styles.utilTablePagination,
+                    pageSize: tableSize
+                }}
+                footer={<div>Total: {utilData.length} past utilizations</div>}
             />
         </div>
     )

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Input, Switch, Select, Table } from '@douyinfe/semi-ui';
 import { IconSearch } from '@douyinfe/semi-icons';
 import { useNavigate } from 'react-router-dom';
-import { assetSchema } from '../../constants';
+import { assetSchema, TABLE_SIZE_LIST } from '../../constants';
 import { GET_ALL_ASSETS } from '../../api';
 import NavBar from '../NavBar/NavBar';
 import SecondaryNavBar from '../SecondaryNavBar/SecondaryNavBar';
@@ -13,14 +13,6 @@ import styles from './AssetsPage.module.css';
 const AssetsPage = () => {
 
     const navigate = useNavigate();
-
-    const tableSizeList = [
-        { value: 6, label: 6},
-        { value: 12, label: 12 },
-        { value: 24, label: 24 },
-        { value: 48, label: 48 },
-        { value: 96, label: 96 }
-    ];
 
     const [assets, setAssets] = React.useState([]);
     const [showDisabled, setShowDisabled] = React.useState(false);
@@ -67,7 +59,7 @@ const AssetsPage = () => {
                     <div className={styles.rowCountSelectorWrapper}>
                         Rows: 
                         <Select
-                            optionList={tableSizeList}
+                            optionList={TABLE_SIZE_LIST}
                             defaultValue={tableSize}
                             value={tableSize}
                             onChange={handleChangeTableSize}
