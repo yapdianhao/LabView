@@ -90,7 +90,6 @@
 | solution: VARCHAR(250) |
 | reported_on: TIMESTAMP |
 | recovered_on: TIMESTAMP |
-| down_time: INT |
 | repair_vendor_id: INT |
 | first_visit_complete: BOOLEAN |
 | part_cost: DOUBLE |

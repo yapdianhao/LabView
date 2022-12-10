@@ -4,6 +4,8 @@ import { Table, Select } from '@douyinfe/semi-ui';
 import { TABLE_SIZE_LIST, EDIT_UTIL_SCHEMA } from '../../../constants';
 import { transformUtil } from '../../../utils';
 import { GET_UTILS_BY_ASSET } from '../../../api';
+import { RiFileExcel2Fill } from 'react-icons/ri';
+import { BsFillPlayFill } from 'react-icons/bs';
 import QRCode from 'react-qr-code';
 import axios from 'axios';
 
@@ -37,7 +39,8 @@ const Utilization = (props) => {
 
     return (
         <div className={styles.pageContainer}>
-            <button className={styles.utilStartBtn}>
+            <button className={styles.utilBtn}>
+                <BsFillPlayFill className={styles.utilBtnIcon} />
                 Start
             </button>
             <p className={styles.utilTitle}>
@@ -70,6 +73,11 @@ const Utilization = (props) => {
                 }}
                 footer={<div>Total: {utilData.length} past utilizations</div>}
             />
+            <div className={styles.divider} />
+            <button className={styles.utilBtn}>
+                <RiFileExcel2Fill className={styles.utilBtnIcon} />
+                Export All
+            </button>
         </div>
     )
 }

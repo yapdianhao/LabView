@@ -37,3 +37,7 @@ export const transformDateToStringDDMMYYHHMM = (date) => {
     const minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
     return `${day} ${MONTHS[month]} ${year} ${hour}${minute}`;
 }
+
+export const exportToCSV = (data) => {
+    return;
+}
