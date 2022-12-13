@@ -84,8 +84,8 @@ app.get('/api/repairs', (req, res) => {
     });
 });
 
-app.get('api/get-repair', (req, res) => {
-    const { query } = res;
+app.get('/api/get-repair', (req, res) => {
+    const { query } = req;
     db.query(
         'SELECT asset_id, \
         problem, \
@@ -96,7 +96,7 @@ app.get('api/get-repair', (req, res) => {
         first_visit_complete, \
         part_cost, \
         labor_cost, \
-        SELECT TIMESTAMPDIFF(HOUR, reported_on, recovered_on) AS diff\
+        (SELECT TIMESTAMPDIFF(HOUR, reported_on, recovered_on)) AS diff\
         FROM repairs \
         WHERE asset_id = ?', 
         [query.asset_id],
@@ -109,7 +109,7 @@ app.get('api/get-repair', (req, res) => {
 
 app.get('/api/get-utils', (req, res) => {
     const { query } = req;
-    db.query('SELECT used_from, used_to, SELECT TIMESTAMPDIFF(HOUR, used_from, used_to) AS diff FROM utilizations WHERE asset_id = ?', [query.asset_id], (err, result) => {
+    db.query('SELECT used_from, used_to, (SELECT TIMESTAMPDIFF(HOUR, used_from, used_to)) AS diff FROM utilizations WHERE asset_id = ?', [query.asset_id], (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     })

@@ -1,3 +1,15 @@
 .pageContainer {
     padding: 40px 20px;
 }
+
+.rowCountSelectorWrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.rowCountSelectorTitle {
+    font-size: 16px;
+    margin-right: 10px;
+}

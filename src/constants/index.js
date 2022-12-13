@@ -321,3 +321,40 @@ export const EDIT_UTIL_SCHEMA = [{
     dataIndex: 'diff',
     render: (text) => text,
 }];
+
+export const EDIT_REPAIR_SCHEMA = [{
+    title: 'Problem',
+    dataIndex: 'problem',
+    render: (text) => text
+}, {
+    title: 'Solution',
+    dataIndex: 'solution',
+    render: (text) => text,
+}, {
+    title: 'Cost ($)',
+    dataIndex: 'costs',
+    render: (cost) => {
+        const partsCost = cost.part;
+        const laborCost = cost.labor;
+        return (
+            <>
+                <div>{partsCost} (parts)</div>
+                <div>{laborCost} (labor)</div>
+            </>
+        );
+    }
+}, {
+    title: '1st Visit Complete',
+    dataIndex: 'firstVisitComplete',
+    render: (firstVisitComplete) => {
+        return firstVisitComplete ? 'Yes' : 'No';
+    }
+}, {
+    title: 'Reported',
+    dataIndex: 'reported',
+    render: (text) => text,
+}, {
+    title: 'Recovered',
+    dataIndex: 'recovered',
+    render: (text) => text,
+}]

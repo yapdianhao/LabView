@@ -40,8 +40,6 @@ const CommonSummary = (props) => {
         getPmCalOqVendor();
     })
 
-    console.log(asset);
-
     return (
         <div>
             <div className={styles.title}>

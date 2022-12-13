@@ -7,8 +7,6 @@ import styles from './ServiceSummary.module.css';
 const ServiceSummary = (props) => {
 
     const { asset, frequencies, handleInputChange, handleSubmit, setAsset } = props;
-    console.log(frequencies);
-    console.log(asset);
 
     const [shouldShowConfirmationModal, setShouldShowConfirmationModal] = React.useState(false);
 

@@ -20,6 +20,20 @@ export const transformUtil = (util) => {
     };
 }
 
+export const transformRepair  = (repair) => {
+    return {
+        problem: repair.problem,
+        solution: repair.solution,
+        firstVisitComplete: repair.first_visit_complete === 1,
+        costs: {
+            labor: repair.labor_cost,
+            part: repair.part_cost,
+        },
+        reported: transformDateToStringDDMMYYHHMM(transformDateTime(repair.reported_on)),
+        recovered: transformDateToStringDDMMYYHHMM(transformDateTime(repair.recovered_on)),
+    }
+}
+
 export const transformDateToStringYYMMDD = (date) => {
     if (date === null || date === undefined) return '';
     const year = '' + date.getFullYear();

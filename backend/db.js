@@ -249,10 +249,10 @@ db.connect((err) => {
 
     // db.query('SELECT * FROM frequencies', (err, res) => console.log(res));
 
-    db.query('ALTER TABLE repairs DROP COLUMN down_time', (err, res) => {
-        if (err) console.log(err);
-        else console.log(res);
-    })
+    // db.query('ALTER TABLE repairs DROP COLUMN down_time', (err, res) => {
+    //     if (err) console.log(err);
+    //     else console.log(res);
+    // })
 
     // db.query('SHOW COLUMNS FROM assets', (err, res) => {
     //     if (err) console.log(err);
