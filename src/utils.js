@@ -3,9 +3,17 @@ import { MONTHS } from "./constants";
 export const transformAsset = (asset) => {
     return {
         ...asset,
-        installation_date: new Date(asset.installation_date),
-        activation_date: new Date(asset.activation_date),
+        installation_date: transformStringToDateYYYYMMDD(asset.installation_date),
+        activation_date: transformStringToDateYYYYMMDD(asset.activation_date),
+        contract_start_date: transformStringToDateYYYYMMDD(asset.contract_start_date),
+        contract_end_date: transformStringToDateYYYYMMDD(asset.contract_end_date),
     };
+}
+
+export const transformStringToDateYYYYMMDD = (dateStr) => {
+    const tIndex = dateStr.indexOf('T');
+    const dateStrYYYYMMDD = dateStr.substring(0, tIndex);
+    return new Date(dateStrYYYYMMDD);
 }
 
 export const transformDateTime = (date) => {
@@ -37,7 +45,8 @@ export const transformRepair  = (repair) => {
 export const transformDateToStringYYMMDD = (date) => {
     if (date === null || date === undefined) return '';
     const year = '' + date.getFullYear();
-    const month = date.getMonth() < 10 ? '0' + date.getMonth() : '' + date.getMonth();
+    const realMonth = date.getMonth() + 1;
+    const month = realMonth < 10 ? '0' + realMonth : '' + realMonth;
     const day = date.getDate() < 10 ? '0' + date.getDate() : '' + date.getDate();
     return `${year}-${month}-${day}`;
   }

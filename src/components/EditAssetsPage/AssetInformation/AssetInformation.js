@@ -17,7 +17,11 @@ const AssetInformation = (props) => {
         <div className={styles.row}>
           <label>
             Asset ID
-            <input name="id" value={asset.id} onChange={handleInputChange} />
+            <input
+                name="id"
+                value={asset.id}
+                onChange={handleInputChange} 
+            />
           </label>
           <label>
             Brand
@@ -37,7 +41,11 @@ const AssetInformation = (props) => {
           </label>
           <label>
             Serial
-            <input name="serial" value={asset.serial} />
+            <input
+                name="serial"
+                value={asset.serial}
+                onChange={handleInputChange} 
+            />
           </label>
         </div>
         <div className={styles.row}>
@@ -52,11 +60,19 @@ const AssetInformation = (props) => {
           </label>
           <label>
             location
-            <input name="location" onChange={handleInputChange} value={asset.location}/>
+            <input
+                name="location"
+                onChange={handleInputChange}
+                value={asset.location}
+            />
           </label>
           <label>
             Instrument Cost ($)
-            <input name="instrument_cost" onChange={handleInputChange} value={asset.instrument_cost}/>
+            <input
+                name="instrument_cost"
+                onChange={handleInputChange}
+                value={asset.instrument_cost}
+            />
           </label>
           <label>
             Activation Date
@@ -72,27 +88,26 @@ const AssetInformation = (props) => {
           <label>
             Asset Level
             <select
-              defaultValue={"DEFAULT"}
               name="asset_level"
               onChange={handleInputChange}
             >
-              <option value="DEFAULT" disabled hidden>
+              <option selected={!asset.asset_level ? "selected" : ""} disabled hidden>
                 -- Not Set --
               </option>
-              <option value="standard">Standard</option>
-              <option value="critical">Critical</option>
-              <option value="high-critical">High Critical</option>
+              <option value="standard" selected={asset.asset_level === "standard" ? "selected" : ""}>Standard</option>
+              <option value="critical"  selected={asset.asset_level === "critical" ? "selected" : ""}>Critical</option>
+              <option value="high-critical"  selected={asset.asset_level === "high-critical" ? "selected" : ""}>High Critical</option>
             </select>
           </label>
           <label>
             USP 1058 Category
             <select name="usp1058" onChange={handleInputChange}>
-              <option selected disabled hidden>
+              <option disabled hidden selected={!asset.usp1058 ? "selected" : ""}>
                 -- Not Set --
               </option>
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
+              <option value="A" selected={asset.usp1058 === "A" ? "selected" : ""}>A</option>
+              <option value="B" selected={asset.usp1058 === "B" ? "selected" : ""}>B</option>
+              <option value="C" selected={asset.usp1058 === "C" ? "selected" : ""}>C</option>
             </select>
           </label>
           <div className={styles.longField}>

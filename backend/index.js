@@ -118,15 +118,15 @@ app.get('/api/get-utils', (req, res) => {
 app.post('/api/edit-asset', (req, res) => {
     const { body } = req;
     const { asset } = body;
+    console.log(asset);
     db.query('UPDATE assets SET \
               brand = ?, \
               model = ?, \
               serial = ?, \
               age = ?, \
-              activation_date = ?, \
-              installation_date = ?, \
+              activation_date = STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \
+              installation_date = STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \
               usp1058 = ?, \
-              calc_vendor = ?, \
               instrument_description = ?, \
               instrument_cost = ?, \
               location = ?, \
@@ -135,8 +135,8 @@ app.post('/api/edit-asset', (req, res) => {
               pm_freq = ?, \
               cal_freq = ?, \
               oq_freq = ?, \
-              contract_start_date = ?, \
-              contract_end_date = ?, \
+              contract_start_date = STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \
+              contract_end_date = STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \
               iso17025 = ?, \
               labour_entitlement = ?, \
               parts_entitlement = ?, \
@@ -155,7 +155,6 @@ app.post('/api/edit-asset', (req, res) => {
                 new Date(asset.activation_date).toISOString().slice(0, 19).replace('T', ' '),
                 new Date(asset.installation_date).toISOString().slice(0, 19).replace('T', ' '),
                 asset.usp1058,
-                asset.calc_vendor,
                 asset.instrument_description,
                 asset.instrument_cost,
                 asset.location,
@@ -164,8 +163,8 @@ app.post('/api/edit-asset', (req, res) => {
                 asset.pm_freq,
                 asset.cal_freq,
                 asset.oq_freq,
-                asset.contract_start_date,
-                asset.contract_end_date,
+                new Date(asset.contract_start_date).toISOString().slice(0, 19).replace('T', ' '),
+                new Date(asset.contract_end_date).toISOString().slice(0, 19).replace('T', ' '),
                 asset.iso17025,
                 asset.labour_entitlement,
                 asset.parts_entitlement,
