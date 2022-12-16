@@ -78,7 +78,22 @@ app.get('/api/vendors', (req, res) => {
 });
 
 app.get('/api/repairs', (req, res) => {
-    db.query('SELECT * FROM repairs', (err, result) => {
+    db.query('SELECT asset_id, \
+              brand, \
+              model, \
+              serial, \
+              problem, \
+              solution, \
+              reported_on, \
+              recovered_on, \
+              (SELECT TIMESTAMPDIFF(HOUR, reported_on, recovered_on)) AS diff, \
+              name, \
+              first_visit_complete, \
+              part_cost, \
+              labor_cost \
+              FROM repairs r \
+              INNER JOIN assets a ON r.asset_id = a.id \
+              INNER JOIN vendors v on r.repair_vendor_id = v.id', (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     });

@@ -78,46 +78,48 @@ export const assetSchema = [{
     render: (text) => text,
 }];
 
-export const repairSchema = [{
+export const REPAIR_SCHEMA = [{
     title: 'Asset ID',
-    dataIndex: '',
+    dataIndex: 'assetId',
     render: (text) => text,
 }, {
     title: 'Brand',
-    dataIndex: '',
+    dataIndex: 'brand',
     render: (text) => text,
 }, {
     title: 'Model',
-    dataIndex: '',
+    dataIndex: 'model',
     render: (text) => text,
 }, {
     title: 'Serial',
-    dataIndex: '',
+    dataIndex: 'serial',
     render: (text) => text,
 }, {
     title: 'Problem',
-    dataIndex: '',
+    dataIndex: 'problem',
     render: (text) => text,
 }, {
     title: 'Solution',
-    dataIndex: '',
+    dataIndex: 'solution',
     render: (text) => text,
 }, {
     title: 'Reported on',
-    dataIndex: '',
+    dataIndex: 'reportedOn',
     render: (text) => text,
 }, {
     title: 'Down time',
-    dataIndex: '',
+    dataIndex: 'downTime',
     render: (text) => text,
 }, {
     title: 'Repair Vendor',
-    dataIndex: '',
+    dataIndex: 'repairVendor',
     render: (text) => text,
 }, {
     title: '1st Visit Complete',
-    dataIndex: '',
-    render: (text) => text,
+    dataIndex: 'firstVisitComplete',
+    render: (firstVisitComplete) => {
+        return firstVisitComplete ? 'Yes' : 'No';
+    },
 }, {
     title: 'Cost on parts ($)',
     dataIndex: '',

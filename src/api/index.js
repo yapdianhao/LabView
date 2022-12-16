@@ -17,3 +17,5 @@ export const GET_A_VENDOR = `${domain}api/get-vendor`;
 export const GET_UTILS_BY_ASSET = `${domain}api/get-utils`;
 
 export const GET_REPAIRS_BY_ASSET = `${domain}api/get-repair`;
+
+export const GET_ALL_REPAIRS = `${domain}api/repairs`;
