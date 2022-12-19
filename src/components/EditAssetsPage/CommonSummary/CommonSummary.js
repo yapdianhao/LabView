@@ -126,7 +126,7 @@ const CommonSummary = (props) => {
                             Install date
                         </div>
                         <div className={styles.value}>
-                            {asset.installation_date.toLocaleDateString()}
+                            {asset.installation_date?.toLocaleDateString() || ''}
                         </div>
                     </div>
                     <div className={styles.attrContainer}>

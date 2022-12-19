@@ -11,6 +11,7 @@ export const transformAsset = (asset) => {
 }
 
 export const transformStringToDateYYYYMMDD = (dateStr) => {
+    if (!dateStr) return null;
     const tIndex = dateStr.indexOf('T');
     const dateStrYYYYMMDD = dateStr.substring(0, tIndex);
     return new Date(dateStrYYYYMMDD);
@@ -39,6 +40,25 @@ export const transformRepair  = (repair) => {
         },
         reported: transformDateToStringDDMMYYHHMM(transformDateTime(repair.reported_on)),
         recovered: transformDateToStringDDMMYYHHMM(transformDateTime(repair.recovered_on)),
+    }
+}
+
+export const transformFullRepair = (repair) => {
+    return {
+        assetId: repair.asset_id,
+        brand: repair.brand,
+        model: repair.model,
+        serial: repair.serial,
+        problem: repair.problem,
+        solution: repair.solution,
+        reported: transformDateToStringDDMMYYHHMM(transformDateTime(repair.reported_on)),
+        recovered: transformDateToStringDDMMYYHHMM(transformDateTime(repair.recovered_on)),
+        diff: repair.diff,
+        repairVendor: repair.name,
+        firstVisitComplete: repair.first_visit_complete === 1,
+        partCost: repair.part_cost,
+        laborCost: repair.labor_cost,
+        totalCost: repair.total_cost
     }
 }
 

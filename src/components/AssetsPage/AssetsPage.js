@@ -37,8 +37,6 @@ const AssetsPage = () => {
         getPost();
     }, []);
 
-    console.log(assets);
-
     return (
         <div className={styles.pageContainer}>
             <NavBar />

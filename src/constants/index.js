@@ -104,11 +104,15 @@ export const REPAIR_SCHEMA = [{
     render: (text) => text,
 }, {
     title: 'Reported on',
-    dataIndex: 'reportedOn',
+    dataIndex: 'reported',
+    render: (text) => text,
+}, {
+    title: 'Recovered on',
+    dataIndex: 'recovered',
     render: (text) => text,
 }, {
     title: 'Down time',
-    dataIndex: 'downTime',
+    dataIndex: 'diff',
     render: (text) => text,
 }, {
     title: 'Repair Vendor',
@@ -122,15 +126,15 @@ export const REPAIR_SCHEMA = [{
     },
 }, {
     title: 'Cost on parts ($)',
-    dataIndex: '',
+    dataIndex: 'partCost',
     render: (text) => text,
 }, {
     title: 'Cost on labor ($)',
-    dataIndex: '',
+    dataIndex: 'laborCost',
     render: (text) => text,
 }, {
     title: 'Total Cost ($)',
-    dataIndex: '',
+    dataIndex: 'totalCost',
     render: (text) => text,
 }];
 

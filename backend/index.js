@@ -90,7 +90,8 @@ app.get('/api/repairs', (req, res) => {
               name, \
               first_visit_complete, \
               part_cost, \
-              labor_cost \
+              labor_cost, \
+              (SELECT part_cost + labor_cost) AS total_cost \
               FROM repairs r \
               INNER JOIN assets a ON r.asset_id = a.id \
               INNER JOIN vendors v on r.repair_vendor_id = v.id', (err, result) => {
