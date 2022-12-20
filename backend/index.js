@@ -78,7 +78,8 @@ app.get('/api/vendors', (req, res) => {
 });
 
 app.get('/api/repairs', (req, res) => {
-    db.query('SELECT asset_id, \
+    db.query('SELECT r.id, \
+              asset_id, \
               brand, \
               model, \
               serial, \

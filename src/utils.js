@@ -45,6 +45,7 @@ export const transformRepair  = (repair) => {
 
 export const transformFullRepair = (repair) => {
     return {
+        id: repair.id,
         assetId: repair.asset_id,
         brand: repair.brand,
         model: repair.model,
