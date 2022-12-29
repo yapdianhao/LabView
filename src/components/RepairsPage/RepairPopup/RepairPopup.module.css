@@ -28,7 +28,7 @@
 .popupBody {
     background-color: var(--bg-color-2);
     width: 1000px;
-    padding: 44px 250px;
+    padding: 44px 400px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -55,4 +55,29 @@
     display: flex;
     justify-content: flex-start;
     font-size: 28px;
+    margin: 20px 0;
+}
+
+.fieldBodyContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fieldCol {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fieldContainer {
+    display: flex;
+    font-size: 16px;
+}
+
+.fieldName {
+    display: flex;
+    justify-content: flex-start;
+    width: 128px;
+    color: var(--theme-color-4);
 }

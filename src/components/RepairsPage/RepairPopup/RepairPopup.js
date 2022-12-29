@@ -23,6 +23,36 @@ const RepairPopup = (props) => {
                 <div className={styles.repairAssetId}>
                     {repairToEdit.assetId}
                 </div>
+                <div className={styles.fieldBodyContainer}>
+                    <div className={styles.fieldCol}>
+                        <div className={styles.fieldContainer}>
+                            <div className={styles.fieldName}>Brand:</div>
+                            <div>{repairToEdit.brand}</div>
+                        </div>
+                        <div className={styles.fieldContainer}>
+                            <div className={styles.fieldName}>Model:</div>
+                            <div>{repairToEdit.model}</div>
+                        </div>
+                        <div className={styles.fieldContainer}>
+                            <div className={styles.fieldName}>Serial:</div>
+                            <div>{repairToEdit.serial}</div>
+                        </div>
+                        <div className={styles.fieldContainer}>
+                            <div className={styles.fieldName}>Labor Entitled:</div>
+                            <div>
+                                {repairToEdit.laborEntitled ? 'Yes' : 'No'}
+                            </div>
+                        </div>
+                        <div className={styles.fieldContainer}>
+                            <div className={styles.fieldName}>Parts Entitled:</div>
+                            <div>
+                                {repairToEdit.partsEntitled ? 'Yes' : 'No'}
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.fieldCol}>
+                    </div>
+                </div>
             </div>
         </div>
     );

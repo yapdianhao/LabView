@@ -263,7 +263,7 @@ db.connect((err) => {
     //     };
     // })
 
-    db.query('SHOW COLUMNS FROM repairs', (err, res) => {
+    db.query('SHOW COLUMNS FROM assets', (err, res) => {
         if (err) console.log(err);
         else {
             for (let row of res) {

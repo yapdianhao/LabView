@@ -55,8 +55,12 @@ export const transformFullRepair = (repair) => {
         reported: transformDateToStringDDMMYYHHMM(transformDateTime(repair.reported_on)),
         recovered: transformDateToStringDDMMYYHHMM(transformDateTime(repair.recovered_on)),
         diff: repair.diff,
-        repairVendor: repair.name,
+        repairVendor: repair.vendor_name,
+        repairVendorPhone: repair.vendor_phone,
+        repairVendorEmail: repair.vendor_email,
         firstVisitComplete: repair.first_visit_complete === 1,
+        laborEntitled: repair.labour_entitlement,
+        partsEntitled: repair.parts_entitlement,
         partCost: repair.part_cost,
         laborCost: repair.labor_cost,
         totalCost: repair.total_cost

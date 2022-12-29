@@ -88,10 +88,14 @@ app.get('/api/repairs', (req, res) => {
               reported_on, \
               recovered_on, \
               (SELECT TIMESTAMPDIFF(HOUR, reported_on, recovered_on)) AS diff, \
-              name, \
+              v.name AS vendor_name, \
+              phone_1 AS vendor_phone, \
+              email_1 AS vendor_email, \
               first_visit_complete, \
               part_cost, \
               labor_cost, \
+              labour_entitlement, \
+              parts_entitlement, \
               (SELECT part_cost + labor_cost) AS total_cost \
               FROM repairs r \
               INNER JOIN assets a ON r.asset_id = a.id \
