@@ -2,8 +2,9 @@ import * as React from 'react';
 import axios from 'axios';
 import { IoCloseSharp } from 'react-icons/io5';
 import { GET_ALL_VENDORS } from '../../../api';
-import { IconWrench, IconMail, IconUserCardPhone } from '@douyinfe/semi-icons';
-import { Select, TextArea, Input } from '@douyinfe/semi-ui';
+import { BsUpload, BsDownload } from 'react-icons/bs';
+import { IconWrench, IconMail, IconUserCardPhone, IconDelete } from '@douyinfe/semi-icons';
+import { Select, TextArea, Input, Button } from '@douyinfe/semi-ui';
 
 import styles from './RepairPopup.module.css';
 
@@ -168,6 +169,32 @@ const RepairPopup = (props) => {
                         </div>
                     </div>
                 </form>
+                <div className={styles.btnContainer}>
+                    <Button 
+                        theme="borderless"
+                        className={styles.btn}
+                        style={{ color: "var(--error-color-1)" }}
+                        icon={<IconDelete />}
+                    >
+                        Delete
+                    </Button>
+                    <Button
+                        theme="borderless"
+                        className={styles.btn}
+                        style={{ color: "var(--theme-color-1)" }}
+                        icon={<BsUpload />}
+                    >
+                        Upload Report
+                    </Button>
+                    <Button
+                        theme="borderless"
+                        className={styles.btn}
+                        style={{ color: "var(--text-color-2)" }}
+                        icon={<BsUpload />}
+                    >
+                        Download Report
+                    </Button>
+                </div>
             </div>
         </div>
     );

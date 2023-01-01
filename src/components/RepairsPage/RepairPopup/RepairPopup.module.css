@@ -27,13 +27,20 @@
 
 .popupBody {
     background-color: var(--bg-color-2);
-    width: 1000px;
-    padding: 44px 400px;
+    height: calc(100vh - 200px);
+    margin: 45px;
+    padding: 44px 200px;
     border-radius: 8px;
     display: flex;
+    overflow: scroll;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
+}
+
+.popupBody::-webkit-scrollbar {
+    width: 0;
+    display: none;
 }
 
 .title {
@@ -138,4 +145,16 @@
     font-size: 16px;
     background: var(--theme-color-1);
     cursor: pointer;
+}
+
+.btnContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    width: 100%;
 }
