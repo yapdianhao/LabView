@@ -1,7 +1,9 @@
 import * as React from 'react';
+import axios from 'axios';
 import { IoCloseSharp } from 'react-icons/io5';
+import { GET_ALL_VENDORS } from '../../../api';
 import { IconWrench, IconMail, IconUserCardPhone } from '@douyinfe/semi-icons';
-import { Select } from '@douyinfe/semi-ui';
+import { Select, TextArea, Input } from '@douyinfe/semi-ui';
 
 import styles from './RepairPopup.module.css';
 
@@ -10,6 +12,7 @@ const RepairPopup = (props) => {
     const { repairToEdit, onClose } = props;
     const [isOpen, setIsOpen] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
+    const [vendors, setVendors] = React.useState([]);
 
     console.log(repairToEdit);
 
@@ -18,12 +21,21 @@ const RepairPopup = (props) => {
             try {
                 setLoading(true);
                 // testing loading component
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                const vendorsFromAPI = await axios.get(GET_ALL_VENDORS);
+                if (vendorsFromAPI.status === 200) {
+                    setVendors(vendorsFromAPI.data.map(vendor => {
+                        return { 
+                            label: vendor.name,
+                            value: vendor.id
+                        }
+                    }));
+                }
             }
             catch (e) {
                 console.log(e);
             }
             finally {
+                console.log(vendors);
                 setLoading(false);
             }
         }
@@ -89,13 +101,73 @@ const RepairPopup = (props) => {
                 </div>
                 <div className={styles.selectSection}>
                     <div className={styles.vendorSelectContainer}>
-                        <div className={styles.fieldName}>Vendor:</div>
+                        <div className={styles.vendorSelectFieldName}>Vendor</div>
                         <Select
+                            defaultValue={repairToEdit.repairVendor}
                             loading={loading}
                             onDropdownVisibleChange={handleToggleDropDown}
+                            optionList={vendors}
                         />
                     </div>
                 </div>
+                <form>
+                    <div className={styles.problemSection}>
+                        <div className={styles.vendorSelectContainer}>
+                            <div className={styles.vendorSelectFieldName}>Problem</div>
+                            <TextArea
+                                name="problem"
+                                value={repairToEdit.problem} 
+                            />
+                        </div>
+                        <div className={styles.vendorSelectContainer}>
+                            <div className={styles.vendorSelectFieldName}>Solution</div>
+                            <TextArea
+                                name="solution"
+                                value={repairToEdit.solution}
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.problemSection}>
+                        <div className={styles.shortInput}>
+                            <div className={styles.vendorSelectFieldName}>Report Date</div>
+                            <Input type="date" />
+                        </div>
+                        <div className={styles.shortInput}>
+                            <div className={styles.vendorSelectFieldName}>Time</div>
+                            <Input type="time" />
+                        </div>
+                        <div className={styles.shortInput}>
+                            <div className={styles.vendorSelectFieldName}>Recover Date</div>
+                            <Input type="date" />
+                        </div>
+                        <div className={styles.shortInput}>
+                            <div className={styles.vendorSelectFieldName}>
+                                Time
+                            </div>
+                            <Input type="time" />
+                        </div>
+                    </div>
+                    <div className={styles.problemSection}>
+                        <div className={styles.shortInput}>
+                            <div className={styles.vendorSelectFieldName}>Parts Cost ($)</div>
+                            <Input type="number" />
+                        </div>
+                        <div className={styles.shortInput}>
+                            <div className={styles.vendorSelectFieldName}>Labor Cost ($)</div>
+                            <Input type="number" />
+                        </div>
+                        <div className={styles.shortInput}>
+                            <div className={styles.vendorSelectFieldName}>First Visit Complete</div>
+                            <Select>
+                                <Select.Option value="1">Yes</Select.Option>
+                                <Select.Option value="0">No</Select.Option>
+                            </Select>
+                        </div>
+                        <div className={styles.shortInput}>
+                            <button className={styles.submitBtn}>Save</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     );

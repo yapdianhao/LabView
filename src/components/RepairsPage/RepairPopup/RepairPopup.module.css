@@ -101,9 +101,41 @@
     width: 100%;
 }
 
+.vendorSelectFieldName {
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.problemSection {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
 .vendorSelectContainer {
     width: 50%;
     display: flex;
     flex-direction: column;
     font-size: 16px;
+    margin: 10px 0;
+}
+
+.shortInput {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.submitBtn {
+    height: 50%;
+    outline: none;
+    border: none;
+    color: var(--text-color-1);
+    font-size: 16px;
+    background: var(--theme-color-1);
+    cursor: pointer;
 }
