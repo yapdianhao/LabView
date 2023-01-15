@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 import { IoCloseSharp } from 'react-icons/io5';
 import { GET_ALL_VENDORS } from '../../../api';
+import { transformDateToStringYYMMDD, transformDateToStringHHMM } from '../../../utils';
 import { BsUpload, BsDownload } from 'react-icons/bs';
 import { IconWrench, IconMail, IconUserCardPhone, IconDelete } from '@douyinfe/semi-icons';
 import { Select, TextArea, Input, Button } from '@douyinfe/semi-ui';
@@ -16,6 +17,7 @@ const RepairPopup = (props) => {
     const [vendors, setVendors] = React.useState([]);
 
     console.log(repairToEdit);
+    console.log(transformDateToStringHHMM(repairToEdit.originalRecovered), transformDateToStringHHMM(repairToEdit.originalReported));
 
     const handleToggleDropDown = async () => {
         if (!isOpen) { // open, just close no need call API
@@ -131,37 +133,55 @@ const RepairPopup = (props) => {
                     <div className={styles.problemSection}>
                         <div className={styles.shortInput}>
                             <div className={styles.vendorSelectFieldName}>Report Date</div>
-                            <Input type="date" />
+                            <Input 
+                                type="date"
+                                value={transformDateToStringYYMMDD(repairToEdit.originalReported)}
+                            />
                         </div>
                         <div className={styles.shortInput}>
                             <div className={styles.vendorSelectFieldName}>Time</div>
-                            <Input type="time" />
+                            <Input
+                                type="time"
+                                value={transformDateToStringHHMM(repairToEdit.originalReported)}
+                            />
                         </div>
                         <div className={styles.shortInput}>
                             <div className={styles.vendorSelectFieldName}>Recover Date</div>
-                            <Input type="date" />
+                            <Input
+                                type="date" 
+                                value={transformDateToStringYYMMDD(repairToEdit.originalRecovered)}
+                            />
                         </div>
                         <div className={styles.shortInput}>
                             <div className={styles.vendorSelectFieldName}>
                                 Time
                             </div>
-                            <Input type="time" />
+                            <Input
+                                type="time"
+                                value={transformDateToStringHHMM(repairToEdit.originalRecovered)}
+                            />
                         </div>
                     </div>
                     <div className={styles.problemSection}>
                         <div className={styles.shortInput}>
                             <div className={styles.vendorSelectFieldName}>Parts Cost ($)</div>
-                            <Input type="number" />
+                            <Input
+                                type="number"
+                                value={repairToEdit.partCost}
+                            />
                         </div>
                         <div className={styles.shortInput}>
                             <div className={styles.vendorSelectFieldName}>Labor Cost ($)</div>
-                            <Input type="number" />
+                            <Input
+                                type="number"
+                                value={repairToEdit.laborCost}
+                            />
                         </div>
                         <div className={styles.shortInput}>
                             <div className={styles.vendorSelectFieldName}>First Visit Complete</div>
-                            <Select>
-                                <Select.Option value="1">Yes</Select.Option>
-                                <Select.Option value="0">No</Select.Option>
+                            <Select value={repairToEdit.firstVisitComplete}>
+                                <Select.Option value={1}>Yes</Select.Option>
+                                <Select.Option value={0}>No</Select.Option>
                             </Select>
                         </div>
                         <div className={styles.shortInput}>
@@ -190,7 +210,7 @@ const RepairPopup = (props) => {
                         theme="borderless"
                         className={styles.btn}
                         style={{ color: "var(--text-color-2)" }}
-                        icon={<BsUpload />}
+                        icon={<BsDownload />}
                     >
                         Download Report
                     </Button>

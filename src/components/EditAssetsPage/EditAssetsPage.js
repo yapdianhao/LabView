@@ -6,7 +6,7 @@ import Utilization from './Utilization/Utilization';
 import Repair from './Repair/Repair';
 import Consumables from './Consumables/Consumables';
 import AssetInformation from './AssetInformation/AssetInformation';
-import { GET_AN_ASSET, GET_ALL_VENDORS, GET_ALL_FREQUENCIES, EDIT_ASSSET } from '../../api';
+import { GET_AN_ASSET, GET_ALL_VENDORS, GET_ALL_FREQUENCIES, EDIT_ASSET } from '../../api';
 import { IoCloseSharp } from 'react-icons/io5';
 import { BsDownload } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
@@ -56,7 +56,7 @@ const EditAssetsPage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const assetFromAPI = await axios.post(EDIT_ASSSET, {
+        const assetFromAPI = await axios.post(EDIT_ASSET, {
             asset: asset
         });
         console.log(assetFromAPI);

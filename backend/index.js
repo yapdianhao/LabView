@@ -139,7 +139,6 @@ app.get('/api/get-utils', (req, res) => {
 app.post('/api/edit-asset', (req, res) => {
     const { body } = req;
     const { asset } = body;
-    console.log(asset);
     db.query('UPDATE assets SET \
               brand = ?, \
               model = ?, \
@@ -202,6 +201,12 @@ app.post('/api/edit-asset', (req, res) => {
                 else console.log(result);
             })
 })
+
+app.post('/api/edit-repair', (req, res) => {
+    const { body } = req;
+    const { repair } = body;
+    console.log(repair);
+});
 
 
 app.listen(port, () => {

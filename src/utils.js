@@ -52,13 +52,15 @@ export const transformFullRepair = (repair) => {
         serial: repair.serial,
         problem: repair.problem,
         solution: repair.solution,
+        originalReported: transformDateTime(repair.reported_on),
+        originalRecovered: transformDateTime(repair.recovered_on),
         reported: transformDateToStringDDMMYYHHMM(transformDateTime(repair.reported_on)),
         recovered: transformDateToStringDDMMYYHHMM(transformDateTime(repair.recovered_on)),
         diff: repair.diff,
         repairVendor: repair.vendor_name,
         repairVendorPhone: repair.vendor_phone,
         repairVendorEmail: repair.vendor_email,
-        firstVisitComplete: repair.first_visit_complete === 1,
+        firstVisitComplete: repair.first_visit_complete,
         laborEntitled: repair.labour_entitlement,
         partsEntitled: repair.parts_entitlement,
         partCost: repair.part_cost,
@@ -74,7 +76,14 @@ export const transformDateToStringYYMMDD = (date) => {
     const month = realMonth < 10 ? '0' + realMonth : '' + realMonth;
     const day = date.getDate() < 10 ? '0' + date.getDate() : '' + date.getDate();
     return `${year}-${month}-${day}`;
-  }
+}
+
+export const transformDateToStringHHMM = (date) => {
+    if (date === null || !date) return '';
+    const hour = date.getHours() < 10 ? '0' + date.getHours() : '' + date.getHours();
+    const minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : '' + date.getMinutes();
+    return `${hour}:${minute}`;
+}
 
 export const transformDateToStringDDMMYYHHMM = (date) => {
     if (!date) return undefined;
