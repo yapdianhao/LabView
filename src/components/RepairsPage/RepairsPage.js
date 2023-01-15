@@ -99,7 +99,7 @@ const RepairsPage = () => {
                 }}
             />
             {shouldShowEditModal && (
-                <RepairPopup repairToEdit={editingRepair} onClose={handleCloseModal} />
+                <RepairPopup repair={editingRepair} onClose={handleCloseModal} />
             )}
         </div>
     )
