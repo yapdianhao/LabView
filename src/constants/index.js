@@ -1,366 +1,451 @@
 import { transformDateToStringDDMMYYHHMM } from "../utils";
 
 export const MONTHS = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'April',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'September',
-    'October',
-    'Nov',
-    'Dec'
+  "Jan",
+  "Feb",
+  "Mar",
+  "April",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "September",
+  "October",
+  "Nov",
+  "Dec",
 ];
 
 export const TABLE_SIZE_LIST = [
-    { value: 6, label: 6},
-    { value: 12, label: 12 },
-    { value: 24, label: 24 },
-    { value: 48, label: 48 },
-    { value: 96, label: 96 }
-]
-
-export const navContents = [
-    'Overview',
-    'Utilization',
-    'Repair',
-    'PM/Cal/OQ',
-    'Consumables',
-    'Schedule',
+  { value: 6, label: 6 },
+  { value: 12, label: 12 },
+  { value: 24, label: 24 },
+  { value: 48, label: 48 },
+  { value: 96, label: 96 },
 ];
 
-export const assetSchema = [{
-    title: 'Asset ID',
-    dataIndex: 'id',
+export const navContents = [
+  "Overview",
+  "Utilization",
+  "Repair",
+  "PM/Cal/OQ",
+  "Consumables",
+  "Schedule",
+];
+
+export const assetSchema = [
+  {
+    title: "Asset ID",
+    dataIndex: "id",
     render: (text) => text,
-}, {
-    title: 'Brand', 
-    dataIndex: 'brand',
+  },
+  {
+    title: "Brand",
+    dataIndex: "brand",
     render: (text) => text,
-}, {
-    title: 'Model', 
-    dataIndex: 'model',
+  },
+  {
+    title: "Model",
+    dataIndex: "model",
     render: (text) => text,
-}, {
-    title: 'Serial', 
-    dataIndex: 'serial',
+  },
+  {
+    title: "Serial",
+    dataIndex: "serial",
     render: (text) => text,
-}, {
-    title: 'Age', 
-    dataIndex: 'age',
+  },
+  {
+    title: "Age",
+    dataIndex: "age",
     render: (text) => text,
-}, {
-    title: 'Activation Date', 
-    dataIndex: 'activation_date',
+  },
+  {
+    title: "Activation Date",
+    dataIndex: "activation_date",
     render: (date) => new Date(date).toLocaleDateString(),
-}, {
-    title: 'Level', 
-    dataIndex: 'asset_level',
+  },
+  {
+    title: "Level",
+    dataIndex: "asset_level",
     render: (text) => text,
-}, {
-    title: 'PM/Cal Vendor', 
-    dataIndex: 'pm_vendor',
+  },
+  {
+    title: "PM/Cal Vendor",
+    dataIndex: "pm_vendor",
     render: (text) => text,
-}, {
-    title: 'Repair Vendor', 
-    dataIndex: 'calc_vendor',
+  },
+  {
+    title: "Repair Vendor",
+    dataIndex: "calc_vendor",
     render: (text) => text,
-}, {
-    title: 'Instrument Description', 
-    dataIndex: 'instrument_description',
+  },
+  {
+    title: "Instrument Description",
+    dataIndex: "instrument_description",
     render: (text) => text,
-}, {
-    title: 'USP1058', 
-    dataIndex: 'usp1058',
+  },
+  {
+    title: "USP1058",
+    dataIndex: "usp1058",
     render: (text) => text,
-}];
+  },
+];
 
-export const REPAIR_SCHEMA = [{
-    title: 'Asset ID',
-    dataIndex: 'assetId',
+export const REPAIR_SCHEMA = [
+  {
+    title: "Asset ID",
+    dataIndex: "assetId",
     render: (text) => text,
-}, {
-    title: 'Brand',
-    dataIndex: 'brand',
+  },
+  {
+    title: "Brand",
+    dataIndex: "brand",
     render: (text) => text,
-}, {
-    title: 'Model',
-    dataIndex: 'model',
+  },
+  {
+    title: "Model",
+    dataIndex: "model",
     render: (text) => text,
-}, {
-    title: 'Serial',
-    dataIndex: 'serial',
+  },
+  {
+    title: "Serial",
+    dataIndex: "serial",
     render: (text) => text,
-}, {
-    title: 'Problem',
-    dataIndex: 'problem',
+  },
+  {
+    title: "Problem",
+    dataIndex: "problem",
     render: (text) => text,
-}, {
-    title: 'Solution',
-    dataIndex: 'solution',
+  },
+  {
+    title: "Solution",
+    dataIndex: "solution",
     render: (text) => text,
-}, {
-    title: 'Reported on',
-    dataIndex: 'reported',
+  },
+  {
+    title: "Reported on",
+    dataIndex: "reported",
     render: (text) => text,
-}, {
-    title: 'Recovered on',
-    dataIndex: 'recovered',
+  },
+  {
+    title: "Recovered on",
+    dataIndex: "recovered",
     render: (text) => text,
-}, {
-    title: 'Down time',
-    dataIndex: 'diff',
+  },
+  {
+    title: "Down time",
+    dataIndex: "diff",
     render: (text) => text,
-}, {
-    title: 'Repair Vendor',
-    dataIndex: 'repairVendor',
+  },
+  {
+    title: "Repair Vendor",
+    dataIndex: "repairVendor",
     render: (text) => text,
-}, {
-    title: '1st Visit Complete',
-    dataIndex: 'firstVisitComplete',
+  },
+  {
+    title: "1st Visit Complete",
+    dataIndex: "firstVisitComplete",
     render: (firstVisitComplete) => {
-        return firstVisitComplete ? 'Yes' : 'No';
+      return firstVisitComplete ? "Yes" : "No";
     },
-}, {
-    title: 'Cost on parts ($)',
-    dataIndex: 'partCost',
+  },
+  {
+    title: "Cost on parts ($)",
+    dataIndex: "partCost",
     render: (text) => text,
-}, {
-    title: 'Cost on labor ($)',
-    dataIndex: 'laborCost',
+  },
+  {
+    title: "Cost on labor ($)",
+    dataIndex: "laborCost",
     render: (text) => text,
-}, {
-    title: 'Total Cost ($)',
-    dataIndex: 'totalCost',
+  },
+  {
+    title: "Total Cost ($)",
+    dataIndex: "totalCost",
     render: (text) => text,
-}];
+  },
+];
 
-export const utilSchema = [{
-    title: 'Asset ID',
-    dataIndex: '',
+export const UTIL_SCHEMA = [
+  {
+    title: "Asset ID",
+    dataIndex: "assetId",
     render: (text) => text,
-}, {
-    title: 'Brand',
-    dataIndex: '',
+  },
+  {
+    title: "Brand",
+    dataIndex: "brand",
     render: (text) => text,
-}, {
-    title: 'Model',
-    dataIndex: '',
+  },
+  {
+    title: "Model",
+    dataIndex: "model",
     render: (text) => text,
-}, {
-    title: 'Serial',
-    dataIndex: '',
+  },
+  {
+    title: "Serial",
+    dataIndex: "serial",
     render: (text) => text,
-}, {
-    title: 'From',
-    dataIndex: '',
+  },
+  {
+    title: "From",
+    dataIndex: "usedFrom",
     render: (text) => text,
-}, {
-    title: 'To',
-    dataIndex: '',
+  },
+  {
+    title: "To",
+    dataIndex: "usedTo",
     render: (text) => text,
-}, {
-    title: 'Total hours',
-    dataIndex: '',
+  },
+  {
+    title: "Total hours",
+    dataIndex: "diff",
     render: (text) => text,
-}, {
-    title: 'Remarks',
-    dataIndex: '',
-    render: (text) => text,
-}];
+  },
+  // {
+  //     title: 'Remarks',
+  //     dataIndex: '',
+  //     render: (text) => text,
+  // }
+];
 
-export const pmCalOqSchema = [{
-    title: 'Asset ID',
-    dataIndex: '',
+export const pmCalOqSchema = [
+  {
+    title: "Asset ID",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Brand',
-    dataIndex: '',
+  },
+  {
+    title: "Brand",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Model',
-    dataIndex: '',
+  },
+  {
+    title: "Model",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Serial',
-    dataIndex: '',
+  },
+  {
+    title: "Serial",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Type',
-    dataIndex: '',
+  },
+  {
+    title: "Type",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Routine',
-    dataIndex: '',
+  },
+  {
+    title: "Routine",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Remarks',
-    dataIndex: '',
+  },
+  {
+    title: "Remarks",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Scheduled',
-    dataIndex: '',
+  },
+  {
+    title: "Scheduled",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Completed',
-    dataIndex: '',
+  },
+  {
+    title: "Completed",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Vendor',
-    dataIndex: '',
+  },
+  {
+    title: "Vendor",
+    dataIndex: "",
     render: (text) => text,
-}];
+  },
+];
 
-export const consumableSchema = [{
-    title: 'Asset ID',
-    dataIndex: '',
+export const consumableSchema = [
+  {
+    title: "Asset ID",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Brand',
-    dataIndex: '',
+  },
+  {
+    title: "Brand",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Model',
-    dataIndex: '',
+  },
+  {
+    title: "Model",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Serial',
-    dataIndex: '',
+  },
+  {
+    title: "Serial",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Description',
-    dataIndex: '',
+  },
+  {
+    title: "Description",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Part No.',
-    dataIndex: '',
+  },
+  {
+    title: "Part No.",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Cost',
-    dataIndex: '',
+  },
+  {
+    title: "Cost",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Consumed on',
-    dataIndex: '',
+  },
+  {
+    title: "Consumed on",
+    dataIndex: "",
     render: (text) => text,
-}];
+  },
+];
 
-export const assetRepairSchema = [{
-    title: 'Problem',
-    dataIndex: 'problem',
+export const assetRepairSchema = [
+  {
+    title: "Problem",
+    dataIndex: "problem",
     render: (text) => text,
-}, {
-    title: 'Solution',
-    dataIndex: 'solution',
+  },
+  {
+    title: "Solution",
+    dataIndex: "solution",
     render: (text) => text,
-}, {
-    title: 'Cost',
-    dataIndex: 'part_cost',
+  },
+  {
+    title: "Cost",
+    dataIndex: "part_cost",
     render: (text) => text,
-}, {
-    title: '1st Visit Complete',
-    dataIndex: 'first_visit_complete',
+  },
+  {
+    title: "1st Visit Complete",
+    dataIndex: "first_visit_complete",
     render: (text) => text,
-}, {
-    title: 'Reported on',
-    dataIndex: 'reported_on',
+  },
+  {
+    title: "Reported on",
+    dataIndex: "reported_on",
     render: (text) => text,
-}, {
-    title: 'Recovered on',
-    dataIndex: 'recovered_on',
+  },
+  {
+    title: "Recovered on",
+    dataIndex: "recovered_on",
     render: (text) => text,
-}];
+  },
+];
 
-export const assetPmCalOqSchema = [{
-    title: 'Type',
-    dataIndex: 'type',
+export const assetPmCalOqSchema = [
+  {
+    title: "Type",
+    dataIndex: "type",
     render: (text) => text,
-}, {
-    title: 'Routine',
-    dataIndex: '',
+  },
+  {
+    title: "Routine",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'Remarks',
-    dataIndex: '',
+  },
+  {
+    title: "Remarks",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'From',
-    dataIndex: '',
+  },
+  {
+    title: "From",
+    dataIndex: "",
     render: (text) => text,
-}, {
-    title: 'To',
-    dataIndex: '',
+  },
+  {
+    title: "To",
+    dataIndex: "",
     render: (text) => text,
-}];
+  },
+];
 
-export const assetConsumableSchema = [{
-    title: 'Description',
-    dataIndex: '',
-    render: (text) => text
-}, {
-    title: 'Part No',
-    dataIndex: '',
-    render: (text) => text
-}, {
-    title: 'Cost ($)',
-    dataIndex: '',
-    render: (text) => text
-}, {
-    title: 'Consumed on',
-    dataIndex: '',
-    render: (text) => text
-}];
+export const assetConsumableSchema = [
+  {
+    title: "Description",
+    dataIndex: "",
+    render: (text) => text,
+  },
+  {
+    title: "Part No",
+    dataIndex: "",
+    render: (text) => text,
+  },
+  {
+    title: "Cost ($)",
+    dataIndex: "",
+    render: (text) => text,
+  },
+  {
+    title: "Consumed on",
+    dataIndex: "",
+    render: (text) => text,
+  },
+];
 
-export const EDIT_UTIL_SCHEMA = [{
-    title: 'From',
-    dataIndex: 'used_from',
+export const EDIT_UTIL_SCHEMA = [
+  {
+    title: "From",
+    dataIndex: "used_from",
     render: (date) => transformDateToStringDDMMYYHHMM(date),
-}, {
-    title: 'To',
-    dataIndex: 'used_to',
+  },
+  {
+    title: "To",
+    dataIndex: "used_to",
     render: (date) => transformDateToStringDDMMYYHHMM(date),
-}, {
-    title: 'Duration',
-    dataIndex: 'diff',
+  },
+  {
+    title: "Duration",
+    dataIndex: "diff",
     render: (text) => text,
-}];
+  },
+];
 
-export const EDIT_REPAIR_SCHEMA = [{
-    title: 'Problem',
-    dataIndex: 'problem',
-    render: (text) => text
-}, {
-    title: 'Solution',
-    dataIndex: 'solution',
+export const EDIT_REPAIR_SCHEMA = [
+  {
+    title: "Problem",
+    dataIndex: "problem",
     render: (text) => text,
-}, {
-    title: 'Cost ($)',
-    dataIndex: 'costs',
+  },
+  {
+    title: "Solution",
+    dataIndex: "solution",
+    render: (text) => text,
+  },
+  {
+    title: "Cost ($)",
+    dataIndex: "costs",
     render: (cost) => {
-        const partsCost = cost.part;
-        const laborCost = cost.labor;
-        return (
-            <>
-                <div>{partsCost} (parts)</div>
-                <div>{laborCost} (labor)</div>
-            </>
-        );
-    }
-}, {
-    title: '1st Visit Complete',
-    dataIndex: 'firstVisitComplete',
+      const partsCost = cost.part;
+      const laborCost = cost.labor;
+      return (
+        <>
+          <div>{partsCost} (parts)</div>
+          <div>{laborCost} (labor)</div>
+        </>
+      );
+    },
+  },
+  {
+    title: "1st Visit Complete",
+    dataIndex: "firstVisitComplete",
     render: (firstVisitComplete) => {
-        return firstVisitComplete ? 'Yes' : 'No';
-    }
-}, {
-    title: 'Reported',
-    dataIndex: 'reported',
+      return firstVisitComplete ? "Yes" : "No";
+    },
+  },
+  {
+    title: "Reported",
+    dataIndex: "reported",
     render: (text) => text,
-}, {
-    title: 'Recovered',
-    dataIndex: 'recovered',
+  },
+  {
+    title: "Recovered",
+    dataIndex: "recovered",
     render: (text) => text,
-}]
+  },
+];

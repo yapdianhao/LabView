@@ -1,4 +1,7 @@
-const domain = process.env.NODE_ENV === 'production' ? 'https://backend-equ57uepxq-as.a.run.app/' : 'http://localhost:5000/';
+const domain =
+  process.env.NODE_ENV === "production"
+    ? "https://backend-equ57uepxq-as.a.run.app/"
+    : "http://localhost:5000/";
 
 export const POST_USER_DETAIL = `${domain}api/users`;
 
@@ -20,4 +23,6 @@ export const GET_REPAIRS_BY_ASSET = `${domain}api/get-repair`;
 
 export const GET_ALL_REPAIRS = `${domain}api/repairs`;
 
-export const EDIT_REPAIR = `${domain}/api/edit-repair`;
+export const EDIT_REPAIR = `${domain}api/edit-repair`;
+
+export const GET_ALL_UTILS = `${domain}api/utils`;

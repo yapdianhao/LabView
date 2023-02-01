@@ -148,21 +148,19 @@ const RepairPopup = (props) => {
             <div className={styles.vendorSelectFieldName}>Report Date</div>
             <Input
               type="date"
-              validateStatus={showReportedErr ? 'error' : 'default'}
+              validateStatus={showReportedErr ? "error" : "default"}
               value={transformDateToStringYYMMDD(repairToEdit.originalReported)}
               onChange={(value) => {
                 const newReported = new Date(
-                    `${value} ${transformDateToStringHHMM(
-                      repairToEdit.originalReported
-                    )}`
-                  );
+                  `${value} ${transformDateToStringHHMM(
+                    repairToEdit.originalReported
+                  )}`
+                );
                 setRepair({
                   ...repairToEdit,
                   originalReported: newReported,
                 });
-                if (
-                  newReported > repairToEdit.originalRecovered
-                ) {
+                if (newReported > repairToEdit.originalRecovered) {
                   setShowReportedErr(true);
                 } else {
                   setShowReportedErr(false);
@@ -174,21 +172,19 @@ const RepairPopup = (props) => {
             <div className={styles.vendorSelectFieldName}>Time</div>
             <Input
               type="time"
-              validateStatus={showReportedErr ? 'error' : 'default'}
+              validateStatus={showReportedErr ? "error" : "default"}
               value={transformDateToStringHHMM(repairToEdit.originalReported)}
               onChange={(value) => {
                 const newReported = new Date(
-                    `${transformDateToStringYYMMDD(
-                      repairToEdit.originalReported
-                    )} ${value}`
-                  );
+                  `${transformDateToStringYYMMDD(
+                    repairToEdit.originalReported
+                  )} ${value}`
+                );
                 setRepair({
                   ...repairToEdit,
                   originalReported: newReported,
                 });
-                if (
-                  newReported > repairToEdit.originalRecovered
-                ) {
+                if (newReported > repairToEdit.originalRecovered) {
                   setShowReportedErr(true);
                 } else {
                   setShowReportedErr(false);

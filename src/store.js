@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from './slices/auth/authSlice';
-import pageIndexReducer from './slices/pageIndex/pageIndexSlice';
+import authReducer from "./slices/auth/authSlice";
+import pageIndexReducer from "./slices/pageIndex/pageIndexSlice";
 
 export const store = configureStore({
-    reducer: {
-        auth: authReducer,
-        pageIndex: pageIndexReducer,
-    }
+  reducer: {
+    auth: authReducer,
+    pageIndex: pageIndexReducer,
+  },
 });
 
 store.subscribe(() => {
-    console.log(store.getState());
-})
+  console.log(store.getState());
+});

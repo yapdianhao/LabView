@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
 const AuditPage = () => {
-    return <div>Audit Page</div>
-}
+  return <div>Audit Page</div>;
+};
 
 export default AuditPage;
