@@ -1,10 +1,16 @@
 import * as React from "react";
 import axios from "axios";
 import { Input, Switch, Select, Table, Button } from "@douyinfe/semi-ui";
-import { IconSearch } from "@douyinfe/semi-icons";
+import {
+  IconSearch,
+  IconDelete,
+  IconStop,
+  IconPlay,
+} from "@douyinfe/semi-icons";
 import { TABLE_SIZE_LIST, UTIL_SCHEMA } from "../../constants";
 import { GET_ALL_UTILS } from "../../api";
 import { transformFullUtil } from "../../utils";
+import { RiFileExcel2Fill } from "react-icons/ri";
 import SecondaryNavBar from "../SecondaryNavBar/SecondaryNavBar";
 import NavBar from "../NavBar/NavBar";
 
@@ -20,9 +26,7 @@ const UtilizationsPage = () => {
   const getUtils = async () => {
     const utilsFromAPI = await axios.get(GET_ALL_UTILS);
     if (utilsFromAPI.status === 200) {
-      setUtils(
-        utilsFromAPI.data.map((util) => transformFullUtil(util))
-      )
+      setUtils(utilsFromAPI.data.map((util) => transformFullUtil(util)));
     }
     console.log(utilsFromAPI);
   };
@@ -83,16 +87,46 @@ const UtilizationsPage = () => {
           pagination={{
             formatPageText: false,
             className: styles.utilsTablePagination,
-            pageSize: tableSize
+            pageSize: tableSize,
           }}
         />
         {/* buttons area */}
         <div className={styles.btnArea}>
-          <Button className={`${styles.btn}`}>Start New</Button>
-          <Button className={`${styles.btn}`}>Stop</Button>
-          <Button className={`${styles.btn}`}>Export</Button>
-          <Button className={`${styles.btn}`}>Export All</Button>
-          <Button className={`${styles.btn}`}>Delete</Button>
+          <Button className={`${styles.btn}`} theme="solid" icon={<IconPlay />}>
+            Start New
+          </Button>
+          <Button
+            className={`${styles.btn}`}
+            theme="solid"
+            disabled
+            icon={<IconStop />}
+          >
+            Stop
+          </Button>
+          <Button
+            className={`${styles.btn}`}
+            theme="solid"
+            disabled
+            icon={<RiFileExcel2Fill />}
+          >
+            Export
+          </Button>
+          <Button
+            className={`${styles.btn}`}
+            theme="solid"
+            icon={<RiFileExcel2Fill />}
+          >
+            Export All
+          </Button>
+          <Button
+            className={`${styles.btn}`}
+            type="danger"
+            theme="solid"
+            disabled
+            icon={<IconDelete />}
+          >
+            Delete
+          </Button>
         </div>
       </div>
     </div>
