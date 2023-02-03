@@ -99,6 +99,7 @@ const RepairsPage = () => {
             onClick: (event) => showPopup(event, repair),
           };
         }}
+        footer={<div>Total: {repairs.length} result(s)</div>}
       />
       {shouldShowEditModal && (
         <RepairPopup repair={editingRepair} onClose={handleCloseModal} />

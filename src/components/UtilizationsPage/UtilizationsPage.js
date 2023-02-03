@@ -89,6 +89,7 @@ const UtilizationsPage = () => {
             className: styles.utilsTablePagination,
             pageSize: tableSize,
           }}
+          footer={<div>Total: {utils.length} result(s)</div>}
         />
         {/* buttons area */}
         <div className={styles.btnArea}>

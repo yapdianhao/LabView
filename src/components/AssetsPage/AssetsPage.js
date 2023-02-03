@@ -84,6 +84,7 @@ const AssetsPage = () => {
             },
           };
         }}
+        footer={<div>Total: {assets.length} result(s)</div>}
       />
     </div>
   );
