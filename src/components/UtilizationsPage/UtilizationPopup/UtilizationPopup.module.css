@@ -1,0 +1,93 @@
+.editingModal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color-3);
+}
+
+.modalCloseBtn {
+  font-size: 20px;
+  right: 40px;
+  top: 20px;
+  position: absolute;
+  color: var(--text-color-1);
+  cursor: pointer;
+}
+
+.popupBody {
+  background-color: var(--bg-color-2);
+  padding: 64px 128px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: flex-start;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 32px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.titleIcon {
+  font-size: 32px;
+  margin-right: 5px;
+}
+
+.subTitle {
+  font-size: 18px;
+  margin-bottom: 16px;  
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.fieldBodyContainer {
+  width: 100%;
+  display: flex;
+  font-size: 16px;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.fieldCol {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.fieldName {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.fieldContainer {
+  display: flex;
+  font-size: 16px;
+}
+
+.btnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.btn {
+  width: 100%;
+  height: 48px;
+}

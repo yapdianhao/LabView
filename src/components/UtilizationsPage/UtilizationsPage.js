@@ -11,6 +11,7 @@ import { TABLE_SIZE_LIST, UTIL_SCHEMA } from "../../constants";
 import { GET_ALL_UTILS } from "../../api";
 import { transformFullUtil } from "../../utils";
 import { RiFileExcel2Fill } from "react-icons/ri";
+import UtilizationPopup from "./UtilizationPopup/UtilizationPopup";
 import SecondaryNavBar from "../SecondaryNavBar/SecondaryNavBar";
 import NavBar from "../NavBar/NavBar";
 
@@ -44,93 +45,112 @@ const UtilizationsPage = () => {
     setShouldShowEditModal(false);
   };
 
-  const showPopup = () => {};
+  const showPopup = (event, util) => {
+    if (event.detail === 2) {
+      setShouldShowEditModal(true);
+      setEditingUtil(util);
+    }
+  };
 
   React.useEffect(() => {
     getUtils();
   }, []);
 
   return (
-    <div className={styles.pageContainer}>
-      <NavBar />
-      <SecondaryNavBar />
-      <div>
-        <div className={styles.header}>
-          <Input
-            className={styles.searchBar}
-            suffix={<IconSearch />}
-            showClear
-          ></Input>
-          <div className={styles.switchWrapper}>
-            <Switch
-              checked={showHistory}
-              onChange={handleToggleSwitch}
-              className={styles.switch}
-            />
-            Show history
+    <>
+      <div className={styles.pageContainer}>
+        <NavBar />
+        <SecondaryNavBar />
+        <div>
+          <div className={styles.header}>
+            <Input
+              className={styles.searchBar}
+              suffix={<IconSearch />}
+              showClear
+            ></Input>
+            <div className={styles.switchWrapper}>
+              <Switch
+                checked={showHistory}
+                onChange={handleToggleSwitch}
+                className={styles.switch}
+              />
+              Show history
+            </div>
+            <div className={styles.rowCountSelectorWrapper}>
+              Rows:
+              <Select
+                optionList={TABLE_SIZE_LIST}
+                defaultValue={tableSize}
+                value={tableSize}
+                onChange={handleChangeTableSize}
+                className={styles.rowCountSelector}
+              ></Select>
+            </div>
           </div>
-          <div className={styles.rowCountSelectorWrapper}>
-            Rows:
-            <Select
-              optionList={TABLE_SIZE_LIST}
-              defaultValue={tableSize}
-              value={tableSize}
-              onChange={handleChangeTableSize}
-              className={styles.rowCountSelector}
-            ></Select>
+          <Table
+            columns={UTIL_SCHEMA}
+            dataSource={utils}
+            className={styles.utilsTable}
+            pagination={{
+              formatPageText: false,
+              className: styles.utilsTablePagination,
+              pageSize: tableSize,
+            }}
+            onRow={(util) => {
+              return {
+                onClick: (event) => showPopup(event, util),
+              };
+            }}
+            footer={<div>Total: {utils.length} result(s)</div>}
+          />
+          {/* buttons area */}
+          <div className={styles.btnArea}>
+            <Button
+              className={`${styles.btn}`}
+              theme="solid"
+              icon={<IconPlay />}
+            >
+              Start New
+            </Button>
+            <Button
+              className={`${styles.btn}`}
+              theme="solid"
+              disabled
+              icon={<IconStop />}
+            >
+              Stop
+            </Button>
+            <Button
+              className={`${styles.btn}`}
+              theme="solid"
+              disabled
+              icon={<RiFileExcel2Fill />}
+            >
+              Export
+            </Button>
+            <Button
+              className={`${styles.btn}`}
+              theme="solid"
+              icon={<RiFileExcel2Fill />}
+            >
+              Export All
+            </Button>
+            <Button
+              className={`${styles.btn}`}
+              type="danger"
+              theme="solid"
+              disabled
+              icon={<IconDelete />}
+            >
+              Delete
+            </Button>
           </div>
-        </div>
-        <Table
-          columns={UTIL_SCHEMA}
-          dataSource={utils}
-          className={styles.utilsTable}
-          pagination={{
-            formatPageText: false,
-            className: styles.utilsTablePagination,
-            pageSize: tableSize,
-          }}
-          footer={<div>Total: {utils.length} result(s)</div>}
-        />
-        {/* buttons area */}
-        <div className={styles.btnArea}>
-          <Button className={`${styles.btn}`} theme="solid" icon={<IconPlay />}>
-            Start New
-          </Button>
-          <Button
-            className={`${styles.btn}`}
-            theme="solid"
-            disabled
-            icon={<IconStop />}
-          >
-            Stop
-          </Button>
-          <Button
-            className={`${styles.btn}`}
-            theme="solid"
-            disabled
-            icon={<RiFileExcel2Fill />}
-          >
-            Export
-          </Button>
-          <Button
-            className={`${styles.btn}`}
-            theme="solid"
-            icon={<RiFileExcel2Fill />}
-          >
-            Export All
-          </Button>
-          <Button
-            className={`${styles.btn}`}
-            type="danger"
-            theme="solid"
-            disabled
-            icon={<IconDelete />}
-          >
-            Delete
-          </Button>
         </div>
       </div>
-    </div>
+      {shouldShowEditModal && (
+        <UtilizationPopup util={editingUtil} onClose={handleCloseModal} />
+      )}
+    </>
   );
 };
 
