@@ -1,6 +1,8 @@
 import * as React from "react";
 import axios from "axios";
-import { Input, Switch, Select, Table } from "@douyinfe/semi-ui";
+import { Input, Switch, Select, Table, Button } from "@douyinfe/semi-ui";
+import { IconDelete, IconPlus,  } from "@douyinfe/semi-icons";
+import { RiFileExcel2Fill } from "react-icons/ri";
 import { IconSearch } from "@douyinfe/semi-icons";
 import { TABLE_SIZE_LIST, REPAIR_SCHEMA } from "../../constants";
 import { transformFullRepair } from "../../utils";
@@ -101,6 +103,40 @@ const RepairsPage = () => {
         }}
         footer={<div>Total: {repairs.length} result(s)</div>}
       />
+      <div className={styles.btnArea}>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          icon={<IconPlus />}
+        >
+          New Fault
+        </Button>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          disabled
+          icon={<RiFileExcel2Fill />}
+        >
+          Export
+        </Button>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          disabled
+          icon={<RiFileExcel2Fill />}
+        >
+          Export All
+        </Button>
+        <Button
+          className={styles.btn}
+          type="danger"
+          theme="solid"
+          disabled
+          icon={<IconDelete />}
+        >
+          Delete
+        </Button>
+      </div>
       {shouldShowEditModal && (
         <RepairPopup repair={editingRepair} onClose={handleCloseModal} />
       )}
