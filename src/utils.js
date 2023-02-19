@@ -97,6 +97,19 @@ export const transformFullUtil = (util) => {
   };
 };
 
+export const transformFullConsumable = (consumable) => {
+  return {
+    assetId: consumable.asset_id,
+    brand: consumable.brand,
+    model: consumable.model,
+    serial: consumable.serial,
+    cost: consumable.cost,
+    description: consumable.description,
+    partNumber: consumable.part_number,
+    consumedOn: transformDateToStringDDMMYYHHMM(transformDateTime(consumable.consumed_on))
+  };
+};
+
 export const transformDateToStringYYMMDD = (date) => {
   if (date === null || date === undefined) return "";
   const year = "" + date.getFullYear();

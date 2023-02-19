@@ -1,19 +1,48 @@
 .pageContainer {
-    display: flex;
-    flex-direction: column;
-    overflow-x: auto;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.pageContainer::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+.header {
+  display: flex;
+  padding: 20px 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchBar {
+  width: 348px;
+}
+
+.rowCountSelectorWrapper {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.rowCountSelector {
+  margin-left: 20px;
 }
 
 .consumablesTable {
-    padding: 20px;
-    white-space: nowrap;
-    display: flex;
-    overflow-x: scroll;
-    width: 100vw;
+  padding: 20px;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.consumablesTable::-webkit-scrollbar {
+  display: none;
+  width: 0;
 }
 
 .consumablesTablePagination {
-    position: absolute;
-    left: 0;
+  position: absolute;
+  left: 0;
 }

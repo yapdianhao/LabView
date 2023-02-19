@@ -249,6 +249,25 @@ app.get("/api/utils", (req, res) => {
   );
 });
 
+app.get('/api/consumables', (req, res) => {
+  db.query(
+    "SELECT asset_id, \
+            brand, \
+            model, \
+            serial, \
+            description, \
+            part_number, \
+            cost, \
+            consumed_on \
+      FROM assets a \
+      INNER JOIN consumables c ON c.asset_id = a.id",
+      (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+      }
+  );
+})
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

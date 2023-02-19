@@ -261,45 +261,46 @@ export const pmCalOqSchema = [
   },
 ];
 
-export const consumableSchema = [
+
+export const CONSUMABLE_SCHEMA = [
   {
     title: "Asset ID",
-    dataIndex: "",
+    dataIndex: "assetId",
     render: (text) => text,
   },
   {
     title: "Brand",
-    dataIndex: "",
+    dataIndex: "brand",
     render: (text) => text,
   },
   {
     title: "Model",
-    dataIndex: "",
+    dataIndex: "model",
     render: (text) => text,
   },
   {
     title: "Serial",
-    dataIndex: "",
+    dataIndex: "serial",
     render: (text) => text,
   },
   {
     title: "Description",
-    dataIndex: "",
+    dataIndex: "description",
     render: (text) => text,
   },
   {
     title: "Part No.",
-    dataIndex: "",
+    dataIndex: "partNumber",
     render: (text) => text,
   },
   {
     title: "Cost",
-    dataIndex: "",
+    dataIndex: "cost",
     render: (text) => text,
   },
   {
     title: "Consumed on",
-    dataIndex: "",
+    dataIndex: "consumedOn",
     render: (text) => text,
   },
 ];

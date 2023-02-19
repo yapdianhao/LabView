@@ -263,11 +263,11 @@ db.connect((err) => {
   //     };
   // })
 
-  db.query("SHOW COLUMNS FROM utilizations", (err, res) => {
+  db.query("SHOW COLUMNS FROM consumables", (err, res) => {
     if (err) console.log(err);
     else {
       for (let row of res) {
-        console.log(row.Field + ",");
+        console.log(JSON.stringify(row)+ ",");
       }
     }
   });
@@ -317,7 +317,18 @@ db.connect((err) => {
   //     }
   // });
 
-  db.query("SELECT * FROM utilizations", (err, res) => {
+  // db.query('INSERT INTO consumables(asset_id, description, cost, part_number\
+  //   , consumed_on) VALUES (\
+  //   \'CL10001\', \'Test description\', 450.00, \'A1022-3200\', \
+  //   STR_TO_DATE(\'01-07-2021/14:36:00\',\'%d-%m-%Y/%H:%i:%s\')\
+  //   )', (err, res) => {
+  //     if (err) console.log(err);
+  //     else {
+  //       console.log(res);
+  //     }
+  //   })
+
+  db.query("SELECT * FROM consumables", (err, res) => {
     if (err) console.log(err);
     else console.log(res);
   });
