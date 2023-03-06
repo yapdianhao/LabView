@@ -1,7 +1,8 @@
 import * as React from "react";
 import axios from 'axios';
 import { Table, Select, Button, Input } from "@douyinfe/semi-ui";
-import { IconSearch } from "@douyinfe/semi-icons";
+import { IconSearch, IconPlus, IconDelete } from "@douyinfe/semi-icons";
+import { RiFileExcel2Fill } from "react-icons/ri";
 import { transformFullConsumable } from "../../utils";
 import { GET_ALL_CONSUMABLES } from "../../api";
 import { TABLE_SIZE_LIST, CONSUMABLE_SCHEMA } from "../../constants";
@@ -80,7 +81,29 @@ const ConsumablesPage = () => {
           className: styles.consumablesTablePagination,
           pageSize: tableSize
         }}
+        onRow={(repair) => {
+          return {
+            onClick: (event) => showPopup(event, repair)
+          }
+        }}
         />
+        <div className={styles.btnArea}>
+          <Button className={styles.btn} theme="solid" icon={<IconPlus />}>
+            Add New
+          </Button>
+          <Button className={styles.btn} theme="solid" disabled icon={<IconDelete />}>
+            Delete
+          </Button>
+          <Button className={styles.btn} theme="solid" disabled icon={<RiFileExcel2Fill />}>
+            Export
+          </Button>
+          <Button className={styles.btn} theme="solid" icon={<RiFileExcel2Fill />}>
+            Export All
+          </Button>
+        </div>
+        {/* {shouldShowEditModal && (
+          
+        )} */}
     </div>
   );
 };
