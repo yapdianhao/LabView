@@ -19,3 +19,86 @@
   cursor: pointer;
 }
 
+.popupBody {
+  background-color: var(--bg-color-2);
+  padding: 64px 128px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 32px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.titleIcon {
+  font-size: 32px;
+  margin-right: 5px;
+}
+
+.subTitle {
+  font-size: 18px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.fieldBodyContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.fieldCol {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  font-size: 18px;
+}
+
+.fieldName {
+  width: 25%;
+  display: flex;
+  width: 128px;
+  color: var(--theme-color-4);
+}
+
+.formArea {
+  display: flex;
+  gap: 8px;
+  font-size: 18px;
+}
+
+.label {
+  text-align: left;
+}
+
+.fieldValue {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.halfLength {
+  width: 50%;
+}
+
+.quarterLength {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+

@@ -106,7 +106,8 @@ export const transformFullConsumable = (consumable) => {
     cost: consumable.cost,
     description: consumable.description,
     partNumber: consumable.part_number,
-    consumedOn: transformDateToStringDDMMYYHHMM(transformDateTime(consumable.consumed_on))
+    consumedOn: transformDateToStringDDMMYYHHMM(transformDateTime(consumable.consumed_on)),
+    consumedOnDate: transformDateTime(consumable.consumed_on)
   };
 };
 

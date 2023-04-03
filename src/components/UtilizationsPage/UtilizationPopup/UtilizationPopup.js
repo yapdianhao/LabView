@@ -9,7 +9,6 @@ const UtilizationPopup = (props) => {
   const { util, onClose } = props;
   const [utilToEdit, setUtilToEdit] = React.useState(util);
 
-  console.log(util);
   return (
     <div className={styles.editingModal}>
       <div className={styles.modalCloseBtn} onClick={onClose}>

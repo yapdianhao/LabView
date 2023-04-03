@@ -8,6 +8,7 @@ import { GET_ALL_CONSUMABLES } from "../../api";
 import { TABLE_SIZE_LIST, CONSUMABLE_SCHEMA } from "../../constants";
 import NavBar from "../NavBar/NavBar";
 import SecondaryNavBar from "../SecondaryNavBar/SecondaryNavBar";
+import ConsumablesPopup from "./ConsumablesPopup/ConsumablesPopup";
 
 import styles from "./ConsumablesPage.module.css";
 
@@ -101,9 +102,9 @@ const ConsumablesPage = () => {
             Export All
           </Button>
         </div>
-        {/* {shouldShowEditModal && (
-          
-        )} */}
+        {shouldShowEditModal && (
+          <ConsumablesPopup consumable={editingConsumable} onClose={handleClosePopup} />
+        )}
     </div>
   );
 };
