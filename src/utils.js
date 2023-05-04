@@ -94,11 +94,14 @@ export const transformFullUtil = (util) => {
     diff: `${utilizeDays > 0 ? utilizeDays + "d " : ""}${
       utilizeHours > 0 ? utilizeHours + "h" : ""
     }`,
+    usedFromDate: transformDateTime(util.used_from),
+    usedToDate: transformDateTime(util.used_to),
   };
 };
 
 export const transformFullConsumable = (consumable) => {
   return {
+    id: consumable.id,
     assetId: consumable.asset_id,
     brand: consumable.brand,
     model: consumable.model,

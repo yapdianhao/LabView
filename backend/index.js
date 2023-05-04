@@ -251,20 +251,46 @@ app.get("/api/utils", (req, res) => {
 
 app.get('/api/consumables', (req, res) => {
   db.query(
-    "SELECT asset_id, \
-            brand, \
-            model, \
-            serial, \
-            description, \
-            part_number, \
-            cost, \
-            consumed_on \
+    "SELECT c.id,\
+      asset_id, \
+      brand, \
+      model, \
+      serial, \
+      description, \
+      part_number, \
+      cost, \
+      consumed_on \
       FROM assets a \
       INNER JOIN consumables c ON c.asset_id = a.id",
       (err, result) => {
         if (err) console.log(err);
         else res.send(result);
       }
+  );
+})
+
+app.post('/api/edit-consumable', (req, res) => {
+  const { body } = req;
+  const { consumable } = body;
+  console.log('consumable to edit', consumable);
+  db.query(
+    'UPDATE consumables SET \
+      description = ?, \
+      part_number = ?, \
+      cost = ?, \
+      consumed_on = CONVERT_TZ(STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \'+00:00\',\'+08:00\')\
+    WHERE id = ?\
+    ', 
+    [
+      consumable.description,
+      consumable.partNumber,
+      consumable.cost,
+      new Date(consumable.consumedOnDate)
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " "),
+      consumable.id
+    ]
   );
 })
 

@@ -28,3 +28,5 @@ export const EDIT_REPAIR = `${domain}api/edit-repair`;
 export const GET_ALL_UTILS = `${domain}api/utils`;
 
 export const GET_ALL_CONSUMABLES = `${domain}api/consumables`;
+
+export const EDIT_CONSUMABLE = `${domain}api/edit-consumable`;

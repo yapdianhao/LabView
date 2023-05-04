@@ -4,6 +4,7 @@ import { BsGearWideConnected } from "react-icons/bs";
 import { Input, TextArea, Button } from "@douyinfe/semi-ui";
 import { IconDelete, IconSave } from "@douyinfe/semi-icons";
 import styles from "./UtilizationPopup.module.css";
+import { transformDateToStringHHMM, transformDateToStringYYMMDD } from "../../../utils";
 
 const UtilizationPopup = (props) => {
   const { util, onClose } = props;
@@ -30,21 +31,33 @@ const UtilizationPopup = (props) => {
         <div className={styles.fieldBodyContainer}>
           <div className={styles.fieldCol}>
             <div className={styles.fieldName}>Start</div>
-            <Input type="date" />
+            <Input
+              type="date" 
+              value={transformDateToStringYYMMDD(utilToEdit.usedFromDate)}
+            />
           </div>
           <div className={styles.fieldCol}>
             <div className={styles.fieldName}>Time</div>
-            <Input type="time" />
+            <Input
+              type="time" 
+              value={transformDateToStringHHMM(utilToEdit.usedFromDate)}
+            />
           </div>
         </div>
         <div className={styles.fieldBodyContainer}>
           <div className={styles.fieldCol}>
             <div className={styles.fieldName}>Start</div>
-            <Input type="date" />
+            <Input
+              type="date" 
+              value={transformDateToStringYYMMDD(utilToEdit.usedToDate)}
+            />
           </div>
           <div className={styles.fieldCol}>
             <div className={styles.fieldName}>Time</div>
-            <Input type="time" />
+            <Input
+              type="time" 
+              value={transformDateToStringHHMM(utilToEdit.usedToDate)}
+            />
           </div>
         </div>
         <div className={`${styles.fieldName} ${styles.fieldBodyContainer}`}>

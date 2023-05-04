@@ -1,16 +1,26 @@
 import * as React from 'react';
+import axios from 'axios';
 import { IoCloseSharp } from 'react-icons/io5';
 import { BsFillGearFill } from 'react-icons/bs';
 import { Input, Button } from '@douyinfe/semi-ui';
 import { IconSave } from '@douyinfe/semi-icons';
 import styles from './ConsumablesPopup.module.css';
+import { EDIT_CONSUMABLE } from '../../../api';
 import { transformDateToStringHHMM, transformDateToStringYYMMDD, transformDateToStringDDMMYYHHMM } from '../../../utils';
 
 const ConsumablesPopup = (props) => {
   const { consumable, onClose } = props;
   const [consumableToEdit, setConsumableToEdit] = React.useState(consumable);
 
-  console.log(consumable);
+  console.log(consumableToEdit);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await axios.post(EDIT_CONSUMABLE, {
+      consumable: consumableToEdit
+    });
+  }
+
   return (
     <div className={styles.editingModal}>
       <div className={styles.modalCloseBtn} onClick={onClose}>
@@ -114,6 +124,7 @@ const ConsumablesPopup = (props) => {
                     consumableToEdit.consumedOnDate
                   )} ${value}`
                 );
+                console.log(newConsumedOn);
                 setConsumableToEdit({
                   ...consumableToEdit,
                   consumedOnDate: newConsumedOn,
@@ -127,6 +138,7 @@ const ConsumablesPopup = (props) => {
             <Button
               icon={<IconSave />}
               theme="solid"
+              onClick={handleSubmit}
             >
               Save
             </Button>
