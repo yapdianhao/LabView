@@ -1,3 +1,4 @@
+import React from 'react';
 import LoginPage from "./components/LoginPage/LoginPage";
 import HomePage from "./components/HomePage/HomePage";
 import UserManagementPage from "./components/UserManagementPage/UserManagementPage";

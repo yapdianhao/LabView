@@ -6,13 +6,22 @@
     align-items: center;
 }
 
-.inUseIcon {
+.notInUseIcon {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     background-color: var(--theme-color-4);
-    margin-left: 100px;
-    margin-right: 20px;
+    margin-left: 80px;
+    margin-right: 10px;
+}
+
+.inUseIcon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--theme-color-2);
+  margin-left: 80px;
+  margin-right: 10px;
 }
 
 .inUseText {

@@ -7,6 +7,8 @@ export const POST_USER_DETAIL = `${domain}api/users`;
 
 export const GET_ALL_ASSETS = `${domain}api/assets`;
 
+export const GET_ASSETS_NOT_DISABLED = `${domain}api/assets-in-use`;
+
 export const GET_AN_ASSET = `${domain}api/get-asset`;
 
 export const GET_ALL_VENDORS = `${domain}api/vendors`;

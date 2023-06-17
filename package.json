@@ -1,7 +1,6 @@
 {
   "name": "labvue",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
     "@douyinfe/semi-ui": "^2.18.2",

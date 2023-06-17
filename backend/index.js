@@ -46,6 +46,13 @@ app.get("/api/assets", (req, res) => {
   });
 });
 
+app.get("/api/assets-in-use", (req, res) => {
+  db.query("SELECT * FROM assets WHERE in_use = TRUE", (err, result) => {
+    if (err) console.log(err);
+    else res.send(result);
+  });
+});
+
 app.get("/api/get-asset", (req, res) => {
   const { query } = req;
   db.query("SELECT * FROM assets WHERE id = ?", [query.id], (err, result) => {
@@ -168,7 +175,7 @@ app.post("/api/edit-asset", (req, res) => {
               labour_entitlement = ?, \
               parts_entitlement = ?, \
               oq_detail = ?, \
-              calc_detail = ?, \
+              cal_detail = ?, \
               pm_detail = ?, \
               repair_detail = ?, \
               maintenance_cost = ?, \
@@ -209,7 +216,7 @@ app.post("/api/edit-asset", (req, res) => {
       asset.labour_entitlement,
       asset.parts_entitlement,
       asset.oq_detail,
-      asset.calc_detail,
+      asset.cal_detail,
       asset.pm_detail,
       asset.repair_detail,
       asset.maintenance_cost,
@@ -219,7 +226,7 @@ app.post("/api/edit-asset", (req, res) => {
     ],
     (err, result) => {
       if (err) console.log(err);
-      else console.log(result);
+      else res.send(result);
     }
   );
 });

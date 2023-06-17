@@ -116,6 +116,9 @@ export const transformFullConsumable = (consumable) => {
 
 export const transformDateToStringYYMMDD = (date) => {
   if (date === null || date === undefined) return "";
+  if (typeof(date) === 'string') {
+    date = new Date(date);
+  }
   const year = "" + date.getFullYear();
   const realMonth = date.getMonth() + 1;
   const month = realMonth < 10 ? "0" + realMonth : "" + realMonth;

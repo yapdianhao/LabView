@@ -4,7 +4,7 @@ import { Input, Switch, Select, Table } from "@douyinfe/semi-ui";
 import { IconSearch } from "@douyinfe/semi-icons";
 import { useNavigate } from "react-router-dom";
 import { assetSchema, TABLE_SIZE_LIST } from "../../constants";
-import { GET_ALL_ASSETS } from "../../api";
+import { GET_ALL_ASSETS, GET_ASSETS_NOT_DISABLED } from "../../api";
 import NavBar from "../NavBar/NavBar";
 import SecondaryNavBar from "../SecondaryNavBar/SecondaryNavBar";
 
@@ -14,15 +14,16 @@ const AssetsPage = () => {
   const navigate = useNavigate();
 
   const [assets, setAssets] = React.useState([]);
-  const [showDisabled, setShowDisabled] = React.useState(false);
+  const [showDisabled, setShowDisabled] = React.useState(true);
   const [tableSize, setTableSize] = React.useState(6);
 
-  const getPost = async () => {
-    const assetsFromAPI = await axios.get(GET_ALL_ASSETS);
+  const getPost = React.useCallback(async () => {
+    const assetsFromAPI = await axios.get(showDisabled ? GET_ALL_ASSETS : GET_ASSETS_NOT_DISABLED);
+    console.log(assetsFromAPI, showDisabled);
     if (assetsFromAPI.status === 200) {
       setAssets(assetsFromAPI.data);
     }
-  };
+  }, [showDisabled]);
 
   const handleToggleSwitch = () => {
     setShowDisabled(!showDisabled);
@@ -34,7 +35,7 @@ const AssetsPage = () => {
 
   React.useEffect(() => {
     getPost();
-  }, []);
+  }, [showDisabled, getPost]);
 
   return (
     <div className={styles.pageContainer}>

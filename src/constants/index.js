@@ -1,3 +1,4 @@
+import React from 'react';
 import { transformDateToStringDDMMYYHHMM } from "../utils";
 
 export const MONTHS = [

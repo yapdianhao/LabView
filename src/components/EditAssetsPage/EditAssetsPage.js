@@ -63,7 +63,7 @@ const EditAssetsPage = () => {
     const assetFromAPI = await axios.post(EDIT_ASSET, {
       asset: asset,
     });
-    console.log(assetFromAPI);
+    navigate('/assets');
   };
 
   const tabNames = [
@@ -83,6 +83,7 @@ const EditAssetsPage = () => {
   };
 
   const handleInputChange = (event) => {
+    console.log(event);
     setAsset({ ...asset, [event.target.name]: event.target.value });
     console.log(asset);
   };

@@ -19,6 +19,7 @@ const ConsumablesPopup = (props) => {
     await axios.post(EDIT_CONSUMABLE, {
       consumable: consumableToEdit
     });
+    onClose();
   }
 
   return (

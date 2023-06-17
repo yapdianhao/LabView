@@ -114,19 +114,19 @@ db.connect((err) => {
   //           contract_start_date, \
   //           contract_end_date \
   //           ) VALUES ( \
-  //           \'CL10005\', \
+  //           \'CL10006\', \
   //           STR_TO_DATE(\'25-09-2021\',\'%d-%m-%Y\'), \
   //           \'Chemistry Lab\', \
   //           \'Agilent\', \
-  //           \'1100 HPLC\', \
-  //           \'DE11600064\', \
+  //           \'1260 Inifinity HPLC\', \
+  //           \'DE11600069\', \
   //           \'Liquid Chromotography\', \
   //           STR_TO_DATE(\'03-02-2008\',\'%d-%m-%Y\'), \
-  //           14, \
+  //           12, \
   //           74000.00, \
   //           \'critical\', \
   //           \'C\', \
-  //           TRUE, \
+  //           FALSE, \
   //           FALSE, \
   //           1, \
   //           1, \
@@ -228,7 +228,8 @@ db.connect((err) => {
   //     else console.log(res);
   // })
 
-  // db.query('ALTER TABLE assets RENAME COLUMN calc_freq TO cal_freq', (err, res) => {
+  // db.query('ALTER TABLE assets RENAME COLUMN calc_detail TO cal_detail', (err, res) => {
+  //     if (err) throw err;
   //     console.log(res);
   // })
 
@@ -254,23 +255,23 @@ db.connect((err) => {
   //     else console.log(res);
   // })
 
-  // db.query('SHOW COLUMNS FROM assets', (err, res) => {
-  //     if (err) console.log(err);
-  //     else {
-  //         for (let row of res) {
-  //             console.log('asset.' + row.Field + ',');
-  //         }
-  //     };
-  // })
+  db.query('SHOW COLUMNS FROM assets', (err, res) => {
+      if (err) console.log(err);
+      else {
+          for (let row of res) {
+              console.log('asset.' + row.Field + ',');
+          }
+      };
+  })
 
-  db.query("SHOW COLUMNS FROM consumables", (err, res) => {
-    if (err) console.log(err);
-    else {
-      for (let row of res) {
-        console.log(JSON.stringify(row)+ ",");
-      }
-    }
-  });
+  // db.query("SHOW COLUMNS FROM consumables", (err, res) => {
+  //   if (err) console.log(err);
+  //   else {
+  //     for (let row of res) {
+  //       console.log(JSON.stringify(row)+ ",");
+  //     }
+  //   }
+  // });
 
   // db.query('INSERT INTO repairs (\
   //     asset_id, \
@@ -328,7 +329,7 @@ db.connect((err) => {
   //     }
   //   })
 
-  db.query("SELECT * FROM consumables", (err, res) => {
+  db.query("SELECT * FROM assets", (err, res) => {
     if (err) console.log(err);
     else console.log(res);
   });

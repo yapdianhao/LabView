@@ -6,11 +6,13 @@ import { transformDateToStringYYMMDD } from "../../../utils";
 import styles from "./ServiceSummary.module.css";
 
 const ServiceSummary = (props) => {
-  const { asset, frequencies, handleInputChange, handleSubmit, setAsset } =
-    props; // TODO: find out what setAsset used for
+  const { asset, frequencies, handleInputChange, handleSubmit } =
+    props; 
 
   const [shouldShowConfirmationModal, setShouldShowConfirmationModal] =
     React.useState(false);
+
+  console.log(asset);
 
   return (
     <div className={styles.summaryContainer}>

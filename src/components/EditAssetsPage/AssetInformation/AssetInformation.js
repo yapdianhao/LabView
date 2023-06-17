@@ -10,8 +10,8 @@ const AssetInformation = (props) => {
     <>
       <div className={styles.mainTitle}>
         Asset Information
-        <div className={styles.inUseIcon} />
-        <div className={styles.inUseText}>Not in use</div>
+        <div className={`${asset.in_use ? styles.inUseIcon : styles.notInUseIcon}`} />
+        <div className={styles.inUseText}>{asset.in_use ? "In Use" : "Not In Use"}</div>
       </div>
       <form className={styles.assetForm}>
         <div className={styles.row}>
