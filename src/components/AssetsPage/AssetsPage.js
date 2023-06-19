@@ -14,7 +14,7 @@ const AssetsPage = () => {
   const navigate = useNavigate();
 
   const [assets, setAssets] = React.useState([]);
-  const [showDisabled, setShowDisabled] = React.useState(true);
+  const [showDisabled, setShowDisabled] = React.useState(false);
   const [tableSize, setTableSize] = React.useState(6);
 
   const getPost = React.useCallback(async () => {

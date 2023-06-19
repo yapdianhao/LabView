@@ -4,11 +4,13 @@ import { BsGearWideConnected } from "react-icons/bs";
 import { Input, TextArea, Button } from "@douyinfe/semi-ui";
 import { IconDelete, IconSave } from "@douyinfe/semi-icons";
 import styles from "./UtilizationPopup.module.css";
-import { transformDateToStringHHMM, transformDateToStringYYMMDD } from "../../../utils";
+import { transformDateToStringHHMM, transformDateToStringYYMMDD, transformDateToStringDDMMYYHHMM } from "../../../utils";
 
 const UtilizationPopup = (props) => {
   const { util, onClose } = props;
   const [utilToEdit, setUtilToEdit] = React.useState(util);
+
+  console.log(util);
 
   return (
     <div className={styles.editingModal}>
@@ -34,6 +36,16 @@ const UtilizationPopup = (props) => {
             <Input
               type="date" 
               value={transformDateToStringYYMMDD(utilToEdit.usedFromDate)}
+              onChange={(value) => {
+                const [year, month, day] = value.split('-');
+                let updatedDate = utilToEdit.usedFromDate;
+                updatedDate.setFullYear(parseInt(year), parseInt(month), parseInt(day));
+                setUtilToEdit({
+                  ...utilToEdit,
+                  usedFromDate: updatedDate,
+                  usedFrom: transformDateToStringDDMMYYHHMM(updatedDate),
+                });
+              }}
             />
           </div>
           <div className={styles.fieldCol}>
@@ -41,6 +53,16 @@ const UtilizationPopup = (props) => {
             <Input
               type="time" 
               value={transformDateToStringHHMM(utilToEdit.usedFromDate)}
+              onChange={(value) => {
+                const [hours, minutes] = value.split(':');
+                let updatedDate = utilToEdit.usedFromDate;
+                updatedDate.setHours(parseInt(hours), parseInt(minutes));
+                setUtilToEdit({
+                  ...utilToEdit,
+                  usedFromDate: updatedDate,
+                  usedFrom: transformDateToStringDDMMYYHHMM(updatedDate),
+                });
+              }}
             />
           </div>
         </div>
@@ -50,6 +72,16 @@ const UtilizationPopup = (props) => {
             <Input
               type="date" 
               value={transformDateToStringYYMMDD(utilToEdit.usedToDate)}
+              onChange={(value) => {
+                const [year, month, day] = value.split('-');
+                let updatedDate = utilToEdit.usedFromDate;
+                updatedDate.setFullYear(parseInt(year), parseInt(month), parseInt(day));
+                setUtilToEdit({
+                  ...utilToEdit,
+                  usedFromDate: updatedDate,
+                  usedFrom: transformDateToStringDDMMYYHHMM(updatedDate),
+                });
+              }}
             />
           </div>
           <div className={styles.fieldCol}>
@@ -57,6 +89,16 @@ const UtilizationPopup = (props) => {
             <Input
               type="time" 
               value={transformDateToStringHHMM(utilToEdit.usedToDate)}
+              onChange={(value) => {
+                const [hours, minutes] = value.split(':');
+                let updatedDate = utilToEdit.usedFromDate;
+                updatedDate.setHours(parseInt(hours), parseInt(minutes));
+                setUtilToEdit({
+                  ...utilToEdit,
+                  usedFromdate: updatedDate,
+                  usedFrom: transformDateToStringDDMMYYHHMM(updatedDate),
+                });
+              }}
             />
           </div>
         </div>
@@ -67,7 +109,10 @@ const UtilizationPopup = (props) => {
         <div className={styles.fieldBodyContainer}>
           <div className={styles.fieldCol}>
             <div className={styles.fieldName}>Remarks</div>
-            <TextArea />
+            <TextArea onChange={() => setUtilToEdit({
+              ...utilToEdit,
+              // TODO: update value
+            })}/>
           </div>
         </div>
         <div className={styles.btnContainer}>
