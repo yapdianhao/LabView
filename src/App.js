@@ -5,7 +5,7 @@ import UserManagementPage from "./components/UserManagementPage/UserManagementPa
 import AssetsPage from "./components/AssetsPage/AssetsPage";
 import UtilizationsPage from "./components/UtilizationsPage/UtilizationsPage";
 import RepairsPage from "./components/RepairsPage/RepairsPage";
-import PMCalsPage from "./components/PMCalsPage/PMCalsPage";
+import PMCalsOqPage from "./components/PMCalsOqPage/PMCalsOqPage";
 import ConsumablesPage from "./components/ConsumablesPage/ConsumablesPage";
 import SchedulePage from "./components/SchedulePage/SchedulePage";
 import ReportingPage from "./components/ReportingPage/ReportingPage";
@@ -27,7 +27,7 @@ function App() {
           <Route path="/assets" element={<AssetsPage />} />
           <Route path="/utilizations" element={<UtilizationsPage />} />
           <Route path="/repairs" element={<RepairsPage />} />
-          <Route path="/pmcals" element={<PMCalsPage />} />
+          <Route path="/pmcals" element={<PMCalsOqPage />} />
           <Route path="/operators" element={<UserManagementPage />} />
           <Route path="/consumables" element={<ConsumablesPage />} />
           <Route path="/schedule" element={<SchedulePage />} />

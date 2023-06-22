@@ -255,14 +255,14 @@ db.connect((err) => {
   //     else console.log(res);
   // })
 
-  db.query('SHOW COLUMNS FROM assets', (err, res) => {
-      if (err) console.log(err);
-      else {
-          for (let row of res) {
-              console.log('asset.' + row.Field + ',');
-          }
-      };
-  })
+  // db.query('SHOW COLUMNS FROM assets', (err, res) => {
+  //     if (err) console.log(err);
+  //     else {
+  //         for (let row of res) {
+  //             console.log('asset.' + row.Field + ',');
+  //         }
+  //     };
+  // })
 
   // db.query("SHOW COLUMNS FROM consumables", (err, res) => {
   //   if (err) console.log(err);
@@ -329,10 +329,64 @@ db.connect((err) => {
   //     }
   //   })
 
-  db.query("SELECT * FROM assets", (err, res) => {
-    if (err) console.log(err);
-    else console.log(res);
+  // db.query("SELECT * FROM assets", (err, res) => {
+  //   if (err) console.log(err);
+  //   else console.log(res);
+  // });
+
+  // db.query('ALTER TABLE pm_cal_oq ADD asset_id INT NOT NULL', (err, res) => {
+  //   if (err) console.log(err);
+  //   else console.log(res);
+  // })
+
+  // db.query('ALTER TABLE pm_cal_oq ADD CONSTRAINT fk_asset_id FOREIGN KEY (asset_id) REFERENCES assets(id)', (err, res) => {
+  //   if (err) console.log(err);
+  //   else console.log(res);
+  // })
+
+  // db.query('ALTER TABLE pm_cal_oq ADD CONSTRAINT uniq_asset_id UNIQUE(asset_id, type, scheduled_time, completed_time, vendor_id)', (err, res) => {
+  //   if (err) console.log(err);
+  //   else console.log(res);
+  // })
+
+  // db.query('SHOW COLUMNS FROM pm_cal_oq', (err, res) => {
+  //     if (err) console.log(err);
+  //     else {
+  //         for (let row of res) {
+  //             console.log(row.Field + ',');
+  //         }
+  //     };
+  // })
+
+  // db.query('SHOW FIELDS from pm_cal_oq', (err, res) => {
+  //   if (err) throw err;
+  //   else console.log(res);
+  // })
+
+
+  // db.query('ALTER TABLE pm_cal_oq MODIFY asset_id VARCHAR(100) NOT NULL', (err, res) => {
+  //   if (err) throw err;
+  //   else console.log(res);
+  // });
+  
+  // db.query('INSERT INTO pm_cal_oq(asset_id, type, is_routine, scheduled_time, completed_time, vendor_id) VALUES(\
+  //   \'CL10003\', \'PM\', TRUE, STR_TO_DATE(\'01-03-2021/13:00:00\',\'%d-%m-%Y/%H:%i:%s\'), STR_TO_DATE(\'01-03-2021/15:00:00\',\'%d-%m-%Y/%H:%i:%s\'), 1)\
+  //   ', (err, res) => {
+  //     if (err) throw err;
+  //     else console.log(res);
+  //   });
+
+  // db.query('DELETE FROM pm_cal_oq WHERE id > 1', (err, res) => {
+  //   if (err) throw err;
+  //   console.log(res);
+  // })
+
+  db.query('SELECT * FROM pm_cal_oq', (err, res) => {
+    if (err) throw err;
+    console.log(res);
   });
+
+
 });
 
 module.exports = db;
