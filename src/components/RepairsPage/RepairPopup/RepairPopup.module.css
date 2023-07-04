@@ -84,7 +84,6 @@
 }
 
 .fieldName {
-    width: 25%;
     display: flex;
     justify-content: flex-start;
     width: 128px;

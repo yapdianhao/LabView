@@ -113,4 +113,5 @@
 | scheduled_time: TIMESTAMP |
 | completed_time: TIMESTAMP |
 | vendor_id: INT |
+| asset_id: INT |
 

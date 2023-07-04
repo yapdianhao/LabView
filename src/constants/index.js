@@ -209,59 +209,51 @@ export const UTIL_SCHEMA = [
   // }
 ];
 
-export const pmCalOqSchema = [
+export const PM_CAL_OQ_SCHEMA = [
   {
     title: "Asset ID",
-    dataIndex: "",
+    dataIndex: "assetId",
     render: (text) => text,
   },
   {
     title: "Brand",
-    dataIndex: "",
+    dataIndex: "brand",
     render: (text) => text,
   },
   {
     title: "Model",
-    dataIndex: "",
+    dataIndex: "model",
     render: (text) => text,
   },
   {
     title: "Serial",
-    dataIndex: "",
-    render: (text) => text,
-  },
-  {
-    title: "Type",
-    dataIndex: "",
-    render: (text) => text,
-  },
-  {
-    title: "Routine",
-    dataIndex: "",
+    dataIndex: "serial",
     render: (text) => text,
   },
   {
     title: "Remarks",
-    dataIndex: "",
-    render: (text) => text,
+    dataIndex: "remarks",
+    render: (text) => {
+      if (!!text) return text;
+      return "NA"
+    }
   },
   {
-    title: "Scheduled",
-    dataIndex: "",
+    title: "Type",
+    dataIndex: "type",
     render: (text) => text,
   },
   {
     title: "Completed",
-    dataIndex: "",
+    dataIndex: "completedTime",
     render: (text) => text,
   },
   {
-    title: "Vendor",
-    dataIndex: "",
+    title: "Scheduled",
+    dataIndex: "scheduledTime",
     render: (text) => text,
-  },
-];
-
+  }
+]
 
 export const CONSUMABLE_SCHEMA = [
   {
@@ -451,3 +443,5 @@ export const EDIT_REPAIR_SCHEMA = [
     render: (text) => text,
   },
 ];
+
+

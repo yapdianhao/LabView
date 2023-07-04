@@ -20,6 +20,7 @@ export const transformStringToDateYYYYMMDD = (dateStr) => {
 };
 
 export const transformDateTime = (date) => {
+  if (!!date === false) return null;
   return new Date(date);
 };
 
@@ -114,6 +115,27 @@ export const transformFullConsumable = (consumable) => {
   };
 };
 
+export const transformFullPmCalOq = (pmCalOq) => {
+  return {
+    assetId: pmCalOq.asset_id,
+    brand: pmCalOq.brand,
+    model: pmCalOq.model,
+    serial: pmCalOq.serial,
+    remarks: pmCalOq.remarks,
+    type: pmCalOq.type,
+    pmCalOqId: pmCalOq.pm_cal_oq_id,
+    pmCalOqVendor: pmCalOq.vendor_name,
+    pmCalOqVendorId: pmCalOq.vendor_id,
+    pmCalOqVendorPhone: pmCalOq.vendor_phone,
+    pmCalOqVendorEmail: pmCalOq.vendor_email,
+    isRoutine: pmCalOq.is_routine,
+    completedTime: transformDateToStringDDMMYYHHMM(transformDateTime(pmCalOq.completed_time)),
+    completedDateTime: transformDateTime(pmCalOq.completed_time),
+    scheduledTime: transformDateToStringDDMMYYHHMM(transformDateTime(pmCalOq.scheduled_time)),
+    scheduledDateTime: transformDateTime(pmCalOq.scheduled_time),
+  };
+};
+
 export const transformDateToStringYYMMDD = (date) => {
   if (date === null || date === undefined) return "";
   if (typeof(date) === 'string') {
@@ -136,7 +158,7 @@ export const transformDateToStringHHMM = (date) => {
 };
 
 export const transformDateToStringDDMMYYHHMM = (date) => {
-  if (!date) return undefined;
+  if (!!date === false) return null;
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
@@ -146,6 +168,7 @@ export const transformDateToStringDDMMYYHHMM = (date) => {
   return `${day} ${MONTHS[month]} ${year} ${hour}${minute}`;
 };
 
+// TODO
 export const exportToCSV = (data) => {
   return;
 };

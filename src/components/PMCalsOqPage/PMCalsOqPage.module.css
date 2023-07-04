@@ -4,3 +4,52 @@
     overflow-x: auto;
     width: 100%;
 }
+
+.pageContainer::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+.header {
+  display: flex;
+  padding: 20px 40px;
+  align-items: center;
+  gap: 30px;
+}
+
+.searchBar {
+  width: 348px;
+}
+
+.rowCountSelectorWrapper {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.rowCountSelector {
+  margin-left: 20px;
+}
+
+.switchWrapper {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  gap: 10px;
+}
+
+.pmCalOqTable {
+  padding: 20px;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.pmCalOqTable::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+.pmCalOqTablePagination {
+  position: absolute;
+  left: 0;
+}

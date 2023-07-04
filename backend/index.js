@@ -297,8 +297,100 @@ app.post('/api/edit-consumable', (req, res) => {
         .slice(0, 19)
         .replace("T", " "),
       consumable.id
-    ]
+    ],
+    (err, result) => {
+      if (err) console.log(err);
+      else res.send(result);
+    }
   );
+});
+
+app.post('/api/edit-pm-cal-oq', (req, res) => {
+  const { body } = req;
+  const { pmCalOq } = body;
+  console.log('pm cal oq to edit', pmCalOq);
+  db.query(
+    'UPDATE pm_cal_oq SET\
+      vendor_id = ?, \
+      type = ?, \
+      is_routine = ?, \
+      remarks = ?, \
+      scheduled_time = CONVERT_TZ(STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \'+00:00\',\'+08:00\'), \
+      completed_time = CONVERT_TZ(STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \'+00:00\',\'+08:00\')\
+    WHERE id = ?',
+    [
+      pmCalOq.pmCalOqVendorId,
+      pmCalOq.type,
+      pmCalOq.isRoutine,
+      pmCalOq.remarks,
+      new Date(pmCalOq.scheduledDateTime)
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " "),
+      new Date(pmCalOq.completedDateTime)
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " "),
+      pmCalOq.pmCalOqId
+    ],
+    (err, result) => {
+      if (err) console.log(err);
+      else res.send(result);
+    }
+  )
+})
+
+app.get('/api/pm-cal-oq', (req, res) => {
+  const { query } = req;
+  const { types, shouldShowHistory} = query;
+  if (shouldShowHistory) {
+    db.query(
+      "SELECT asset_id,\
+              brand,\
+              model,\
+              serial,\
+              type,\
+              is_routine,\
+              remarks,\
+              scheduled_time,\
+              completed_time,\
+              v.id AS vendor_id, \
+              v.name AS vendor_name, \
+              phone_1 AS vendor_phone, \
+              email_1 AS vendor_email, \
+              p.id AS pm_cal_oq_id, \
+              name FROM pm_cal_oq p\
+              INNER JOIN assets a on p.asset_id = a.id\
+              INNER JOIN vendors v on v.id = p.vendor_id\
+              WHERE type in (?)", [types]
+      , (err, result) => {
+        if (err) console.log(err);
+        else res.send(result)
+      });
+  } else {
+    db.query(
+      "SELECT asset_id,\
+              brand,\
+              model,\
+              serial,\
+              type,\
+              is_routine,\
+              remarks,\
+              scheduled_time,\
+              completed_time,\
+              v.name AS vendor_name, \
+              phone_1 AS vendor_phone, \
+              email_1 AS vendor_email, \
+              name FROM pm_cal_oq p\
+              INNER JOIN assets a on p.asset_id = a.id\
+              INNER JOIN vendors v on v.id = p.vendor_id\
+              WHERE type in (?)\
+              AND completed_time = NULL or completed_time >= CURRENT_TIMESTAMP", [types]
+      , (err, result) => {
+        if (err) console.log(err);
+        else res.send(result)
+      });
+  }
 })
 
 app.listen(port, () => {
