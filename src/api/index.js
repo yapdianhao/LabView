@@ -36,3 +36,9 @@ export const EDIT_CONSUMABLE = `${domain}api/edit-consumable`;
 export const GET_ALL_PM_CAL_OQ = `${domain}api/pm-cal-oq`;
 
 export const EDIT_PM_CAL_OQ = `${domain}api/edit-pm-cal-oq`;
+
+export const ADD_CONSUMABLE = `${domain}api/add-consumable`;
+
+export const GET_VENDOR_BY_NAME = `${domain}api/get-vendor-by-name`
+
+export const ADD_PM_CAL_OQ = `${domain}api/add-pm-cal-oq`;

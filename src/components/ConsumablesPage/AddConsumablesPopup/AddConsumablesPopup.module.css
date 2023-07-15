@@ -1,0 +1,60 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color-3);
+}
+
+.modalCloseBtn {
+  font-size: 20px;
+  right: 40px;
+  top: 20px;
+  position: absolute;
+  color: var(--text-color-1);
+  cursor: pointer;
+}
+
+.popupBody {
+  background-color: var(--bg-color-2);
+  padding: 64px 25%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 32px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.titleIcon {
+  font-size: 32px;
+  margin-right: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: last baseline;
+}
+
+.halfRow {
+  display: flex;
+  gap: 10px;
+  width: 50%;
+}
+
+.field {
+  width: 100%;
+  flex: 1;
+}

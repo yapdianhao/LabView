@@ -2,13 +2,23 @@ import { MONTHS } from "./constants";
 
 export const transformAsset = (asset) => {
   return {
-    ...asset,
-    installation_date: transformStringToDateYYYYMMDD(asset.installation_date),
-    activation_date: transformStringToDateYYYYMMDD(asset.activation_date),
-    contract_start_date: transformStringToDateYYYYMMDD(
+    assetId: asset.id,
+    age: asset.age,
+    assetLevel: asset.asset_level,
+    brand: asset.brand,
+    defaultVendor: asset.default_vendor_name,
+    instrumentDescription: asset.instrument_description,
+    model: asset.model,
+    pmCalOqVendor: asset.pm_cal_oq_vendor_name,
+    repairVendor: asset.repair_vendor_name,
+    serial: asset.serial,
+    usp1058: asset.usp1058,
+    intallationDate: transformStringToDateYYYYMMDD(asset.installation_date),
+    activationDate: transformStringToDateYYYYMMDD(asset.activation_date),
+    contractStartDate: transformStringToDateYYYYMMDD(
       asset.contract_start_date
     ),
-    contract_end_date: transformStringToDateYYYYMMDD(asset.contract_end_date),
+    contractEndDate: transformStringToDateYYYYMMDD(asset.contract_end_date),
   };
 };
 
@@ -49,6 +59,14 @@ export const transformRepair = (repair) => {
     ),
   };
 };
+
+export const transformVendor = (vendor) => {
+  return {
+    name: vendor.name,
+    email: vendor.email_1 || vendor.email_2 || '',
+    phone: vendor.phone_1 || vendor.phone_2 || '',
+  }
+}
 
 export const transformFullRepair = (repair) => {
   return {

@@ -12,6 +12,7 @@ if (process.env.NODE_ENV === "production") {
   console.log("Running from prod");
   config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
 } else {
+
   config.host = process.env.DB_HOST;
 }
 
@@ -349,7 +350,7 @@ db.connect((err) => {
   //   else console.log(res);
   // })
 
-  // db.query('SHOW COLUMNS FROM pm_cal_oq', (err, res) => {
+  // db.query('SHOW FIELDS FROM assets', (err, res) => {
   //     if (err) console.log(err);
   //     else {
   //         for (let row of res) {
@@ -381,12 +382,28 @@ db.connect((err) => {
   //   console.log(res);
   // })
 
-  db.query('SELECT * FROM pm_cal_oq', (err, res) => {
+  // db.query('ALTER TABLE assets ADD COLUMN default_vendor INT', (err, res) => {
+  //   if (err) throw err;
+  //   console.log(res);
+  // })
+
+  // db.query('ALTER TABLE assets ADD CONSTRAINT fk_pm_cal_oq_vendor_id FOREIGN KEY (pm_cal_oq_vendor) REFERENCES vendors(id)', (err, res) => {
+  //   if (err) throw err;
+  //   console.log(res);
+  // })
+  
+  db.query('SELECT column_name, data_type from INFORMATION_SCHEMA.columns WHERE table_name=\'pm_cal_oq\'', (err, res) => {
     if (err) throw err;
-    console.log(res);
+    for (let row of res) {
+      const { COLUMN_NAME, DATA_TYPE } = row;
+      console.log(COLUMN_NAME, DATA_TYPE);
+    }
   });
 
-
+  db.query('SELECT * FROM pm_cal_oq', (err, res) => {
+    if (err) throw err;
+    else console.log(res);
+  })
 });
 
 module.exports = db;

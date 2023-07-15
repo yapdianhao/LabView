@@ -40,14 +40,54 @@ app.get("/api/user-list", (req, res) => {
 });
 
 app.get("/api/assets", (req, res) => {
-  db.query("SELECT * FROM assets", (err, result) => {
+  db.query("SELECT \
+    a.id, \
+    a.brand, \
+    a.model, \
+    a.serial, \
+    a.age, \
+    a.activation_date, \
+    a.asset_level, \
+    a.instrument_description, \
+    a.usp1058, \
+    v1.name as pm_cal_oq_vendor_name, \
+    v2.name as repair_vendor_name, \
+    v3.name as default_vendor_name \
+    FROM assets a \
+    LEFT OUTER JOIN vendors v1 on v1.id = a.pm_cal_oq_vendor \
+    LEFT OUTER JOIN vendors v2 on v2.id = a.repair_vendor \
+    LEFT OUTER JOIN vendors v3 on v3.id = a.default_vendor", (err, result) => {
     if (err) console.log(err);
     else res.send(result);
   });
 });
 
+// app.get('/api/assets', (err, res) => {
+//   db.query('SELECT * FROM assets', (err, result) => {
+//     if (err) console.log(err);
+//     else res.send(result);
+//   })
+// })
+
 app.get("/api/assets-in-use", (req, res) => {
-  db.query("SELECT * FROM assets WHERE in_use = TRUE", (err, result) => {
+  db.query("SELECT \
+    a.id, \
+    a.brand, \
+    a.model, \
+    a.serial, \
+    a.age, \
+    a.activation_date, \
+    a.asset_level, \
+    a.instrument_description, \
+    a.usp1058, \
+    v1.name as pm_cal_oq_vendor_name, \
+    v2.name as repair_vendor_name, \
+    v3.name as default_vendor_name \
+    FROM assets a \
+    INNER JOIN vendors v1 on v1.id = a.pm_cal_oq_vendor \
+    INNER JOIN vendors v2 on v2.id = a.repair_vendor \
+    INNER JOIN vendors v3 on v3.id = a.default_vendor \
+   WHERE in_use = TRUE", (err, result) => {
     if (err) console.log(err);
     else res.send(result);
   });
@@ -147,6 +187,15 @@ app.get("/api/get-utils", (req, res) => {
       else res.send(result);
     }
   );
+});
+
+app.post('/api/get-vendor-by-name', (req, res) => {
+  const { body } = req;
+  const { vendorName } = body;
+  db.query('SELECT * FROM vendors WHERE name = ?', [vendorName], (err, result) => {
+    if (err) console.log(err);
+    else res.send(result);
+  });
 });
 
 app.post("/api/edit-asset", (req, res) => {
@@ -304,6 +353,54 @@ app.post('/api/edit-consumable', (req, res) => {
     }
   );
 });
+
+app.post('/api/add-consumable', (req, res) => {
+  const { body } = req;
+  const { consumable } = body;
+  console.log(consumable);
+  consumable.consumedDateTime = new Date(`${consumable.consumedDate} ${consumable.consumedTime}`)
+  console.log(consumable.consumedDateTime);
+  db.query(
+    'INSERT INTO consumables(asset_id, description, cost, part_number, consumed_on)\
+    VALUES(?, ?, ?, ?, CONVERT_TZ(STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \'+00:00\',\'+08:00\'))'
+  , [
+    consumable.assetId,
+    consumable.description,
+    consumable.cost, 
+    consumable.partNo,
+    consumable.consumedDateTime
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " "),
+  ], (err, result) => {
+    if (err) console.log(err);
+    else res.send(result);
+  })
+})
+
+app.post('/api/add-pm-cal-oq', (req, res) => {
+  const { body } = req;
+  const { pmCalOq } = body;
+  console.log('pm cal oq to submit', pmCalOq);
+  pmCalOq.completeDateTime = new Date(`${pmCalOq.completeDate} ${pmCalOq.completeTime}`);
+  pmCalOq.scheduledDateTime = new Date(`${pmCalOq.scheduledDate} ${pmCalOq.scheduledTime}`);
+  db.query('INSERT INTO pm_cal_oq (asset_id, vendor_id, is_routine, type, remarks, scheduled_time, completed_time)\
+    VALUES (?, ?, ?, ?, ?,\
+      CONVERT_TZ(STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \'+00:00\',\'+08:00\'),\
+      CONVERT_TZ(STR_TO_DATE(?, \'%Y-%m-%d %H:%i:%s\'), \'+00:00\',\'+08:00\'))', 
+      [
+        pmCalOq.assetId,
+        pmCalOq.vendorId,
+        pmCalOq.isRoutine,
+        pmCalOq.type,
+        pmCalOq.remarks ?? null,
+        pmCalOq.scheduledDateTime.toISOString().slice(0, 19).replace("T", " "),
+        pmCalOq.completeDateTime.toISOString().slice(0, 19).replace("T", " ")
+      ], (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+      })
+})
 
 app.post('/api/edit-pm-cal-oq', (req, res) => {
   const { body } = req;

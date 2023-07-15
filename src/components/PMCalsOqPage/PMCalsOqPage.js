@@ -1,14 +1,16 @@
 import * as React from "react";
 import axios from 'axios';
-import { Input, Select, Switch, Table } from "@douyinfe/semi-ui";
-import { IconSearch } from "@douyinfe/semi-icons";
+import { Input, Select, Switch, Table, Button } from "@douyinfe/semi-ui";
+import { IconSearch, IconPlus, IconDelete } from "@douyinfe/semi-icons";
+import { RiFileExcel2Fill } from "react-icons/ri";
 import PMCalsOqPopup from "./PMCalsOqPopup/PMCalsOqPopup";
+import AddPmCalOqPopup from "./AddPmCalOqPopup/AddPmCalOqPopup";
 import NavBar from "../NavBar/NavBar";
 import SecondaryNavBar from "../SecondaryNavBar/SecondaryNavBar";
 import styles from "./PMCalsOqPage.module.css";
 import { transformFullPmCalOq } from "../../utils";
 import { GET_ALL_PM_CAL_OQ } from "../../api";
-import { PM_CAL_OQ_SCHEMA, TABLE_SIZE_LIST } from "../../constants";
+import { PM_CAL_OQ_SCHEMA, TABLE_SIZE_LIST, PM_CAL_OQ } from "../../constants";
 
 const PMCalsOqPage = () => {
   const [pmCalOqs, setPmCalOqs] = React.useState([]);
@@ -19,7 +21,8 @@ const PMCalsOqPage = () => {
   const [shouldShowCal, setShouldShowCal] = React.useState(true);
   const [shouldShowOq, setShouldShowOq] = React.useState(true);
   const [shouldShowEditModal, setShouldShowEditModal] = React.useState(false);
-
+  const [addModalType, setAddModalType] = React.useState('');
+  
   const getPmCalOqs = React.useCallback(async() => {
     let typeArr = [];
     if (shouldShowPm) {
@@ -76,9 +79,17 @@ const PMCalsOqPage = () => {
     }
   }
 
+  const handleClickAddPopup = (value) => {
+    setAddModalType(value);
+  }
+
+  const handleCloseAddPopup = () => {
+    setAddModalType('');
+  }
+
   React.useEffect(() => {
     getPmCalOqs();
-  }, [shouldShowHistory, shouldShowCal, shouldShowPm, shouldShowOq, getPmCalOqs, editingPmCalOq]);
+  }, [shouldShowHistory, shouldShowCal, shouldShowPm, shouldShowOq, getPmCalOqs, editingPmCalOq, addModalType]);
 
   console.log(pmCalOqs);
 
@@ -152,8 +163,59 @@ const PMCalsOqPage = () => {
           }
         }}
       />
+      <div className={styles.btnArea}>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          icon={<IconPlus />}
+          onClick={() => handleClickAddPopup(PM_CAL_OQ.CAL)}
+        >
+          Add PM
+        </Button>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          icon={<IconPlus />}
+          onClick={() => handleClickAddPopup(PM_CAL_OQ.CAL)}
+        >
+          Add Cal
+        </Button>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          icon={<IconPlus />}
+          onClick={() => handleClickAddPopup(PM_CAL_OQ.OQ)}
+        >
+          Add OQ 
+        </Button>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          icon={<RiFileExcel2Fill />}
+        >
+          Export
+        </Button>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          icon={<RiFileExcel2Fill />}
+        >
+          Export All
+        </Button>
+        <Button
+          className={styles.btn}
+          theme="solid"
+          icon={<IconDelete />}
+          type="danger"
+        >
+          Delete
+        </Button>
+      </div>
       {shouldShowEditModal && (
         <PMCalsOqPopup pmCalOq={editingPmCalOq} onClose={handleClosePopup} />
+      )}
+      {addModalType && (
+        <AddPmCalOqPopup onClose={handleCloseAddPopup} type={addModalType} />
       )}
     </div>
   );

@@ -3,8 +3,9 @@ import axios from "axios";
 import { Input, Switch, Select, Table } from "@douyinfe/semi-ui";
 import { IconSearch } from "@douyinfe/semi-icons";
 import { useNavigate } from "react-router-dom";
-import { assetSchema, TABLE_SIZE_LIST } from "../../constants";
+import { ASSET_SCHEMA, TABLE_SIZE_LIST } from "../../constants";
 import { GET_ALL_ASSETS, GET_ASSETS_NOT_DISABLED } from "../../api";
+import { transformAsset } from "../../utils";
 import NavBar from "../NavBar/NavBar";
 import SecondaryNavBar from "../SecondaryNavBar/SecondaryNavBar";
 
@@ -21,7 +22,7 @@ const AssetsPage = () => {
     const assetsFromAPI = await axios.get(showDisabled ? GET_ALL_ASSETS : GET_ASSETS_NOT_DISABLED);
     console.log(assetsFromAPI, showDisabled);
     if (assetsFromAPI.status === 200) {
-      setAssets(assetsFromAPI.data);
+      setAssets(assetsFromAPI.data.map(asset => transformAsset(asset)));
     }
   }, [showDisabled]);
 
@@ -36,6 +37,8 @@ const AssetsPage = () => {
   React.useEffect(() => {
     getPost();
   }, [showDisabled, getPost]);
+
+  console.log(assets);
 
   return (
     <div className={styles.pageContainer}>
@@ -69,7 +72,7 @@ const AssetsPage = () => {
         </div>
       </div>
       <Table
-        columns={assetSchema}
+        columns={ASSET_SCHEMA}
         dataSource={assets}
         className={styles.assetsTable}
         // rowKey="id"

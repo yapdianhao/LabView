@@ -1,6 +1,12 @@
 import React from 'react';
 import { transformDateToStringDDMMYYHHMM } from "../utils";
 
+export const PM_CAL_OQ = {
+  PM: 'PM',
+  CAL: 'CAL',
+  OQ: 'OQ'
+};
+
 export const MONTHS = [
   "Jan",
   "Feb",
@@ -33,10 +39,10 @@ export const navContents = [
   "Schedule",
 ];
 
-export const assetSchema = [
+export const ASSET_SCHEMA = [
   {
     title: "Asset ID",
-    dataIndex: "id",
+    dataIndex: "assetId",
     render: (text) => text,
   },
   {
@@ -61,27 +67,27 @@ export const assetSchema = [
   },
   {
     title: "Activation Date",
-    dataIndex: "activation_date",
+    dataIndex: "activationDate",
     render: (date) => new Date(date).toLocaleDateString(),
   },
   {
     title: "Level",
-    dataIndex: "asset_level",
+    dataIndex: "assetLevel",
     render: (text) => text,
   },
   {
     title: "PM/Cal Vendor",
-    dataIndex: "pm_vendor",
+    dataIndex: "pmCalOqVendor",
     render: (text) => text,
   },
   {
     title: "Repair Vendor",
-    dataIndex: "calc_vendor",
+    dataIndex: "repairVendor",
     render: (text) => text,
   },
   {
     title: "Instrument Description",
-    dataIndex: "instrument_description",
+    dataIndex: "instrumentDescription",
     render: (text) => text,
   },
   {

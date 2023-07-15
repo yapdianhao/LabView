@@ -9,6 +9,7 @@ import { TABLE_SIZE_LIST, CONSUMABLE_SCHEMA } from "../../constants";
 import NavBar from "../NavBar/NavBar";
 import SecondaryNavBar from "../SecondaryNavBar/SecondaryNavBar";
 import ConsumablesPopup from "./ConsumablesPopup/ConsumablesPopup";
+import AddConsumablesPopup from "./AddConsumablesPopup/AddConsumablesPopup";
 
 import styles from "./ConsumablesPage.module.css";
 
@@ -18,6 +19,7 @@ const ConsumablesPage = () => {
   const [tableSize, setTableSize] = React.useState(6);
   const [editingConsumable, setEditingConsumable] = React.useState(null);
   const [shouldShowEditModal, setShouldShowEditModal] = React.useState(false);
+  const [shouldShowAddModal, setShouldShowAddModal] = React.useState(false);
 
   const getConsumables = async() => {
     const consumablesFromAPI = await axios.get(GET_ALL_CONSUMABLES);
@@ -26,6 +28,7 @@ const ConsumablesPage = () => {
         consumablesFromAPI.data.map((consumable) => transformFullConsumable(consumable))
       );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
   const handleChangeTableSize = (value) => {
@@ -34,6 +37,14 @@ const ConsumablesPage = () => {
 
   const handleClosePopup = () => {
     setShouldShowEditModal(false);
+  }
+
+  const handleClickAddPopup = () => {
+    setShouldShowAddModal(true);
+  }
+
+  const handleCloseAddPopup = () => {
+    setShouldShowAddModal(false);
   }
 
   const showPopup = (event, consumable) => {
@@ -45,9 +56,7 @@ const ConsumablesPage = () => {
 
   React.useEffect(() => {
     getConsumables();
-  }, []);
-
-  console.log(consumables);
+  }, [shouldShowAddModal, shouldShowEditModal]);
 
   return (
     <div className={styles.pageContainer}>
@@ -89,7 +98,12 @@ const ConsumablesPage = () => {
         }}
         />
         <div className={styles.btnArea}>
-          <Button className={styles.btn} theme="solid" icon={<IconPlus />}>
+          <Button
+            className={styles.btn}
+            theme="solid"
+            icon={<IconPlus />}
+            onClick={handleClickAddPopup}
+          >
             Add New
           </Button>
           <Button className={styles.btn} theme="solid" disabled icon={<IconDelete />}>
@@ -104,6 +118,9 @@ const ConsumablesPage = () => {
         </div>
         {shouldShowEditModal && (
           <ConsumablesPopup consumable={editingConsumable} onClose={handleClosePopup} />
+        )}
+        {shouldShowAddModal && (
+          <AddConsumablesPopup onClose={handleCloseAddPopup} />
         )}
     </div>
   );

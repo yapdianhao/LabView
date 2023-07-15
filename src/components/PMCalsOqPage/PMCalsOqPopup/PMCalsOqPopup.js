@@ -9,6 +9,7 @@ import { transformDateToStringHHMM, transformDateToStringYYMMDD, transformDateTo
 
 const PMCalsOqPopup = (props) => {
   const { pmCalOq, onClose } = props;
+  
   const [isOpen, setIsOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [pmCalOqToEdit, setPmCalOqToEdit] = React.useState(pmCalOq);
@@ -158,7 +159,7 @@ const PMCalsOqPopup = (props) => {
             <div className={styles.fieldValue}>
               <div>
                 {pmCalOqToEdit.pmCalOqVendor}
-              </div>activit
+              </div>
               <div className={styles.vendorDetail}>
                 <IconUserCardPhone />
                 {pmCalOqToEdit.pmCalOqVendorPhone}
