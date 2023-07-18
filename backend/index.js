@@ -473,7 +473,7 @@ app.get('/api/pm-cal-oq', (req, res) => {
               serial,\
               type,\
               is_routine,\
-              remarks,\
+              p.remarks,\
               scheduled_time,\
               completed_time,\
               v.id AS vendor_id, \
