@@ -190,6 +190,7 @@ const AddPmCalOqPopup = (props) => {
                   }}
                   field="type"
                   rules={[{ required: true, message: 'Type required'}]}
+                  initValue={type}
                 >
                   <Form.Select.Option value="PM">PM</Form.Select.Option>
                   <Form.Select.Option value="CAL">CAL</Form.Select.Option>

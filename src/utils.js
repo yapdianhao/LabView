@@ -133,6 +133,18 @@ export const transformFullConsumable = (consumable) => {
   };
 };
 
+export const transformFullVendor = (vendor) => {
+  return {
+    id: vendor.id,
+    name: vendor.name,
+    phone1: vendor.phone_1,
+    email1: vendor.email_1,
+    phone2: vendor.phone_2,
+    email2: vendor.email_2,
+    remarks: vendor.remarks
+  };
+};
+
 export const transformFullPmCalOq = (pmCalOq) => {
   return {
     assetId: pmCalOq.asset_id,

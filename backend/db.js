@@ -387,23 +387,23 @@ db.connect((err) => {
   //   console.log(res);
   // })
 
+  // db.query('ALTER TABLE vendors ADD COLUMN remarks VARCHAR(250)', (err, res) => {
+  //   if (err) throw err;
+  //   console.log(res);
+  // })
+
   // db.query('ALTER TABLE assets ADD CONSTRAINT fk_pm_cal_oq_vendor_id FOREIGN KEY (pm_cal_oq_vendor) REFERENCES vendors(id)', (err, res) => {
   //   if (err) throw err;
   //   console.log(res);
   // })
   
-  db.query('SELECT column_name, data_type from INFORMATION_SCHEMA.columns WHERE table_name=\'pm_cal_oq\'', (err, res) => {
+  db.query('SELECT column_name, data_type from INFORMATION_SCHEMA.columns WHERE table_name=\'vendors\'', (err, res) => {
     if (err) throw err;
     for (let row of res) {
       const { COLUMN_NAME, DATA_TYPE } = row;
       console.log(COLUMN_NAME, DATA_TYPE);
     }
   });
-
-  db.query('SELECT * FROM pm_cal_oq', (err, res) => {
-    if (err) throw err;
-    else console.log(res);
-  })
 });
 
 module.exports = db;

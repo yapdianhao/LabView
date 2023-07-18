@@ -36,6 +36,7 @@
 | phone_2: VARCHAR(100) |
 | email_1: VARCHAR(100) |
 | email_2: VARCHAR(100) |
+| remarks: VARCHAR(250) |
 
 | Frequencies | 
 | --------- |

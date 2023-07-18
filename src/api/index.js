@@ -42,3 +42,7 @@ export const ADD_CONSUMABLE = `${domain}api/add-consumable`;
 export const GET_VENDOR_BY_NAME = `${domain}api/get-vendor-by-name`
 
 export const ADD_PM_CAL_OQ = `${domain}api/add-pm-cal-oq`;
+
+export const EDIT_VENDOR = `${domain}api/edit-vendor`;
+
+export const ADD_VENDOR =`${domain}api/add-vendor`;

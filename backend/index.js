@@ -198,6 +198,31 @@ app.post('/api/get-vendor-by-name', (req, res) => {
   });
 });
 
+app.post('/api/edit-vendor', (req, res) => {
+  const { body } = req;
+  const { vendor } = body;
+  db.query('UPDATE vendors SET\
+    name = ?, \
+    phone_1 = ?, \
+    email_1 = ?, \
+    phone_2 = ?, \
+    email_2 = ?, \
+    remarks = ? \
+    WHERE id = ?',
+    [
+      vendor.name,
+      vendor.phone1,
+      vendor.email1,
+      vendor.phone2, 
+      vendor.email2,
+      vendor.remarks,
+      vendor.id
+    ], (err, result) => {
+      if (err) console.log(err);
+      else res.send(result);
+    });
+});
+
 app.post("/api/edit-asset", (req, res) => {
   const { body } = req;
   const { asset } = body;
@@ -293,7 +318,7 @@ app.get("/api/utils", (req, res) => {
               model, \
               serial, \
               used_from, \
-              used_to, \
+            used_to, \
               (SELECT TIMESTAMPDIFF(HOUR, used_from, used_to)) AS diff \
               FROM assets a \
               INNER JOIN utilizations u ON u.asset_id = a.id \
@@ -489,6 +514,25 @@ app.get('/api/pm-cal-oq', (req, res) => {
       });
   }
 })
+
+app.post('/api/add-vendor', (req, res) => {
+  const { body } = req;
+  const { vendor } = body;
+  db.query('INSERT INTO vendors (name, phone_1, email_1, phone_2, email_2, remarks) VALUES\
+    (?, ?, ?, ?, ?, ?)\
+  ',
+  [
+    vendor.name,
+    vendor.phone1,
+    vendor.email1,
+    vendor.phone2 ?? null,
+    vendor.email2 ?? null,
+    vendor.remarks ?? null
+  ], (err, result) => {
+    if (err) console.log(err);
+    else res.send(result);
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

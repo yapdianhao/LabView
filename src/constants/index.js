@@ -97,6 +97,39 @@ export const ASSET_SCHEMA = [
   },
 ];
 
+export const VENDOR_SCHEMA = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    render: (text) => text,
+  },
+  {
+    title: 'Phone 1',
+    dataIndex: 'phone1',
+    render: (text) => text,
+  },
+  {
+    title: 'Email 1',
+    dataIndex: 'email1',
+    render: (text) => text,
+  },
+  {
+    title: 'Phone 2',
+    dataIndex: 'phone2',
+    render: (text) => text || 'NA'
+  },
+  {
+    title: 'Email 2',
+    dataIndex: 'email2',
+    render: (text) => text || 'NA'
+  },
+  {
+    title: 'Remarks',
+    dataIndex: 'remarks',
+    render: (text) => text,
+  }
+];
+
 export const REPAIR_SCHEMA = [
   {
     title: "Asset ID",
